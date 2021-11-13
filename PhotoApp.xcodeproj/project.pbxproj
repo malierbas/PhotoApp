@@ -7,23 +7,69 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		417A921D2740222900C4DDEA /* IKScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417A921C2740222900C4DDEA /* IKScrollView.swift */; };
+		417A921F2740262E00C4DDEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417A921E2740262E00C4DDEA /* Constants.swift */; };
 		417E1C5B273F23D3004D6457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E1C5A273F23D3004D6457 /* AppDelegate.swift */; };
 		417E1C5D273F23D3004D6457 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E1C5C273F23D3004D6457 /* SceneDelegate.swift */; };
-		417E1C5F273F23D3004D6457 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E1C5E273F23D3004D6457 /* ViewController.swift */; };
+		417E1C5F273F23D3004D6457 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E1C5E273F23D3004D6457 /* HomeViewController.swift */; };
 		417E1C62273F23D3004D6457 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 417E1C60273F23D3004D6457 /* Main.storyboard */; };
 		417E1C64273F23D6004D6457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 417E1C63273F23D6004D6457 /* Assets.xcassets */; };
 		417E1C67273F23D6004D6457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 417E1C65273F23D6004D6457 /* LaunchScreen.storyboard */; };
+		4181E797273F376400359964 /* ChangeBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181E796273F376400359964 /* ChangeBackgroundViewController.swift */; };
+		4181E799273FC6AF00359964 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181E798273FC6AF00359964 /* Extensions.swift */; };
+		4181E79B273FFE4A00359964 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181E79A273FFE4A00359964 /* BaseVC.swift */; };
+		4181E7AC2740024A00359964 /* Sailec Hairline Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E79E2740024A00359964 /* Sailec Hairline Italic.otf */; };
+		4181E7AD2740024A00359964 /* Sailec Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E79F2740024A00359964 /* Sailec Light.otf */; };
+		4181E7AE2740024A00359964 /* Sailec Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A02740024A00359964 /* Sailec Medium.otf */; };
+		4181E7AF2740024A00359964 /* Sailec Regular Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A12740024A00359964 /* Sailec Regular Italic.otf */; };
+		4181E7B02740024A00359964 /* Sailec Thin Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A22740024A00359964 /* Sailec Thin Italic.otf */; };
+		4181E7B12740024A00359964 /* Sailec Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A32740024A00359964 /* Sailec Regular.otf */; };
+		4181E7B22740024A00359964 /* Sailec Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A42740024A00359964 /* Sailec Bold.otf */; };
+		4181E7B32740024B00359964 /* Sailec Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A52740024A00359964 /* Sailec Thin.otf */; };
+		4181E7B42740024B00359964 /* Sailec Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A62740024A00359964 /* Sailec Bold Italic.otf */; };
+		4181E7B52740024B00359964 /* Sailec Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A72740024A00359964 /* Sailec Black.otf */; };
+		4181E7B62740024B00359964 /* Sailec Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A82740024A00359964 /* Sailec Light Italic.otf */; };
+		4181E7B72740024B00359964 /* Sailec Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A92740024A00359964 /* Sailec Medium Italic.otf */; };
+		4181E7B82740024B00359964 /* Sailec Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7AA2740024A00359964 /* Sailec Hairline.otf */; };
+		4181E7B92740024B00359964 /* Sailec Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7AB2740024A00359964 /* Sailec Black Italic.otf */; };
+		41A2481227402DAE00BC90CC /* TopImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2481127402DAE00BC90CC /* TopImageModel.swift */; };
+		41A248162740341C00BC90CC /* TrendingCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */; };
+		41A2481D274038F600BC90CC /* TopImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2481C274038F600BC90CC /* TopImageCVC.swift */; };
+		41A2481F27403B5500BC90CC /* TrendingCategoriesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2481E27403B5500BC90CC /* TrendingCategoriesCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		417A921C2740222900C4DDEA /* IKScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKScrollView.swift; sourceTree = "<group>"; };
+		417A921E2740262E00C4DDEA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		417E1C57273F23D3004D6457 /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		417E1C5A273F23D3004D6457 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		417E1C5C273F23D3004D6457 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		417E1C5E273F23D3004D6457 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		417E1C5E273F23D3004D6457 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		417E1C61273F23D3004D6457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		417E1C63273F23D6004D6457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		417E1C66273F23D6004D6457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		417E1C68273F23D6004D6457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4181E796273F376400359964 /* ChangeBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeBackgroundViewController.swift; sourceTree = "<group>"; };
+		4181E798273FC6AF00359964 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4181E79A273FFE4A00359964 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		4181E79E2740024A00359964 /* Sailec Hairline Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Hairline Italic.otf"; sourceTree = "<group>"; };
+		4181E79F2740024A00359964 /* Sailec Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Light.otf"; sourceTree = "<group>"; };
+		4181E7A02740024A00359964 /* Sailec Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Medium.otf"; sourceTree = "<group>"; };
+		4181E7A12740024A00359964 /* Sailec Regular Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Regular Italic.otf"; sourceTree = "<group>"; };
+		4181E7A22740024A00359964 /* Sailec Thin Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Thin Italic.otf"; sourceTree = "<group>"; };
+		4181E7A32740024A00359964 /* Sailec Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Regular.otf"; sourceTree = "<group>"; };
+		4181E7A42740024A00359964 /* Sailec Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Bold.otf"; sourceTree = "<group>"; };
+		4181E7A52740024A00359964 /* Sailec Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Thin.otf"; sourceTree = "<group>"; };
+		4181E7A62740024A00359964 /* Sailec Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Bold Italic.otf"; sourceTree = "<group>"; };
+		4181E7A72740024A00359964 /* Sailec Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Black.otf"; sourceTree = "<group>"; };
+		4181E7A82740024A00359964 /* Sailec Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Light Italic.otf"; sourceTree = "<group>"; };
+		4181E7A92740024A00359964 /* Sailec Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Medium Italic.otf"; sourceTree = "<group>"; };
+		4181E7AA2740024A00359964 /* Sailec Hairline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Hairline.otf"; sourceTree = "<group>"; };
+		4181E7AB2740024A00359964 /* Sailec Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Black Italic.otf"; sourceTree = "<group>"; };
+		41A2481127402DAE00BC90CC /* TopImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageModel.swift; sourceTree = "<group>"; };
+		41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCategoriesModel.swift; sourceTree = "<group>"; };
+		41A2481C274038F600BC90CC /* TopImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageCVC.swift; sourceTree = "<group>"; };
+		41A2481E27403B5500BC90CC /* TrendingCategoriesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCategoriesCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4156C4342740216100D084E9 /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				417A921C2740222900C4DDEA /* IKScrollView.swift */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
 		417E1C4E273F23D3004D6457 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +110,118 @@
 		417E1C59273F23D3004D6457 /* PhotoApp */ = {
 			isa = PBXGroup;
 			children = (
-				417E1C5A273F23D3004D6457 /* AppDelegate.swift */,
-				417E1C5C273F23D3004D6457 /* SceneDelegate.swift */,
-				417E1C5E273F23D3004D6457 /* ViewController.swift */,
-				417E1C60273F23D3004D6457 /* Main.storyboard */,
+				417E1C6E273F23EC004D6457 /* App */,
+				417E1C73273F242A004D6457 /* UI */,
+				417E1C6F273F23F7004D6457 /* View */,
+				41A2481A274038C200BC90CC /* Cells */,
+				417E1C70273F2402004D6457 /* Model */,
+				417E1C72273F2411004D6457 /* ViewModel */,
+				417E1C71273F2407004D6457 /* Utility */,
+				4181E79C274001F500359964 /* Resources */,
 				417E1C63273F23D6004D6457 /* Assets.xcassets */,
-				417E1C65273F23D6004D6457 /* LaunchScreen.storyboard */,
 				417E1C68273F23D6004D6457 /* Info.plist */,
 			);
 			path = PhotoApp;
+			sourceTree = "<group>";
+		};
+		417E1C6E273F23EC004D6457 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4181E79A273FFE4A00359964 /* BaseVC.swift */,
+				417E1C5A273F23D3004D6457 /* AppDelegate.swift */,
+				417E1C5C273F23D3004D6457 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		417E1C6F273F23F7004D6457 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				417E1C5E273F23D3004D6457 /* HomeViewController.swift */,
+				4181E796273F376400359964 /* ChangeBackgroundViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		417E1C70273F2402004D6457 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41A2481127402DAE00BC90CC /* TopImageModel.swift */,
+				41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		417E1C71273F2407004D6457 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4156C4342740216100D084E9 /* ScrollView */,
+				4181E798273FC6AF00359964 /* Extensions.swift */,
+				417A921E2740262E00C4DDEA /* Constants.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		417E1C72273F2411004D6457 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		417E1C73273F242A004D6457 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				417E1C60273F23D3004D6457 /* Main.storyboard */,
+				417E1C65273F23D6004D6457 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4181E79C274001F500359964 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4181E79D2740020900359964 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4181E79D2740020900359964 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4181E7AB2740024A00359964 /* Sailec Black Italic.otf */,
+				4181E7A72740024A00359964 /* Sailec Black.otf */,
+				4181E7A62740024A00359964 /* Sailec Bold Italic.otf */,
+				4181E7A42740024A00359964 /* Sailec Bold.otf */,
+				4181E79E2740024A00359964 /* Sailec Hairline Italic.otf */,
+				4181E7AA2740024A00359964 /* Sailec Hairline.otf */,
+				4181E7A82740024A00359964 /* Sailec Light Italic.otf */,
+				4181E79F2740024A00359964 /* Sailec Light.otf */,
+				4181E7A92740024A00359964 /* Sailec Medium Italic.otf */,
+				4181E7A02740024A00359964 /* Sailec Medium.otf */,
+				4181E7A12740024A00359964 /* Sailec Regular Italic.otf */,
+				4181E7A32740024A00359964 /* Sailec Regular.otf */,
+				4181E7A22740024A00359964 /* Sailec Thin Italic.otf */,
+				4181E7A52740024A00359964 /* Sailec Thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		41A2481A274038C200BC90CC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				41A2481B274038CE00BC90CC /* HomeCells */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		41A2481B274038CE00BC90CC /* HomeCells */ = {
+			isa = PBXGroup;
+			children = (
+				41A2481C274038F600BC90CC /* TopImageCVC.swift */,
+				41A2481E27403B5500BC90CC /* TrendingCategoriesCVC.swift */,
+			);
+			path = HomeCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +282,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4181E7B52740024B00359964 /* Sailec Black.otf in Resources */,
+				4181E7AC2740024A00359964 /* Sailec Hairline Italic.otf in Resources */,
+				4181E7B42740024B00359964 /* Sailec Bold Italic.otf in Resources */,
+				4181E7B32740024B00359964 /* Sailec Thin.otf in Resources */,
+				4181E7AF2740024A00359964 /* Sailec Regular Italic.otf in Resources */,
 				417E1C67273F23D6004D6457 /* LaunchScreen.storyboard in Resources */,
+				4181E7B12740024A00359964 /* Sailec Regular.otf in Resources */,
+				4181E7B82740024B00359964 /* Sailec Hairline.otf in Resources */,
+				4181E7B62740024B00359964 /* Sailec Light Italic.otf in Resources */,
+				4181E7B92740024B00359964 /* Sailec Black Italic.otf in Resources */,
+				4181E7AD2740024A00359964 /* Sailec Light.otf in Resources */,
+				4181E7B72740024B00359964 /* Sailec Medium Italic.otf in Resources */,
 				417E1C64273F23D6004D6457 /* Assets.xcassets in Resources */,
+				4181E7B22740024A00359964 /* Sailec Bold.otf in Resources */,
+				4181E7AE2740024A00359964 /* Sailec Medium.otf in Resources */,
 				417E1C62273F23D3004D6457 /* Main.storyboard in Resources */,
+				4181E7B02740024A00359964 /* Sailec Thin Italic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +309,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				417E1C5F273F23D3004D6457 /* ViewController.swift in Sources */,
+				4181E799273FC6AF00359964 /* Extensions.swift in Sources */,
+				4181E79B273FFE4A00359964 /* BaseVC.swift in Sources */,
+				41A248162740341C00BC90CC /* TrendingCategoriesModel.swift in Sources */,
+				4181E797273F376400359964 /* ChangeBackgroundViewController.swift in Sources */,
+				417E1C5F273F23D3004D6457 /* HomeViewController.swift in Sources */,
+				41A2481D274038F600BC90CC /* TopImageCVC.swift in Sources */,
+				41A2481227402DAE00BC90CC /* TopImageModel.swift in Sources */,
 				417E1C5B273F23D3004D6457 /* AppDelegate.swift in Sources */,
 				417E1C5D273F23D3004D6457 /* SceneDelegate.swift in Sources */,
+				417A921D2740222900C4DDEA /* IKScrollView.swift in Sources */,
+				417A921F2740262E00C4DDEA /* Constants.swift in Sources */,
+				41A2481F27403B5500BC90CC /* TrendingCategoriesCVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +486,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -334,7 +514,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

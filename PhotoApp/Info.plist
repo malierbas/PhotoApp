@@ -21,5 +21,28 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to save photo in your photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allow access to save photo in your photo library</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Sailec Black Italic.otf</string>
+		<string>Sailec Black.otf</string>
+		<string>Sailec Bold Italic.otf</string>
+		<string>Sailec Bold.otf</string>
+		<string>Sailec Hairline Italic.otf</string>
+		<string>Sailec Hairline.otf</string>
+		<string>Sailec Light Italic.otf</string>
+		<string>Sailec Light.otf</string>
+		<string>Sailec Medium Italic.otf</string>
+		<string>Sailec Medium.otf</string>
+		<string>Sailec Regular Italic.otf</string>
+		<string>Sailec Regular.otf</string>
+		<string>Sailec Thin Italic.otf</string>
+		<string>Sailec Thin.otf</string>
+	</array>
 </dict>
 </plist>
