@@ -32,6 +32,12 @@
 		4181E7B72740024B00359964 /* Sailec Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7A92740024A00359964 /* Sailec Medium Italic.otf */; };
 		4181E7B82740024B00359964 /* Sailec Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7AA2740024A00359964 /* Sailec Hairline.otf */; };
 		4181E7B92740024B00359964 /* Sailec Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4181E7AB2740024A00359964 /* Sailec Black Italic.otf */; };
+		4192BC6827413B2800FE231A /* InterestSectionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC6727413B2800FE231A /* InterestSectionCVC.swift */; };
+		4192BC6A274159C800FE231A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC69274159C800FE231A /* UIDevice.swift */; };
+		4192BC6D27415C5100FE231A /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC6C27415C5100FE231A /* TabbarViewController.swift */; };
+		4192BC6F27415CAA00FE231A /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC6E27415CAA00FE231A /* TabbarController.swift */; };
+		4192BC71274194E000FE231A /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC70274194E000FE231A /* CameraViewController.swift */; };
+		4192BC772741A20400FE231A /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC762741A20400FE231A /* TakePhotoViewController.swift */; };
 		41A2481227402DAE00BC90CC /* TopImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2481127402DAE00BC90CC /* TopImageModel.swift */; };
 		41A248162740341C00BC90CC /* TrendingCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */; };
 		41A2481D274038F600BC90CC /* TopImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2481C274038F600BC90CC /* TopImageCVC.swift */; };
@@ -66,6 +72,12 @@
 		4181E7A92740024A00359964 /* Sailec Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Medium Italic.otf"; sourceTree = "<group>"; };
 		4181E7AA2740024A00359964 /* Sailec Hairline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Hairline.otf"; sourceTree = "<group>"; };
 		4181E7AB2740024A00359964 /* Sailec Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sailec Black Italic.otf"; sourceTree = "<group>"; };
+		4192BC6727413B2800FE231A /* InterestSectionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSectionCVC.swift; sourceTree = "<group>"; };
+		4192BC69274159C800FE231A /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		4192BC6C27415C5100FE231A /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		4192BC6E27415CAA00FE231A /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		4192BC70274194E000FE231A /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		4192BC762741A20400FE231A /* TakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 		41A2481127402DAE00BC90CC /* TopImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageModel.swift; sourceTree = "<group>"; };
 		41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCategoriesModel.swift; sourceTree = "<group>"; };
 		41A2481C274038F600BC90CC /* TopImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageCVC.swift; sourceTree = "<group>"; };
@@ -137,8 +149,11 @@
 		417E1C6F273F23F7004D6457 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4192BC6B27415C0500FE231A /* TabbarView */,
 				417E1C5E273F23D3004D6457 /* HomeViewController.swift */,
 				4181E796273F376400359964 /* ChangeBackgroundViewController.swift */,
+				4192BC70274194E000FE231A /* CameraViewController.swift */,
+				4192BC762741A20400FE231A /* TakePhotoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,6 +173,7 @@
 				4156C4342740216100D084E9 /* ScrollView */,
 				4181E798273FC6AF00359964 /* Extensions.swift */,
 				417A921E2740262E00C4DDEA /* Constants.swift */,
+				4192BC69274159C800FE231A /* UIDevice.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -207,6 +223,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		4192BC6B27415C0500FE231A /* TabbarView */ = {
+			isa = PBXGroup;
+			children = (
+				4192BC6C27415C5100FE231A /* TabbarViewController.swift */,
+				4192BC6E27415CAA00FE231A /* TabbarController.swift */,
+			);
+			path = TabbarView;
+			sourceTree = "<group>";
+		};
 		41A2481A274038C200BC90CC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +245,7 @@
 			children = (
 				41A2481C274038F600BC90CC /* TopImageCVC.swift */,
 				41A2481E27403B5500BC90CC /* TrendingCategoriesCVC.swift */,
+				4192BC6727413B2800FE231A /* InterestSectionCVC.swift */,
 			);
 			path = HomeCells;
 			sourceTree = "<group>";
@@ -310,17 +336,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				4181E799273FC6AF00359964 /* Extensions.swift in Sources */,
+				4192BC6F27415CAA00FE231A /* TabbarController.swift in Sources */,
 				4181E79B273FFE4A00359964 /* BaseVC.swift in Sources */,
+				4192BC71274194E000FE231A /* CameraViewController.swift in Sources */,
+				4192BC772741A20400FE231A /* TakePhotoViewController.swift in Sources */,
 				41A248162740341C00BC90CC /* TrendingCategoriesModel.swift in Sources */,
 				4181E797273F376400359964 /* ChangeBackgroundViewController.swift in Sources */,
 				417E1C5F273F23D3004D6457 /* HomeViewController.swift in Sources */,
 				41A2481D274038F600BC90CC /* TopImageCVC.swift in Sources */,
 				41A2481227402DAE00BC90CC /* TopImageModel.swift in Sources */,
 				417E1C5B273F23D3004D6457 /* AppDelegate.swift in Sources */,
+				4192BC6D27415C5100FE231A /* TabbarViewController.swift in Sources */,
 				417E1C5D273F23D3004D6457 /* SceneDelegate.swift in Sources */,
 				417A921D2740222900C4DDEA /* IKScrollView.swift in Sources */,
 				417A921F2740262E00C4DDEA /* Constants.swift in Sources */,
+				4192BC6827413B2800FE231A /* InterestSectionCVC.swift in Sources */,
 				41A2481F27403B5500BC90CC /* TrendingCategoriesCVC.swift in Sources */,
+				4192BC6A274159C800FE231A /* UIDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

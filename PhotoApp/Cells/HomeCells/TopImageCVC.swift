@@ -13,6 +13,7 @@ class TopImageCVC: UICollectionViewCell {
     @IBOutlet weak var rozetView: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productOwnerName: UILabel!
+    @IBOutlet weak var gradiendView: UIImageView!
     
     var data: TopImageModel! {
         didSet {
@@ -25,9 +26,13 @@ class TopImageCVC: UICollectionViewCell {
         DispatchQueue.main.async { [self] in
             tag = data.id!
             
-            self.contentItemsView.layer.cornerRadius = 14
+            self.contentItemsView.layer.cornerRadius = 20
             
-            self.dropShadow()
+            self.gradiendView.layer.cornerRadius = 14
+            
+            self.layer.cornerRadius = 14
+            
+            self.applyCornerRadiusShadow(with: 14)
             
             rozetView.isHidden = data.isFavourite! ? false : true
             

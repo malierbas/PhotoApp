@@ -12,7 +12,9 @@ class HomeViewController: BaseVC {
     //Views
     @IBOutlet weak var topImageCollectionView: UICollectionView!
     @IBOutlet weak var trendingCategoriesCollectionview: UICollectionView!
+    @IBOutlet weak var allUserPhotosCollectionView: UICollectionView!
     @IBOutlet weak var scrollView: IKScrollView!
+    @IBOutlet weak var allUserPhotosHeightAnchor: NSLayoutConstraint!
     
     //Variables
     let topImagesItems: [TopImageModel] = [
@@ -26,8 +28,21 @@ class HomeViewController: BaseVC {
     
     let trendingImagesItems: [TrendingCategoriesModel] = [
         TrendingCategoriesModel(id: 1, icon: "sunset", backgrodundColors: ["#FF876B","#FFBCA6"], categoryName: "Sunset", filterCount: 123314),
-        TrendingCategoriesModel(id: 2, icon: "mountain", backgrodundColors: ["#FF92CB","#A06CFC"], categoryName: "Mountain", filterCount: 44553),
-        TrendingCategoriesModel(id: 3, icon: "makeUp", backgrodundColors: ["#ACFAFF","#669FFF"], categoryName: "Beauty", filterCount: 224)
+        TrendingCategoriesModel(id: 2, icon: "mountain", backgrodundColors: ["#A06CFC","#FF92CB"], categoryName: "Mountain", filterCount: 44553),
+        TrendingCategoriesModel(id: 3, icon: "makeUp", backgrodundColors: ["#669FFF","#ACFAFF"], categoryName: "Beauty", filterCount: 224)
+    ]
+    
+    let images = [
+        "dummy1",
+        "dummy2",
+        "dummy3",
+        "dummy4",
+        "dummy5",
+        "dummy6",
+        "dummy7",
+        "dummy8",
+        "dummy9",
+        "dummy10"
     ]
     
     //MARK: - LifeCycle
@@ -37,49 +52,61 @@ class HomeViewController: BaseVC {
     }
     
     override func initListeners() {
-        super.initListeners()
-        
-        self.trendingCategoriesCollectionview.delegate = self
-        self.trendingCategoriesCollectionview.dataSource = self
-        
-        self.topImageCollectionView.delegate = self
-        self.topImageCollectionView.dataSource = self
-        
-        self.trendingCategoriesCollectionview.reloadData()
-        self.topImageCollectionView.reloadData()
-        
-        self.scrollView.showsVerticalScrollIndicator = false
-        self.scrollView.showsHorizontalScrollIndicator = false
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        scrollView.sizeMatching = .Dynamic(
-            width: {
-                self.view.frame.width
-            },
-            height: {
-                self.view.frame.height + 100
-            }
-        )
+        DispatchQueue.main.async {
+            super.initListeners()
+            self.trendingCategoriesCollectionview.delegate = self
+            self.trendingCategoriesCollectionview.dataSource = self
+            
+            self.topImageCollectionView.delegate = self
+            self.topImageCollectionView.dataSource = self
+            
+            self.allUserPhotosCollectionView.delegate = self
+            self.allUserPhotosCollectionView.dataSource = self
+            
+            self.trendingCategoriesCollectionview.reloadData()
+            self.allUserPhotosCollectionView.reloadData()
+            self.topImageCollectionView.reloadData()
+            
+            self.scrollView.showsVerticalScrollIndicator = false
+            self.scrollView.showsHorizontalScrollIndicator = false
+            
+            self.scrollView.sizeMatching = .Dynamic(
+                width: {
+                    self.view.frame.width
+                },
+                height: {
+                    self.calculateScrollSize()
+                }
+            )
+        }
     }
     
     //MARK: - Public Functions
-
-    
+    //Calculate scroll size
+    func calculateScrollSize() -> CGFloat {
+        var height = CGFloat(100)
+        
+        height = height + self.topImageCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.contentSize.height + 300
+        
+        return height
+    }
     //MARK: - Actions
 }
 
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView
         {
             case self.topImageCollectionView:
+            
                 return topImagesItems.count
+            case self.allUserPhotosCollectionView:
+
+                return self.images.count
             case self.trendingCategoriesCollectionview:
+            
                 return trendingImagesItems.count
             default:
                 return 0
@@ -91,18 +118,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch collectionView
         {
             case self.topImageCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
             
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
                 cell.data = self.topImagesItems[indexPath.row]
                 return cell
-            case self.trendingCategoriesCollectionview:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
             
+            case self.trendingCategoriesCollectionview:
+            
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
                 cell.data = self.trendingImagesItems[indexPath.row]
                 return cell
-            default:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
+            
+            case self.allUserPhotosCollectionView:
+            
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCVC", for: indexPath) as! InterestSectionCVC
+                cell.image = UIImage(named: self.images[indexPath.row])
+            
+                print("content size = ", allUserPhotosCollectionView.contentSize.height)
                 return cell
+            
+            default:
+            
+                return UICollectionViewCell()
         }
     }
     
@@ -118,6 +155,53 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 print("cell tag 2 = ", cell.tag)
             default:
                 break
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        switch collectionView
+        {
+            case self.allUserPhotosCollectionView:
+                if UIDevice.modelName == "iPhone 8" {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                } else {
+                    
+                    return UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+                }
+            
+            case self.topImageCollectionView:
+            
+                if UIDevice.modelName == "iPhone 8" {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                } else {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                }
+                
+            case self.trendingCategoriesCollectionview:
+            
+                if UIDevice.modelName == "iPhone 8" {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                } else {
+                    
+                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                }
+            
+            default:
+                return UIEdgeInsets()
         }
     }
 }

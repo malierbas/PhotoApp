@@ -24,16 +24,18 @@ class TrendingCategoriesCVC: UICollectionViewCell {
     func setupView() {
         DispatchQueue.main.async { [self] in
             tag = data.id!
+        
+            self.backgroundGradientView.backgroundColor = .clear
+           
+            let startColor = UIColor().hexStringToUIColor(hex: data.backgrodundColors?.first ?? "")
+            let endColor = UIColor().hexStringToUIColor(hex: data.backgrodundColors?.last ?? "")
             
-            self.backgroundGradientView.layerGradient(color1Hex: data.backgrodundColors!.first!, color2Hex: data.backgrodundColors!.last!)
-            
-            self.backgroundGradientView.layer.cornerRadius = 8
-            
-            self.dropShadow()
+            self.applyGradient(colours: [startColor, endColor]).cornerRadius = 10
             
             self.iconImageView.image = UIImage(named: data.icon!)
             
             self.productName.text = data.categoryName!
+            
             self.productCount.text = "\(data.filterCount!) photos"
         }
     }

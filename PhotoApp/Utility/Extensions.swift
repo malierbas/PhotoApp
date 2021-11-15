@@ -71,17 +71,6 @@ extension UIView {
         }
     }
     
-    //Add Gradient
-    func layerGradient(color1Hex: String, color2Hex: String) {
-        let layer : CAGradientLayer = CAGradientLayer()
-        layer.frame.size = self.frame.size
-        layer.frame.origin = CGPoint(x: 0.0, y: 0.0)
-        layer.cornerRadius = CGFloat(frame.width / 20)
-
-        layer.colors = [UIColor().hexStringToUIColor(hex: color1Hex), UIColor().hexStringToUIColor(hex: color2Hex)]
-        self.layer.insertSublayer(layer, at: 0)
-    }
-    
     // Shadow 1
     func dropShadow(scale: Bool = true) {
         layer.masksToBounds = false
@@ -100,11 +89,91 @@ extension UIView {
          layer.shadowColor = color.cgColor
          layer.shadowOpacity = opacity
          layer.shadowOffset = offSet
-         layer.shadowRadius = radius
          layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
          layer.shouldRasterize = true
+         layer.cornerRadius = self.layer.cornerRadius
          layer.rasterizationScale = scale ? UIScreen.main.scale : 1
      }
+    
+    //Apply corner radius shadow
+    func applyCornerRadiusShadow(with cornerRadius: CGFloat) {
+        //viewContainer is the parent of viewContents
+        //viewContents contains all the UI which you want to show actually.
+        
+        self.layer.cornerRadius = cornerRadius
+        self.layer.masksToBounds = true
+        
+        let bezierPath = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: 12.69)
+        self.layer.shadowPath = bezierPath.cgPath
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOffset = CGSize.init(width: 0, height: 3)
+        self.layer.shadowOpacity = 0.3
+        
+        // sending viewContainer color to the viewContents.
+        let backgroundCGColor = self.backgroundColor?.cgColor
+        //You can set your color directly if you want by using below two lines. In my case I'm copying the color.
+        self.layer.backgroundColor =  backgroundCGColor
+    }
+
+    //round corners
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    //Add gradient
+    @discardableResult
+    func applyGradient(colours: [UIColor]) -> CAGradientLayer {
+        return self.applyGradient(colours: colours, locations: nil)
+    }
+
+    @discardableResult
+    func applyGradient(colours: [UIColor], locations: [NSNumber]?) -> CAGradientLayer {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.cornerRadius = self.layer.cornerRadius
+        self.layer.insertSublayer(gradient, at: 0)
+        return gradient
+    }
+
+    //For animating
+    func fadeIn() {
+        UIView.animate(withDuration: 0.35) {
+            self.alpha = 1
+        } completion: { boolean in
+            if self.isHidden {
+                self.isHidden = false
+            }
+        }
+    }
+    
+    func fadeOut() {
+        UIView.animate(withDuration: 0.35) {
+            self.alpha = 0
+        } completion: { boolean in
+            if !self.isHidden {
+                self.isHidden = true
+            }
+        }
+    }
+    
+    func fadeOutWithAlphaComponent(alpha: CGFloat) {
+        UIView.animate(withDuration: 0.35) {
+            self.alpha = alpha
+        } completion: { boolean in
+            if !self.isHidden {
+                self.isHidden = true
+            }
+        }
+    }
 }
 
 //MARK: - UIColor
@@ -129,5 +198,15 @@ extension UIColor {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+}
+
+
+//MARK: - Tabbar
+extension UITabBar {
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sizeThatFits = super.sizeThatFits(size)
+        sizeThatFits.height = 74
+        return sizeThatFits
     }
 }

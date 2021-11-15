@@ -44,5 +44,7 @@
 		<string>Sailec Thin Italic.otf</string>
 		<string>Sailec Thin.otf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow camera.</string>
 </dict>
 </plist>
