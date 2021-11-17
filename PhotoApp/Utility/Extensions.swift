@@ -210,3 +210,118 @@ extension UITabBar {
         return sizeThatFits
     }
 }
+
+//MARK: - UIView Constraints
+extension UIView {
+    //constraints
+    func equalsToWidth() {
+        guard let superView = superview else { return }
+        self.widthAnchor.constraint(equalToConstant: superView.frame.width).isActive = true
+    }
+    
+    func equalsToHeight() {
+        guard let superView = superview else { return }
+        self.heightAnchor.constraint(equalToConstant: superView.frame.height).isActive = true
+    }
+    
+    func setWidth(size: CGFloat?) {
+        guard let width = size else { return }
+        self.widthAnchor.constraint(equalToConstant: width).isActive = true
+    }
+    
+    func setHeight(size: CGFloat?) {
+        guard let height = size else { return }
+        self.heightAnchor.constraint(equalToConstant: height).isActive = true
+    }
+    
+    func centerXToSuperView(with size: CGFloat?) {
+        guard let superView = superview else { return }
+        guard let size = size else { return }
+
+        self.centerXAnchor.constraint(equalTo: superView.centerXAnchor, constant: size).isActive = true
+    }
+    
+    func centerYToSuperView() {
+        guard let superView = superview else { return }
+        self.centerYAnchor.constraint(equalTo: superView.centerYAnchor, constant: 0).isActive = true
+    }
+    
+    func pinToTop() {
+        guard let superView = superview else { return }
+        self.topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
+    }
+    
+    func pinTopToBottom(view: UIView?, with size: CGFloat?) {
+        guard let view = view else { return }
+        guard let size = size else { return }
+
+        self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: size).isActive = true
+    }
+
+    func pinToBottom() {
+        guard let superView = superview else { return }
+        self.bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
+    }
+    
+    func pinToTopWithSize(with size: CGFloat?) {
+        guard let superView = superview else { return }
+        guard let size = size else { return }
+        self.topAnchor.constraint(equalTo: superView.topAnchor, constant: size).isActive = true
+    }
+    
+    func pinToBottomWithSize(with size: CGFloat?) {
+        guard let superView = superview else { return }
+        guard let size = size else { return }
+        self.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: size).isActive = true
+    }
+    
+    func equalsToLeadings() {
+        guard let superView = superview else { return }
+        self.leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = true
+    }
+    
+    func equalsToTrailings() {
+        guard let superView = superview else { return }
+        self.trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
+    }
+    
+    func equalsToLeadings(with size: CGFloat?) {
+        guard let superView = superview else { return }
+        guard let size = size else { return }
+        self.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: size).isActive = true
+    }
+    
+    func equalsToTrailings(with size: CGFloat?) {
+        guard let superView = superview else { return }
+        guard let size = size else { return }
+        self.trailingAnchor.constraint(equalTo: superView.trailingAnchor, constant: size).isActive = true
+    }
+    
+    func equalsToTrailingWithView(view: UIView?) {
+        guard let view = view else { return }
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    func equalsToTrailingWithView(view: UIView?, with size: CGFloat?) {
+        guard let view = view else { return }
+        guard let size = size else { return }
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: size).isActive = true
+    }
+    
+    func equalsToLeadingWithView(view: UIView?) {
+        guard let view = view else { return }
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    }
+    
+    func equalsToLeadingWithView(view: UIView?, with size: CGFloat?) {
+        guard let view = view else { return }
+        guard let size = size else { return }
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: size).isActive = true
+    }
+    
+    func equalsLeadingToTrailing(view: UIView?, with size: CGFloat?) {
+        guard let view = view else { return }
+        guard let size = size else { return }
+        self.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: size).isActive = true
+    }
+}

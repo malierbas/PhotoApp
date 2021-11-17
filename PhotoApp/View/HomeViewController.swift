@@ -48,7 +48,6 @@ class HomeViewController: BaseVC {
     //MARK: - LifeCycle
     override func setupView() {
         super.setupView()
-        
     }
     
     override func initListeners() {
@@ -133,8 +132,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCVC", for: indexPath) as! InterestSectionCVC
                 cell.image = UIImage(named: self.images[indexPath.row])
-            
-                print("content size = ", allUserPhotosCollectionView.contentSize.height)
                 return cell
             
             default:
@@ -151,8 +148,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
                 print("cell tag = ", cell.tag)
             case self.trendingCategoriesCollectionview:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
-                print("cell tag 2 = ", cell.tag)
+//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
+            
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    let detailView = CategoryDetailVC()
+                    detailView.model = self.trendingImagesItems[indexPath.row]
+                    detailView.modalPresentationStyle = .fullScreen
+                    self.present(detailView, animated: true, completion: nil)
+                }
             default:
                 break
         }

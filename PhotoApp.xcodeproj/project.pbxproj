@@ -42,6 +42,8 @@
 		41A248162740341C00BC90CC /* TrendingCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */; };
 		41A2481D274038F600BC90CC /* TopImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2481C274038F600BC90CC /* TopImageCVC.swift */; };
 		41A2481F27403B5500BC90CC /* TrendingCategoriesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2481E27403B5500BC90CC /* TrendingCategoriesCVC.swift */; };
+		41EB980F2745796600794586 /* CategoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB980E2745796600794586 /* CategoryDetailVC.swift */; };
+		41EB981127457D2E00794586 /* CategoriesDetailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,8 @@
 		41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCategoriesModel.swift; sourceTree = "<group>"; };
 		41A2481C274038F600BC90CC /* TopImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageCVC.swift; sourceTree = "<group>"; };
 		41A2481E27403B5500BC90CC /* TrendingCategoriesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCategoriesCVC.swift; sourceTree = "<group>"; };
+		41EB980E2745796600794586 /* CategoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailVC.swift; sourceTree = "<group>"; };
+		41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 				4181E796273F376400359964 /* ChangeBackgroundViewController.swift */,
 				4192BC70274194E000FE231A /* CameraViewController.swift */,
 				4192BC762741A20400FE231A /* TakePhotoViewController.swift */,
+				41EB980E2745796600794586 /* CategoryDetailVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				41A2481C274038F600BC90CC /* TopImageCVC.swift */,
 				41A2481E27403B5500BC90CC /* TrendingCategoriesCVC.swift */,
 				4192BC6727413B2800FE231A /* InterestSectionCVC.swift */,
+				41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */,
 			);
 			path = HomeCells;
 			sourceTree = "<group>";
@@ -349,8 +355,10 @@
 				4192BC6D27415C5100FE231A /* TabbarViewController.swift in Sources */,
 				417E1C5D273F23D3004D6457 /* SceneDelegate.swift in Sources */,
 				417A921D2740222900C4DDEA /* IKScrollView.swift in Sources */,
+				41EB980F2745796600794586 /* CategoryDetailVC.swift in Sources */,
 				417A921F2740262E00C4DDEA /* Constants.swift in Sources */,
 				4192BC6827413B2800FE231A /* InterestSectionCVC.swift in Sources */,
+				41EB981127457D2E00794586 /* CategoriesDetailCVC.swift in Sources */,
 				41A2481F27403B5500BC90CC /* TrendingCategoriesCVC.swift in Sources */,
 				4192BC6A274159C800FE231A /* UIDevice.swift in Sources */,
 			);
