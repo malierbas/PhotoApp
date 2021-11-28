@@ -2,6 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Sailec Black Italic.otf</string>
+		<string>Sailec Black.otf</string>
+		<string>Sailec Bold Italic.otf</string>
+		<string>Sailec Bold.otf</string>
+		<string>Sailec Hairline Italic.otf</string>
+		<string>Sailec Hairline.otf</string>
+		<string>Sailec Light Italic.otf</string>
+		<string>Sailec Light.otf</string>
+		<string>Sailec Medium Italic.otf</string>
+		<string>Sailec Medium.otf</string>
+		<string>Sailec Regular Italic.otf</string>
+		<string>Sailec Regular.otf</string>
+		<string>Sailec Thin Italic.otf</string>
+		<string>Sailec Thin.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,30 +38,13 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow access to save photo in your photo library</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please allow access to save photo in your photo library</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Sailec Black Italic.otf</string>
-		<string>Sailec Black.otf</string>
-		<string>Sailec Bold Italic.otf</string>
-		<string>Sailec Bold.otf</string>
-		<string>Sailec Hairline Italic.otf</string>
-		<string>Sailec Hairline.otf</string>
-		<string>Sailec Light Italic.otf</string>
-		<string>Sailec Light.otf</string>
-		<string>Sailec Medium Italic.otf</string>
-		<string>Sailec Medium.otf</string>
-		<string>Sailec Regular Italic.otf</string>
-		<string>Sailec Regular.otf</string>
-		<string>Sailec Thin Italic.otf</string>
-		<string>Sailec Thin.otf</string>
-	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Please allow camera.</string>
+	<string>please allow the camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>please allow the microphone</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>please allow the photo library</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>please allow the library additions</string>
 </dict>
 </plist>

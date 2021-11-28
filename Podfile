@@ -6,5 +6,8 @@ target 'PhotoApp' do
   use_frameworks!
 
   # Pods for PhotoApp
+  pod 'IQKeyboardManagerSwift'
+  pod 'ZLPhotoBrowser'
+  pod 'SnapKit', '~> 5.0.0'
 
 end

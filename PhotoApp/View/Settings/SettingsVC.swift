@@ -1,0 +1,66 @@
+//
+//  SettingsVC.swift
+//  PhotoApp
+//
+//  Created by Ali on 21.11.2021.
+//
+
+import UIKit
+
+class SettingsVC: BaseVC {
+    //MARK: - Properties
+    //: Views
+    @IBOutlet weak var termsAndPolicyView: UIView!
+    @IBOutlet weak var contactUsView: UIView!
+    @IBOutlet weak var favouritesView: UIView!
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
+    //: Variables
+    
+    //MARK: - LifeCycle
+    override func setupView() {
+        super.setupView()
+        
+        DispatchQueue.main.async {
+            
+        }
+    }
+    
+    override func initListeners() {
+        super.initListeners()
+        
+        DispatchQueue.main.async {
+            let termsAndPolicyGesture = UITapGestureRecognizer(target: self, action: #selector(self.showTermsPolicy))
+            self.termsAndPolicyView.addGestureRecognizer(termsAndPolicyGesture)
+            
+            let contactUsGesture = UITapGestureRecognizer(target: self, action: #selector(self.showContactUs))
+            self.contactUsView.addGestureRecognizer(contactUsGesture)
+            
+            let showFavsGesture = UITapGestureRecognizer(target: self, action: #selector(self.showFavs))
+            self.favouritesView.addGestureRecognizer(showFavsGesture)
+        }
+    }
+    
+    //MARK: - Public Functions
+    
+    //MARK: - Actions
+    @objc func showTermsPolicy() {
+        print("terms policy active")
+        
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "termsAndPolicyView", sender: nil)
+        }
+    }
+    
+    @objc func showContactUs() {
+        print("contact us active")
+        
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "contactUsView", sender: nil)
+        }
+    }
+    
+    @objc func showFavs() {
+        print("show favs active")
+    }
+}
