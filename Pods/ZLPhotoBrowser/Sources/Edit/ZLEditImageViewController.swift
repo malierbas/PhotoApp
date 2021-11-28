@@ -1160,6 +1160,8 @@ extension ZLEditImageViewController: UICollectionViewDataSource, UICollectionVie
                     guard let image = self.imageView.image?.removedBg() else { return }
                     self.originalImage = image
                     self.imageView.image = image
+                    self.drawingImageView.image = image
+                    self.editImage = image
                 } else {
                     // Fallback on earlier versions
                 }
