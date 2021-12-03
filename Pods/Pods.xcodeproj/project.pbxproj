@@ -54,6 +54,7 @@
 		41CD5C172753893200D5D8D0 /* CGImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD5C162753893200D5D8D0 /* CGImage+RawBytes.swift */; };
 		41CD5C192753894600D5D8D0 /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD5C182753894600D5D8D0 /* MLMultiArray+Image.swift */; };
 		41CD5C1B275389C300D5D8D0 /* UIviewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD5C1A275389C300D5D8D0 /* UIviewExtension.swift */; };
+		41F351A9275940F900B1CD2E /* EditPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4150B2F32756ACC30097EB1D /* EditPhotoViewController.swift */; };
 		43863B6D6A0E47B6648BB7B469736EDD /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E72BC2EB1A36EF9E6F77DB82975DF9 /* LayoutConstraint.swift */; };
 		487DEAA9FE3EAA39791A5244DB24967E /* ZLPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E479A6EF425EDC4166DDC61CE5AB81 /* ZLPhotoBrowser.swift */; };
 		4938585F2D2A702D5556AD2D916AB581 /* String+ZLPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8770B44347E62A51CE07DD67EC4518 /* String+ZLPhotoBrowser.swift */; };
@@ -208,6 +209,7 @@
 		3D29F5022C583AFDDC53294E671881F3 /* ZLPhotoConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLPhotoConfiguration.swift; path = Sources/General/ZLPhotoConfiguration.swift; sourceTree = "<group>"; };
 		3DF4B6A4E6C3C639C1711E375DC5A53A /* ConstraintDirectionalInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsets.swift; path = Source/ConstraintDirectionalInsets.swift; sourceTree = "<group>"; };
 		3FC741DE3667AB1AA1CF389F4BE7436F /* ZLPhotoBrowser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZLPhotoBrowser.modulemap; sourceTree = "<group>"; };
+		4150B2F32756ACC30097EB1D /* EditPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoViewController.swift; sourceTree = "<group>"; };
 		41CD5BFD2753876900D5D8D0 /* DeepLabV3.mlkitmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3.mlkitmodel; sourceTree = "<group>"; };
 		41CD5C00275387DF00D5D8D0 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		41CD5C022753880000D5D8D0 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
@@ -389,8 +391,6 @@
 		141226739F84FA2BDAE4E1B5BB5C7E04 /* ZLPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				41CD5BFF275387BE00D5D8D0 /* CoreMLHelpers */,
-				41CD5BFC2753874F00D5D8D0 /* DeepLav */,
 				4DB15154CFA7168FA27B97B6075CDC18 /* Core */,
 				5D0C17218E9B776715755C4B4284EDE2 /* Resources */,
 				C5B5C63159FEC69BC28ECA4C6441BA04 /* Support Files */,
@@ -406,15 +406,7 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		41CD5BFC2753874F00D5D8D0 /* DeepLav */ = {
-			isa = PBXGroup;
-			children = (
-				41CD5BFD2753876900D5D8D0 /* DeepLabV3.mlkitmodel */,
-			);
-			name = DeepLav;
-			sourceTree = "<group>";
-		};
-		41CD5BFF275387BE00D5D8D0 /* CoreMLHelpers */ = {
+		4DB15154CFA7168FA27B97B6075CDC18 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				41CD5C00275387DF00D5D8D0 /* Array+Extensions.swift */,
@@ -430,13 +422,8 @@
 				41CD5C142753891A00D5D8D0 /* NonMaxSuppression.swift */,
 				41CD5C162753893200D5D8D0 /* CGImage+RawBytes.swift */,
 				41CD5C182753894600D5D8D0 /* MLMultiArray+Image.swift */,
-			);
-			name = CoreMLHelpers;
-			sourceTree = "<group>";
-		};
-		4DB15154CFA7168FA27B97B6075CDC18 /* Core */ = {
-			isa = PBXGroup;
-			children = (
+				41CD5BFD2753876900D5D8D0 /* DeepLabV3.mlkitmodel */,
+				4150B2F32756ACC30097EB1D /* EditPhotoViewController.swift */,
 				FA3A49B5FA51573F68745208C620D612 /* Array+ZLPhotoBrowser.swift */,
 				DF2DDF33ECD1761DE8C4C98F7162DEB1 /* Bundle+ZLPhotoBrowser.swift */,
 				79548555CB15F0920291E2EA3B0BD6D9 /* Cell+ZLPhotoBrowser.swift */,
@@ -916,6 +903,7 @@
 				41CD5C1B275389C300D5D8D0 /* UIviewExtension.swift in Sources */,
 				4F34271A075B065F1C1528F94F5DF4EF /* Int+ZLPhotoBrowser.swift in Sources */,
 				4E486C9C46ADF1541EA906C033B8252E /* PHAsset+ZLPhotoBrowser.swift in Sources */,
+				41F351A9275940F900B1CD2E /* EditPhotoViewController.swift in Sources */,
 				4938585F2D2A702D5556AD2D916AB581 /* String+ZLPhotoBrowser.swift in Sources */,
 				D5D15C8B63675D655331B388F0773891 /* UIColor+ZLPhotoBrowser.swift in Sources */,
 				40F5A7A61DBF3434446D0C0A1D10582E /* UIControl+ZLPhotoBrowser.swift in Sources */,

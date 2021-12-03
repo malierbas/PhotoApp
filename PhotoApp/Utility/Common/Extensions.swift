@@ -17,7 +17,6 @@ extension UIImage {
 
         UIGraphicsBeginImageContext(size)
 
-
         let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
         bottomImage.draw(in: areaSize)
 

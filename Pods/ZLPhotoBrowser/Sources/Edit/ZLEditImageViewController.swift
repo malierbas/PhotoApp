@@ -268,10 +268,6 @@ open class ZLEditImageViewController: UIViewController {
         if self.tools.contains(.filter) {
             self.generateFilterImages()
         }
-        
-        self.removedBackGroundBlock = { (image) in
-            self.imageView.image = image
-        }
     }
     
     open override func viewDidLayoutSubviews() {

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import ZLPhotoBrowser
 
 class HomeViewController: BaseVC {
     //MARK: - Properties
@@ -164,8 +166,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
             
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    let detailView = CategoryDetailVC()
-                    detailView.model = self.trendingImagesItems[indexPath.row]
+                    guard let image = UIImage(named: "editImage") else { return }
+                    let detailView = EditPhotoViewController(image: image)
                     detailView.modalPresentationStyle = .fullScreen
                     self.present(detailView, animated: true, completion: nil)
                 }
