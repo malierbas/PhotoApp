@@ -15,6 +15,7 @@ class CategoriesDetailCVC: UICollectionViewCell {
         label.font = UIFont(name: "Sailec-Bold", size: 12)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.alpha = 0
         return label
     }()
     
@@ -37,7 +38,7 @@ class CategoriesDetailCVC: UICollectionViewCell {
         itemImageView.pinToBottom()
         itemImageView.equalsToLeadings()
         itemImageView.equalsToTrailings()
-        itemImageView.layer.cornerRadius = 12
+        itemImageView.layer.cornerRadius = 4
         
         self.addSubview(itemDescriptionLabel)
         itemDescriptionLabel.pinToBottom(with: -16)

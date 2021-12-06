@@ -83,16 +83,22 @@ class CategoryDetailVC: BaseVC {
     var model: TrendingCategoriesModel? = nil
     
     var allImages = [
-        SuggestionsModel(itemID: 1, itemName: "Dummy hands", itemImage: "dummy1"),
-        SuggestionsModel(itemID: 2, itemName: "Dummy mountains", itemImage: "dummy2"),
-        SuggestionsModel(itemID: 3, itemName: "Dummy river", itemImage: "dummy3"),
-        SuggestionsModel(itemID: 4, itemName: "Dummy rainbow sky", itemImage: "dummy4"),
-        SuggestionsModel(itemID: 5, itemName: "Dummy black photo", itemImage: "dummy5"),
-        SuggestionsModel(itemID: 6, itemName: "Dummy rock in tree", itemImage: "dummy6"),
-        SuggestionsModel(itemID: 7, itemName: "Dummy 4 hands", itemImage: "dummy7"),
-        SuggestionsModel(itemID: 8, itemName: "Dummy leafs", itemImage: "dummy8"),
-        SuggestionsModel(itemID: 9, itemName: "Dummy nature img", itemImage: "dummy9"),
-        SuggestionsModel(itemID: 10, itemName: "Dummy draw img", itemImage: "dummy10")
+        SuggestionsModel(itemID: 1, itemName: "Dummy hands", itemImage: "begum17-1"),
+        SuggestionsModel(itemID: 2, itemName: "Dummy mountains", itemImage: "begum17"),
+        SuggestionsModel(itemID: 3, itemName: "Dummy river", itemImage: "begum18-1"),
+        SuggestionsModel(itemID: 4, itemName: "Dummy rainbow sky", itemImage: "begum18"),
+        SuggestionsModel(itemID: 5, itemName: "Dummy black photo", itemImage: "begum19-1"),
+        SuggestionsModel(itemID: 6, itemName: "Dummy rock in tree", itemImage: "begum20-1"),
+        SuggestionsModel(itemID: 7, itemName: "Dummy 4 hands", itemImage: "vintage1-3"),
+        SuggestionsModel(itemID: 8, itemName: "Dummy leafs", itemImage: "vintage1"),
+        SuggestionsModel(itemID: 9, itemName: "Dummy nature img", itemImage: "begum4"),
+        SuggestionsModel(itemID: 10, itemName: "Dummy draw img", itemImage: "vintage4-1")
+    ]
+    
+    var templateSections: [TemplateSection] = [
+        TemplateSection(title: "Classic", templates: Template.generateMinimalModels(), hasSeeAllButton: true),
+        TemplateSection(title: "Vintage", templates: Template.generateVintageModels(), hasSeeAllButton: true),
+        TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
     ]
     
     
@@ -220,13 +226,13 @@ extension CategoryDetailVC: UICollectionViewDelegate, UICollectionViewDataSource
             case self.categoryItemsCollectionView:
                 if UIDevice.modelName == "iPhone 8" {
                     
-                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                    return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
                 } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
                     
-                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+                    return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
                 } else {
                     
-                    return UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+                    return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
                 }
             default:
                 return UIEdgeInsets()
@@ -237,9 +243,36 @@ extension CategoryDetailVC: UICollectionViewDelegate, UICollectionViewDataSource
         switch collectionView
         {
             case self.categoryItemsCollectionView:
-                return CGSize(width: (self.view.frame.width / 2) - 40, height: 160)
+                return CGSize(width: (self.view.frame.width / 2) - 20, height: 300)
             default:
                 return CGSize()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView
+        {
+            case self.categoryItemsCollectionView:
+                DispatchQueue.main.async {
+                    let image = UIImage(named: self.allImages[indexPath.row].itemImage!)
+                    
+                    UIImpactFeedbackGenerator().impactOccurred()
+                    guard let template = self.templateSections[1].templates?[2] else { return }
+                    let editorViewController = EditorViewController()
+                    editorViewController.template = template
+                    editorViewController.hidesBottomBarWhenPushed = true
+                    editorViewController.modalPresentationStyle = .fullScreen
+                    self.present(editorViewController, animated: true) {
+                        //: do something
+                    }
+                   
+//                    let detailView = EditPhotoViewController(image: image!)
+//                    detailView.originalImage = image!
+//                    detailView.modalPresentationStyle = .fullScreen
+//                    self.present(detailView, animated: true, completion: nil)
+                }
+            default:
+                print("")
         }
     }
 }

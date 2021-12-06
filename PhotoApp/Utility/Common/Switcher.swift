@@ -14,12 +14,12 @@ class Switcher {
     static func updateRootVC(){
         var rootVC : UIViewController?
         
-        if(!globalUserPreferences.isUserLoggedIn){
+        if(!LocalStorageManager.shared.isUserLoggedIn){
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingMainVC") as! OnboardingMainVC
             
-            globalUserPreferences.isUserLoggedIn = true
-            globalUserPreferences.token = UUID().uuidString
-            print("global user token = ", globalUserPreferences.token)
+            LocalStorageManager.shared.isUserLoggedIn = true
+            LocalStorageManager.shared.token = UUID().uuidString
+            print("global user token = ", LocalStorageManager.shared.token)
             
         } else {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarViewController") as! TabbarViewController

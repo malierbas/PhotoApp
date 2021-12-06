@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import ZLPhotoBrowser
 
 class ImageStickerContainerView: UIView, ZLImageStickerContainerDelegate {
 

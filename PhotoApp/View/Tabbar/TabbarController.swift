@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import RevealingSplashView
 
 class TabbarController: UITabBar {
+    
+    var revealingSplashView: RevealingSplashView?
 
+    var hasAddedSplashView: Bool = false
     
     private var shapeLayer: CALayer?
 

@@ -5,8 +5,7 @@
 //  Created by Ali on 14.11.2021.
 //
 
-import UIKit
-import ZLPhotoBrowser
+import UIKit 
 
 class TakePhotoViewController: BaseVC {
     //MARK: - Properties
@@ -28,7 +27,6 @@ class TakePhotoViewController: BaseVC {
         super.viewDidAppear(animated)
         
         DispatchQueue.main.async {
-            /*
              let cameraViewController = ZLCustomCamera()
              
              
@@ -91,7 +89,6 @@ class TakePhotoViewController: BaseVC {
                  
                  editViewController.removedBackGroundBlock?(newImage)
              }
-            */
         }
     }
     

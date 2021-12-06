@@ -7,9 +7,9 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import ZLPhotoBrowser
+import BottomPopup
 
-class HomeViewController: BaseVC {
+class HomeViewController: BaseVC, BottomPopupDelegate {
     //MARK: - Properties
     //Views
     @IBOutlet weak var topImageCollectionView: UICollectionView!
@@ -35,16 +35,16 @@ class HomeViewController: BaseVC {
     ]
     
     let images = [
-        "dummy1",
-        "dummy2",
-        "dummy3",
-        "dummy4",
-        "dummy5",
-        "dummy6",
-        "dummy7",
-        "dummy8",
-        "dummy9",
-        "dummy10"
+        "begum1-2",
+        "template8-2",
+        "begum2-1",
+        "begum2-2",
+        "begum2",
+        "begum3-1",
+        "begum3",
+        "begum4",
+        "begum5-1",
+        "begum5-2"
     ]
     
     //MARK: - LifeCycle
@@ -104,7 +104,30 @@ class HomeViewController: BaseVC {
         
         return height
     }
+    
+    func showPopup() {
+        DispatchQueue.main.async {
+            guard let popupVC = UIStoryboard(name: "MainPopup", bundle: nil).instantiateViewController(withIdentifier: "M72-OA-TgW") as? BasePopupVC else { return }
+            popupVC.height = popupVC.view.frame.height * 1.3 / 3
+            popupVC.topCornerRadius = 35
+            popupVC.presentDuration = 0.5
+            popupVC.dismissDuration = 0.5
+            popupVC.popupDelegate = self
+            self.present(popupVC, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: - Actions
+    @objc func getMaskView(notification: Notification) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let image = UIImage(named: "editImage")!.mergeWith(topImage: UIImage(named: "merge")!)
+           
+            let detailView = EditPhotoViewController(image: image)
+            detailView.originalImage = image
+            detailView.modalPresentationStyle = .fullScreen
+            self.present(detailView, animated: true, completion: nil)
+        }
+    }
 }
 
 
@@ -160,17 +183,26 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch collectionView
         {
             case self.topImageCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
-                print("cell tag = ", cell.tag)
-            case self.trendingCategoriesCollectionview:
-//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
             
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    guard let image = UIImage(named: "editImage") else { return }
-                    let detailView = EditPhotoViewController(image: image)
+                showPopup()
+                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
+            
+            case self.trendingCategoriesCollectionview:
+            
+//                showPopup()
+//                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
+            
+                DispatchQueue.main.async {
+                    let detailView = CategoryDetailVC()
+                    detailView.model = self.trendingImagesItems[indexPath.row]
                     detailView.modalPresentationStyle = .fullScreen
                     self.present(detailView, animated: true, completion: nil)
                 }
+            case self.allUserPhotosCollectionView:
+            
+                showPopup()
+                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
+             
             default:
                 break
         }
@@ -435,3 +467,165 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
  }
  
  */
+
+
+
+
+//
+//import UIKit
+//
+//class HomeViewController: UIViewController {
+//
+//    private lazy var tableView: UITableView = {
+//        let tableView = UITableView()
+//        tableView.sectionHeaderHeight = 0
+//        tableView.sectionFooterHeight = 0
+//        tableView.backgroundColor = UIColor.clear
+//        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.separatorStyle = .none
+//        tableView.showsVerticalScrollIndicator = false
+//        tableView.estimatedRowHeight = UITableView.automaticDimension
+//        tableView.contentInsetAdjustmentBehavior = .never
+//        tableView.contentInset = .init(topPadding: 16, bottomPadding: 40)
+//        return tableView
+//    }()
+//
+//    var templateSections: [TemplateSection] = [
+//        TemplateSection(title: "Classic", templates: Template.generateMinimalModels(), hasSeeAllButton: true),
+//        TemplateSection(title: "Vintage", templates: Template.generateVintageModels(), hasSeeAllButton: true),
+//        TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
+//    ]
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        prepareUI()
+//    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//    }
+//
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
+//
+//    private func prepareUI() {
+//        view.backgroundColor = UIColor(hexString: "#1C1F21")
+//        navigationController?.view.backgroundColor = UIColor(hexString: "#1C1F21")
+//        tableView.register(SectionTableViewCell.self)
+//        view.addSubview(tableView)
+//        setupNavigationBar()
+//        setupLayout()
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name.init(rawValue: LocalStorageManager.Keys.isPremiumUser.rawValue), object: nil, queue: nil) { (_) in
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//                var title = "Unlock Premium"
+//
+//                if globalAppConstants.shouldUpdate == false {
+//                    title = "Try for free"
+//                }
+//
+//                if globalAppConstants.shouldUpdate == false && globalAppConstants.inAppPurchaseData?.isWeeklyGiftActive == true {
+//                    title = "Claim your gift 🎁"
+//                }
+//                self.navigationItem.rightBarButtonItem = LocalStorageManager.shared.isPremiumUser ? nil : UIBarButtonItem(title: title, style: .done, target: self, action: #selector(self.rightNavigationBarButtonItemTapped))
+//            }
+//        }
+//    }
+//
+//    private func setupLayout() {
+//        tableView.anchor(top: view.topAnchor,
+//                         leading: view.leadingAnchor,
+//                         trailing: view.trailingAnchor,
+//                         bottom: view.bottomAnchor)
+//    }
+//
+//    private func setupNavigationBar() {
+//        navigationItem.title = "Templates"
+//        navigationController?.navigationBar.isTranslucent = false
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        self.navigationItem.backBarButtonItem?.tintColor = .white
+//        navigationController?.navigationBar.barTintColor = UIColor(hexString: "#1C1F21")
+//        navigationController!.navigationBar.titleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium),
+//            .foregroundColor: UIColor.white
+//        ]
+//        navigationController!.navigationBar.largeTitleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 36, weight: .medium),
+//            .foregroundColor: UIColor.white
+//        ]
+//
+//        if !LocalStorageManager.shared.isPremiumUser {
+//            var title = "Unlock Premium"
+//
+//            if globalAppConstants.shouldUpdate == false {
+//                title = "Try for free"
+//            }
+//
+//            if globalAppConstants.shouldUpdate == false && globalAppConstants.inAppPurchaseData?.isWeeklyGiftActive == true {
+//                title = "Claim your gift 🎁"
+//            }
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(rightNavigationBarButtonItemTapped))
+//        }
+//        navigationController?.navigationBar.tintColor = .white
+//    }
+//
+//    @objc func rightNavigationBarButtonItemTapped() {
+//        UIImpactFeedbackGenerator().impactOccurred()
+//        if globalAppConstants.shouldUpdate == false && globalAppConstants.inAppPurchaseData?.isWeeklyGiftActive == true {
+//            presentInFullScreen(SubscriptionGiftViewController(), animated: true)
+//        } else {
+//            presentInFullScreen(SubscriptionViewController(), animated: true, completion: nil)
+//        }
+//    }
+//}
+//
+//extension HomeViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return templateSections.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: SectionTableViewCell.reuseIdentifier, for: indexPath) as? SectionTableViewCell else { return UITableViewCell() }
+//
+//        let section = templateSections[indexPath.row]
+//        cell.templates = section.templates
+//        cell.delegate = self
+//        cell.titleLabel.text = section.title
+//        cell.seeAllButton.isHidden = !section.hasSeeAllButton
+//        return cell
+//    }
+//}
+//
+//extension HomeViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        UIImpactFeedbackGenerator().impactOccurred()
+//        tableView.deselectRow(at: indexPath, animated: false)
+//    }
+//}
+//
+//extension HomeViewController: SectionTableViewCellDelegate {
+//    func didSelectSeeAllButton(onCell cell: SectionTableViewCell) {
+////        guard let indexPathOfCell = tableView.indexPath(for: cell) else { return }
+////        let section = templateSections[indexPathOfCell.row]
+//        UIImpactFeedbackGenerator().impactOccurred()
+//        let sectionSeeAllViewController = SectionSeeAllViewController()
+//        sectionSeeAllViewController.title = "Templates"
+//        sectionSeeAllViewController.sections = templateSections
+//        self.navigationController?.pushViewController(sectionSeeAllViewController, animated: true)
+//    }
+//
+//    func didSelectCell(atIndexPath indexPath: IndexPath, onCell cell: SectionTableViewCell) {
+//        UIImpactFeedbackGenerator().impactOccurred()
+//        guard let sectionIndexPath = tableView.indexPath(for: cell) else { return }
+//        guard let templates = self.templateSections[sectionIndexPath.row].templates else { return }
+//        let template = templates[indexPath.item]
+//        let editorViewController = EditorViewController()
+//        editorViewController.template = template
+//        editorViewController.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(editorViewController, animated: true)
+//    }
+//}

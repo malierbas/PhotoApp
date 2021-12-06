@@ -18,6 +18,36 @@
 		<string>Sailec Regular.otf</string>
 		<string>Sailec Thin Italic.otf</string>
 		<string>Sailec Thin.otf</string>
+		<string>AmaticSC-Regular</string>
+		<string>Amiri-Regular</string>
+		<string>BadScript-Regular</string>
+		<string>Bevan-Regular</string>
+		<string>Caveat-Regular</string>
+		<string>Codystar-Regular</string>
+		<string>CourierPrime-Regular</string>
+		<string>CutiveMono-Regular</string>
+		<string>DancingScript-Bold</string>
+		<string>DancingScript-Regular</string>
+		<string>FrederickatheGreat-Regular</string>
+		<string>GiveYouGlory-Regular</string>
+		<string>HomemadeApple-Regular</string>
+		<string>IndieFlower-Regular</string>
+		<string>LibreBaskerville-Bold</string>
+		<string>LibreBaskerville-Italic</string>
+		<string>LibreBaskerville-Regular</string>
+		<string>Monoton-Regular</string>
+		<string>Montserrat-Regular</string>
+		<string>NanumBrushScript-Regular</string>
+		<string>NixieOne-Regular</string>
+		<string>OpenSans-Regular</string>
+		<string>PlayfairDisplay</string>
+		<string>PTSans-Regular</string>
+		<string>Quicksand</string>
+		<string>Raleway-Regular</string>
+		<string>Rustico-Regular</string>
+		<string>Sebastian_Signature</string>
+		<string>Tangerine-Bold</string>
+		<string>Tangerine-Regular</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

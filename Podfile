@@ -7,7 +7,15 @@ target 'PhotoApp' do
 
   # Pods for PhotoApp
   pod 'IQKeyboardManagerSwift'
-  pod 'ZLPhotoBrowser'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'BottomPopup'
+  pod 'SVProgressHUD'
+  pod 'Kingfisher', '~> 5.0'
+  pod 'Hero'
+  pod 'ColorSlider', '~> 4.3' 
+  pod 'Fabric'
+  pod 'Crashlytics' 
+  pod 'DWAnimatedLabel', '~> 1.1'
+  pod 'RevealingSplashView'
 
 end

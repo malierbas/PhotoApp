@@ -1,26 +1,59 @@
 PODS:
+  - BottomPopup (0.7.0)
+  - ColorSlider (4.4)
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - DWAnimatedLabel (1.2)
+  - Fabric (1.10.2)
+  - Hero (1.6.1)
   - IQKeyboardManagerSwift (6.5.6)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - RevealingSplashView (0.6.0)
   - SnapKit (5.0.1)
-  - ZLPhotoBrowser (4.2.0):
-    - ZLPhotoBrowser/Core (= 4.2.0)
-  - ZLPhotoBrowser/Core (4.2.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - BottomPopup
+  - ColorSlider (~> 4.3)
+  - Crashlytics
+  - DWAnimatedLabel (~> 1.1)
+  - Fabric
+  - Hero
   - IQKeyboardManagerSwift
+  - Kingfisher (~> 5.0)
+  - RevealingSplashView
   - SnapKit (~> 5.0.0)
-  - ZLPhotoBrowser
+  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
+    - BottomPopup
+    - ColorSlider
+    - Crashlytics
+    - DWAnimatedLabel
+    - Fabric
+    - Hero
     - IQKeyboardManagerSwift
+    - Kingfisher
+    - RevealingSplashView
     - SnapKit
-    - ZLPhotoBrowser
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
+  BottomPopup: fe3e284628532f99093ae68c592c6b9d392c972d
+  ColorSlider: 9a888e65b871fa1e6a26fadebf4931c949935681
+  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
+  DWAnimatedLabel: 2c5742ea5584187592508e5cee0a9b0e8e8c6af0
+  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
+  Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  ZLPhotoBrowser: 602d505d4f2cf7f309ce973c4353d33e85216d58
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 14bd2d70a0c539b272ef4d7d890be96e35256863
+PODFILE CHECKSUM: 2bbe96e18e89e266b4a000c5d4b8647fc615c8d1
 
 COCOAPODS: 1.11.2
