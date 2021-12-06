@@ -112,4 +112,3 @@ extension SectionSelectionView: UICollectionViewDelegateFlowLayout {
         UISelectionFeedbackGenerator().selectionChanged()
     }
 }
-

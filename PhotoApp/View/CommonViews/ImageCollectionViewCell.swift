@@ -54,4 +54,3 @@ class ImageCollectionViewCell: UICollectionViewCell {
         freeBadgeView.isHidden = true
     }
 }
-

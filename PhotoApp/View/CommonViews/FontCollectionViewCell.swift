@@ -54,4 +54,3 @@ class FontCollectionViewCell: UICollectionViewCell {
         fontLabel.fillSuperview()
     }
 }
-

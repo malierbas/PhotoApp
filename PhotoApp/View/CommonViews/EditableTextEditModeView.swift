@@ -6,7 +6,8 @@
 //
 
 import UIKit
- 
+
+
 @objc protocol EditableTextEditModeViewDelegate: class {
     @objc optional func didTapRemoveButton(onView view: EditableTextEditModeView)
     @objc optional func didTapEditButton(onView view: EditableTextEditModeView)

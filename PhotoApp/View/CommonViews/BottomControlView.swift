@@ -4,7 +4,6 @@
 //
 //  Created by Ali on 5.12.2021.
 //
-
 import UIKit
 
 protocol BottomControlViewDelegate: class {
@@ -150,4 +149,3 @@ class BottomControlView: UIView {
     }
     
 }
-

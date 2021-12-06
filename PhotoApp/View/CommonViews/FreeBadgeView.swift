@@ -49,4 +49,3 @@ class FreeBadgeView: UIView {
     }
 
 }
-

@@ -5,7 +5,6 @@
 //  Created by Ali on 5.12.2021.
 //
 
-
 import UIKit
 
 protocol BackgroundSelectionViewDelegate: class {
@@ -89,4 +88,3 @@ extension BackgroundSelectionView: UICollectionViewDelegateFlowLayout {
         UISelectionFeedbackGenerator().selectionChanged()
     }
 }
-

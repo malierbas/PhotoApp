@@ -122,4 +122,3 @@ public class ConfettiView: UIView {
             return self.active
     }
 }
-

@@ -27,6 +27,14 @@ class CategoriesDetailCVC: UICollectionViewCell {
         return imageView
     }()
     
+//    var centeredImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.contentMode = .scaleToFill
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.clipsToBounds = true
+//        return imageView
+//    }()
+    
     //Variables
     
     //LifeCycle
@@ -43,6 +51,12 @@ class CategoriesDetailCVC: UICollectionViewCell {
         self.addSubview(itemDescriptionLabel)
         itemDescriptionLabel.pinToBottom(with: -16)
         itemDescriptionLabel.centerXToSuperView(with: 0)
+        
+//        self.addSubview(centeredImageView)
+//        centeredImageView.setWidth(size: self.frame.width - 50)
+//        centeredImageView.setHeight(size: self.frame.height - 100)
+//        centeredImageView.centerYToSuperView()
+//        centeredImageView.centerXToSuperView(with: 0)
     }
     
     required init?(coder: NSCoder) {

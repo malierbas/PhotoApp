@@ -108,6 +108,9 @@ class CategoryDetailVC: BaseVC {
     override func setupView() {
         super.setupView()
         DispatchQueue.main.async { [self] in
+            //: set navigation bar hidden
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            
             //View Background
             self.topBar.backgroundColor = .gray
             self.view.backgroundColor = .white
@@ -203,7 +206,7 @@ class CategoryDetailVC: BaseVC {
 //MARK: - CollectionView, Delegate & DataSource
 extension CategoryDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        self.templateSections[2].templates?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -211,11 +214,29 @@ extension CategoryDetailVC: UICollectionViewDelegate, UICollectionViewDataSource
         {
             case categoryItemsCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesDetailCVC", for: indexPath) as! CategoriesDetailCVC
-                cell.itemImageView.image = UIImage(named: self.images[indexPath.row].itemImage ?? "")
-                cell.itemDescriptionLabel.text = "\(self.images[indexPath.row].itemName ?? "") \(self.images[indexPath.row].itemID ?? 0)"
+                let data = self.templateSections[2].templates![indexPath.row]
+                cell.itemImageView.image = data.templateCoverImage
+                cell.itemDescriptionLabel.text = "item \(indexPath.row)"
                 return cell
             default:
                 return UICollectionViewCell()
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView
+        {
+            case self.categoryItemsCollectionView:
+            
+                UIImpactFeedbackGenerator().impactOccurred()
+                let data = self.templateSections[2].templates![indexPath.row]
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                editorViewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(editorViewController, animated: true)
+            default:
+                print("default")
         }
     }
     
@@ -246,33 +267,6 @@ extension CategoryDetailVC: UICollectionViewDelegate, UICollectionViewDataSource
                 return CGSize(width: (self.view.frame.width / 2) - 20, height: 300)
             default:
                 return CGSize()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch collectionView
-        {
-            case self.categoryItemsCollectionView:
-                DispatchQueue.main.async {
-                    let image = UIImage(named: self.allImages[indexPath.row].itemImage!)
-                    
-                    UIImpactFeedbackGenerator().impactOccurred()
-                    guard let template = self.templateSections[1].templates?[2] else { return }
-                    let editorViewController = EditorViewController()
-                    editorViewController.template = template
-                    editorViewController.hidesBottomBarWhenPushed = true
-                    editorViewController.modalPresentationStyle = .fullScreen
-                    self.present(editorViewController, animated: true) {
-                        //: do something
-                    }
-                   
-//                    let detailView = EditPhotoViewController(image: image!)
-//                    detailView.originalImage = image!
-//                    detailView.modalPresentationStyle = .fullScreen
-//                    self.present(detailView, animated: true, completion: nil)
-                }
-            default:
-                print("")
         }
     }
 }

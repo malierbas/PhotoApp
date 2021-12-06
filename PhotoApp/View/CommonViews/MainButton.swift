@@ -94,4 +94,3 @@ class MainButton: UIButton {
         layer.masksToBounds = true
     }
 }
-

@@ -57,4 +57,3 @@ class SectionCollectionViewCell: UICollectionViewCell {
         layer.borderWidth = isSelected ? 0.5 : 0
     }
 }
-

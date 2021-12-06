@@ -239,4 +239,3 @@ extension CanvasView: EditableTextFieldDelegate {
         self.textFields.remove(at: indexOfTextField)
     }
 }
-

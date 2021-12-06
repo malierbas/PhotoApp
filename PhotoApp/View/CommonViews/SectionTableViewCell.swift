@@ -132,4 +132,3 @@ extension SectionTableViewCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: height * canvasRatio,  height: height)
     }
 }
-

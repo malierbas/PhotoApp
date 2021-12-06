@@ -5,6 +5,7 @@
 //  Created by Ali on 5.12.2021.
 //
 
+
 import UIKit
 
 class StickerCollectionViewCell: UICollectionViewCell {
@@ -62,4 +63,3 @@ class StickerCollectionViewCell: UICollectionViewCell {
         premiumBadgeImageView.isHidden = true
     }
 }
-

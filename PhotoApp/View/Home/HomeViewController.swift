@@ -196,7 +196,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     let detailView = CategoryDetailVC()
                     detailView.model = self.trendingImagesItems[indexPath.row]
                     detailView.modalPresentationStyle = .fullScreen
-                    self.present(detailView, animated: true, completion: nil)
+                    let navigationController = UINavigationController(rootViewController: detailView)
+                    self.presentInFullScreen(navigationController, animated: true, completion: nil)
                 }
             case self.allUserPhotosCollectionView:
             

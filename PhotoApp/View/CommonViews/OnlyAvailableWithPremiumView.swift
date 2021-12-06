@@ -71,7 +71,7 @@ class OnlyAvailableWithPremiumView: UIView {
         addSubview(bottomRemoveButton)
 
         var title = "Unlock Premium"
-        if Constants().shouldUpdate == false {
+        if globalAppConstants.shouldUpdate == false {
             title = "Try for free"
         }
 
@@ -107,4 +107,3 @@ class OnlyAvailableWithPremiumView: UIView {
     }
 
 }
-

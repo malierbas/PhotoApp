@@ -23,6 +23,8 @@ struct AppColors {
 }
 
 //MARK: - Globals
+let globalAppConstants = GlobalConstants()
+
 class GlobalConstants {
     
     //MARK: - Variables

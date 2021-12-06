@@ -69,4 +69,3 @@ class ColorCollectionViewCell: UICollectionViewCell {
         colorImageView.layer.borderWidth = 0
     }
 }
-

@@ -208,4 +208,3 @@ extension EditableImageView: EditableImageEditModeViewDelegate {
         self.delegate?.didTapEditModeView?(onEditableImageView: self)
     }
 }
-

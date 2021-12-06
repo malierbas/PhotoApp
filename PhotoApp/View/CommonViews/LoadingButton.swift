@@ -4,7 +4,6 @@
 //
 //  Created by Ali on 5.12.2021.
 //
-
 import UIKit
 
 class LoadingButton: MainButton {
@@ -58,4 +57,3 @@ class LoadingButton: MainButton {
         isEnabled = true
     }
 }
-

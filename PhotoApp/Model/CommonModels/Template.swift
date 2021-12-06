@@ -84,29 +84,29 @@ class Template {
     static func generateMinimalModels() -> [Template] {
         return [
 
-//            Template(canBeAssignedFullBackground: true,
-//                     templateCoverImage: UIImage(named: "begum45"),
-//                     canvasImages: [
-//                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 735), defaultImage: UIImage(named: "begum45-1")),
-//                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 1202, width: 1080, height: 718), defaultImage: UIImage(named: "begum45-2"))
-//            ], canvasTexts: [
-//                CanvasText(frame1080x1920: CGRect(x: 124, y: 775, width: 860, height: 148),
-//                           text: "The princesses are born in May!",
-//                           font: UIFont(name: "BadScript-Regular", size: 18),
-//                           textColor: UIColor(hexString: "#000000"),
-//                           textAlignment: .center),
-//                CanvasText(frame1080x1920: CGRect(x: 36, y: 897, width: 1009, height: 148),
-//                    text: "SWEET TWENTYTH BIRTHDAY SHOOT!",
-//                    font: UIFont(name: "Baskerville", size: 14),
-//                    textColor: UIColor(hexString: "#000000"),
-//                    textAlignment: .center),
-//                CanvasText(frame1080x1920: CGRect(x: 332, y: 1022, width: 416, height: 140),
-//                    text: "Happy birthday",
-//                    font: UIFont(name: "Baskerville", size: 16),
-//                    textColor: UIColor(hexString: "#000000"),
-//                    textAlignment: .center)
-//               ]
-//            ),
+            Template(canBeAssignedFullBackground: true,
+                     templateCoverImage: UIImage(named: "begum45"),
+                     canvasImages: [
+                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 735), defaultImage: UIImage(named: "begum45-1")),
+                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 1202, width: 1080, height: 718), defaultImage: UIImage(named: "begum45-2"))
+            ], canvasTexts: [
+                CanvasText(frame1080x1920: CGRect(x: 124, y: 775, width: 860, height: 148),
+                           text: "The princesses are born in May!",
+                           font: UIFont(name: "BadScript-Regular", size: 18),
+                           textColor: UIColor(hexString: "#000000"),
+                           textAlignment: .center),
+                CanvasText(frame1080x1920: CGRect(x: 36, y: 897, width: 1009, height: 148),
+                    text: "SWEET TWENTYTH BIRTHDAY SHOOT!",
+                    font: UIFont(name: "Baskerville", size: 14),
+                    textColor: UIColor(hexString: "#000000"),
+                    textAlignment: .center),
+                CanvasText(frame1080x1920: CGRect(x: 332, y: 1022, width: 416, height: 140),
+                    text: "Happy birthday",
+                    font: UIFont(name: "Baskerville", size: 16),
+                    textColor: UIColor(hexString: "#000000"),
+                    textAlignment: .center)
+               ]
+            ),
             Template(canBeAssignedFullBackground: false,
                      templateCoverImage: UIImage(named: "begum43"),
                      canvasImages: [
@@ -114,20 +114,20 @@ class Template {
                         Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 185, y: 306, width: 857, height: 1251), defaultImage: UIImage(named: "begum43-2")),
                         Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 233, y: 367, width: 762, height: 975), defaultImage: UIImage(named: "begum43-3"))
             ]),
-//            Template(canBeAssignedFullBackground: false,
-//                     templateCoverImage: UIImage(named: "begum42"),
-//                     canvasImages: [
-//                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "begum42-1")),
-//                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 198, y: 348, width: 685, height: 959), defaultImage: UIImage(named: "begum42-2")),
-//                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 230, y: 1262, width: 643, height: 100), defaultImage: UIImage(named: "begum42-3")),
-//                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 34, y: 244, width: 276, height: 319), defaultImage: UIImage(named: "begum42-4")),
-//            ], canvasTexts: [
-//                CanvasText(frame1080x1920: CGRect(x: 334, y: 1497, width: 667, height: 117),
-//                           text: "Happy Birthday!",
-//                           font: UIFont(name: "Georgia", size: 20),
-//                           textColor: UIColor(hexString: "#654A2F"),
-//                           textAlignment: .center)
-//                ]),
+            Template(canBeAssignedFullBackground: false,
+                     templateCoverImage: UIImage(named: "begum42"),
+                     canvasImages: [
+                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "begum42-1")),
+                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 198, y: 348, width: 685, height: 959), defaultImage: UIImage(named: "begum42-2")),
+                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 230, y: 1262, width: 643, height: 100), defaultImage: UIImage(named: "begum42-3")),
+                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 34, y: 244, width: 276, height: 319), defaultImage: UIImage(named: "begum42-4")),
+            ], canvasTexts: [
+                CanvasText(frame1080x1920: CGRect(x: 334, y: 1497, width: 667, height: 117),
+                           text: "Happy Birthday!",
+                           font: UIFont(name: "Georgia", size: 20),
+                           textColor: UIColor(hexString: "#654A2F"),
+                           textAlignment: .center)
+                ]),
             Template(canBeAssignedFullBackground: false,
                      templateCoverImage: UIImage(named: "begum39"),
                      canvasImages: [
@@ -213,22 +213,22 @@ class Template {
                 ]
             ),
 
-//            Template(isFree: false,
-//                     canBeAssignedFullBackground: true,
-//                     templateCoverImage: UIImage(named: "begum28"),
-//                     canvasImages: [
-//                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "begum28-1")),
-//                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 411, y: 828, width: 666, height: 967), defaultImage: UIImage(named: "begum28-2")),
-//                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 139, y: 108, width: 802, height: 1242), defaultImage: UIImage(named: "begum28-3")),
-//                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 0, y: 255, width: 584, height: 257), defaultImage: UIImage(named: "begum28-4")),
-//            ], canvasTexts: [
-//                CanvasText(frame1080x1920: CGRect(x: 0, y: 315, width: 584, height: 138),
-//                           text: "My quik weekend gateway...",
-//                           font: UIFont(name: "Baskerville", size: 20),
-//                           textColor: UIColor.white,
-//                           textAlignment: .center)
-//                ]
-//            ),
+            Template(isFree: false,
+                     canBeAssignedFullBackground: true,
+                     templateCoverImage: UIImage(named: "begum28"),
+                     canvasImages: [
+                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "begum28-1")),
+                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 411, y: 828, width: 666, height: 967), defaultImage: UIImage(named: "begum28-2")),
+                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 139, y: 108, width: 802, height: 1242), defaultImage: UIImage(named: "begum28-3")),
+                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 0, y: 255, width: 584, height: 257), defaultImage: UIImage(named: "begum28-4")),
+            ], canvasTexts: [
+                CanvasText(frame1080x1920: CGRect(x: 0, y: 315, width: 584, height: 138),
+                           text: "My quik weekend gateway...",
+                           font: UIFont(name: "Baskerville", size: 20),
+                           textColor: UIColor.white,
+                           textAlignment: .center)
+                ]
+            ),
 
             Template(canBeAssignedFullBackground: true,
                      templateCoverImage: UIImage(named: "begum29"),
@@ -409,7 +409,7 @@ class Template {
 
     static func generateFrameModels() -> [Template] {
         return [
-            Template(isFree: false, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "template4"), canvasImages: [
+            Template(isFree: true, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "template4"), canvasImages: [
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "women-real-yellow")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 71, y: 119, width: 939, height: 1683), defaultImage: UIImage(named: "template4-1"))
             ]),
@@ -419,40 +419,40 @@ class Template {
                 Template.CanvasImage(frame1080x1920: CGRect(x: 131, y: 1002, width: 939, height: 600), defaultImage: UIImage(named: "frame2-3")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 151, y: 1023, width: 899, height: 559), defaultImage: UIImage(named: "frame2-4"))
             ]),
-            Template(isFree: false, templateCoverImage: UIImage(named: "frame3"), canvasImages: [
+            Template(isFree: true, templateCoverImage: UIImage(named: "frame3"), canvasImages: [
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 130, y: 201, width: 950, height: 1719), defaultImage: UIImage(named: "frame3-1")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 60, y: 131, width: 850, height: 1760), defaultImage: UIImage(named: "frame3-2"))
             ]),
-            Template(isFree: false, templateCoverImage: UIImage(named: "frame4"), canvasImages: [
+            Template(isFree: true, templateCoverImage: UIImage(named: "frame4"), canvasImages: [
                 Template.CanvasImage(frame1080x1920: CGRect(x: 316, y: 517, width: 441, height: 857), defaultImage: UIImage(named: "frame4-1")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 46, y: 140, width: 541, height: 749), defaultImage: UIImage(named: "frame4-2")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 86, y: 85, width: 556, height: 766), defaultImage: UIImage(named: "frame4-3")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 494, y: 1086, width: 541, height: 749), defaultImage: UIImage(named: "frame4-4")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 439, y: 1031, width:  556, height: 766), defaultImage: UIImage(named: "frame4-5"))
             ]),
-            Template(isFree: false, templateCoverImage: UIImage(named: "frame5"), canvasImages: [
+            Template(isFree: true, templateCoverImage: UIImage(named: "frame5"), canvasImages: [
                 Template.CanvasImage(frame1080x1920: CGRect(x: 115, y: 155, width: 859, height: 1610), defaultImage: UIImage(named: "frame5-1")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 45, y: 265, width: 480, height: 1391), defaultImage: UIImage(named: "frame5-2")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 555, y: 265, width: 480, height: 1391), defaultImage: UIImage(named: "frame5-3"))
             ]),
-            Template(isFree: false, templateCoverImage: UIImage(named: "frame6"), canvasImages: [
+            Template(isFree: true, templateCoverImage: UIImage(named: "frame6"), canvasImages: [
                 Template.CanvasImage(frame1080x1920: CGRect(x: 115, y: 357, width: 850, height: 1206), defaultImage: UIImage(named: "frame6-1")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 180, y: 202, width: 720, height: 1296), defaultImage: UIImage(named: "frame6-2")),
             ]),
-            Template(isFree: false, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame7"), canvasImages: [
+            Template(isFree: true, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame7"), canvasImages: [
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "frame7-1")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 78, y: 95, width: 925, height: 1731), defaultImage: UIImage(named: "frame7-2")),
             ]),
-            Template(isFree: false, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame8"), canvasImages: [
+            Template(isFree: true, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame8"), canvasImages: [
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "frame8-1")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 78, y: 95, width: 925, height: 1731), defaultImage: UIImage(named: "frame8-2")),
             ]),
-            Template(isFree: false, templateCoverImage: UIImage(named: "frame9"), canvasImages: [
+            Template(isFree: true, templateCoverImage: UIImage(named: "frame9"), canvasImages: [
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "frame9-1")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 87, y: 162, width: 906, height: 1597), defaultImage: UIImage(named: "frame9-2")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 103, y: 178, width: 874, height: 1565), defaultImage: UIImage(named: "frame9-3"))
             ]),
-            Template(isFree: false, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame10"), canvasImages: [
+            Template(isFree: true, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame10"), canvasImages: [
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "frame10-1")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "frame10-2")),
             ]),
@@ -460,11 +460,11 @@ class Template {
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 87, y: 275, width: 906, height: 1371), defaultImage: UIImage(named: "frame11-1")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 81, y: 272, width: 918, height: 1376), defaultImage: UIImage(named: "frame11-2")),
             ]),
-            Template(isFree: false, templateCoverImage: UIImage(named: "frame12"), canvasImages: [
+            Template(isFree: true, templateCoverImage: UIImage(named: "frame12"), canvasImages: [
                 Template.CanvasImage(frame1080x1920: CGRect(x: 67, y: 638, width: 947, height: 644), defaultImage: UIImage(named: "frame12-1")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 80, y: 649, width: 921, height: 624), defaultImage: UIImage(named: "frame12-2")),
             ]),
-            Template(isFree: false, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame13"), canvasImages: [
+            Template(isFree: true, canBeAssignedFullBackground: false, templateCoverImage: UIImage(named: "frame13"), canvasImages: [
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "frame13-1")),
                 Template.CanvasImage(frame1080x1920: CGRect(x: 130, y: 340, width: 820, height: 820), defaultImage: UIImage(named: "frame13-2")),
             ]),

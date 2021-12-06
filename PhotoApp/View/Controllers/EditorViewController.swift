@@ -76,6 +76,8 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
+        
+        print("template detail = ", template, template?.canvasTexts, template?.canvasImages)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -293,6 +295,7 @@ extension EditorViewController: BottomControlViewDelegate {
         let canvasText = Template.CanvasText(frame1080x1920: .zero, text: "", font: UIFont.systemFont(ofSize: 18, weight: .regular))
         let editableTextField = EditableTextField()
         editableTextField.model = canvasText
+        print("template = ", template?.canvasTexts)
         template?.canvasTexts?.append(canvasText)
         canvasView.textFields.append(editableTextField)
         let textFieldWidth = canvasView.frame.width * 0.8
@@ -300,7 +303,10 @@ extension EditorViewController: BottomControlViewDelegate {
         editableTextField.delegate = canvasView
         canvasView.addSubview(editableTextField)
         editableTextField.isSelected = true
-        editableTextField.becomeFirstResponder()
+        if !editableTextField.isFirstResponder
+        {
+            editableTextField.becomeFirstResponder()
+        }
     }
 }
 
