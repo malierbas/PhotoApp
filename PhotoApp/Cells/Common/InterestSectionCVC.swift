@@ -11,7 +11,7 @@ class InterestSectionCVC: UICollectionViewCell {
     
     @IBOutlet weak var photoImageView: UIImageView!
     
-    var image : UIImage! {
+    var template : Template! {
         didSet {
             setupView()
         }
@@ -19,10 +19,12 @@ class InterestSectionCVC: UICollectionViewCell {
     
     func setupView() {
         DispatchQueue.main.async { [self] in
-            photoImageView.image = image
+            photoImageView.image = template.templateCoverImage
+            photoImageView.fillSuperview()
+            
+            self.photoImageView.backgroundColor = UIColor(hex: "#685C52")
             
             contentView.clipsToBounds = true
-            
             self.layer.cornerRadius = 14
         }
     }

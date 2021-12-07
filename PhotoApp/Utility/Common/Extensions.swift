@@ -649,31 +649,38 @@ extension UIView {
 extension UIImage {
     //: Remove Background
     func removedBg() -> UIImage? {
-        let model = DeepLabV3()
-        let context = CIContext(options: nil)
-        
-        let width: CGFloat = 513
-        let height: CGFloat = 513
-        // CoreMLHelpers -> UIImage+Extensions.swift
-        let resizedImage = resized(to: CGSize(width: height, height: height), scale: 1)
-        
-        // CoreMLHelpers -> UIImage+CVPixelBuffer.swift
-        guard let pixelBuffer = resizedImage.pixelBuffer(width: Int(width), height: Int(height)),
-        let outputPredictionImage = try? model.prediction(image: pixelBuffer),
-        // CoreMLHelpers -> MLMultiArray+Image
-        let outputImage = outputPredictionImage.semanticPredictions.image(min: 0, max: 1, axes: (0, 0, 1)),
-        let outputCIImage = CIImage(image: outputImage),
-        // CIImage extension helper method
-        let maskImage = outputCIImage.removeWhitePixels(),
-        // (Optional) Blur image a bit if you want to avoid sharpness
-        let maskBlurImage = maskImage.applyBlurEffect() else { return nil }
+        if #available(iOS 12.0, *) {
+            let model = DeepLabV3()
+            
+            let context = CIContext(options: nil)
+            
+            let width: CGFloat = 513
+            let height: CGFloat = 513
+            // CoreMLHelpers -> UIImage+Extensions.swift
+            let resizedImage = resized(to: CGSize(width: height, height: height), scale: 1)
+            
+            // CoreMLHelpers -> UIImage+CVPixelBuffer.swift
+            guard let pixelBuffer = resizedImage.pixelBuffer(width: Int(width), height: Int(height)),
+            let outputPredictionImage = try? model.prediction(image: pixelBuffer),
+            // CoreMLHelpers -> MLMultiArray+Image
+            let outputImage = outputPredictionImage.semanticPredictions.image(min: 0, max: 1, axes: (0, 0, 1)),
+            let outputCIImage = CIImage(image: outputImage),
+            // CIImage extension helper method
+            let maskImage = outputCIImage.removeWhitePixels(),
+            // (Optional) Blur image a bit if you want to avoid sharpness
+            let maskBlurImage = maskImage.applyBlurEffect() else { return nil }
 
-        // After we got a masked background image, resize it to the original size
-        return UIImage(
-            ciImage: maskBlurImage,
-            scale: scale,
-            orientation: self.imageOrientation
-        ).resized(to: CGSize(width: size.width, height: size.height))
+            // After we got a masked background image, resize it to the original size
+            return UIImage(
+                ciImage: maskBlurImage,
+                scale: scale,
+                orientation: self.imageOrientation
+            ).resized(to: CGSize(width: size.width, height: size.height))
+        } else {
+            // Fallback on earlier versions
+            
+            return UIImage(named: "")
+        }
     }
     
 //    private func removeBackground(image:UIImage) -> UIImage?{

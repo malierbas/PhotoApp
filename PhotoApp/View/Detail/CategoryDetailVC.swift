@@ -233,7 +233,6 @@ extension CategoryDetailVC: UICollectionViewDelegate, UICollectionViewDataSource
                 let data = self.templateSections[2].templates![indexPath.row]
                 let editorViewController = EditorViewController()
                 editorViewController.template = data
-                editorViewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(editorViewController, animated: true)
             default:
                 print("default")

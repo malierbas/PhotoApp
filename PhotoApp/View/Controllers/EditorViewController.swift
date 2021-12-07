@@ -9,6 +9,15 @@ import UIKit
 
 class EditorViewController: UIViewController, UINavigationControllerDelegate {
     
+    private lazy var backButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 35))
+        button.backgroundColor = .clear
+        button.setImage(UIImage(named: "closeIconWithBackground"), for: .normal)
+        button.imageView?.contentMode = .center
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var canvasView: CanvasView = {
         let view = CanvasView(template: self.template)
         view.backgroundColor = .white
@@ -77,7 +86,6 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         prepareUI()
         
-        print("template detail = ", template, template?.canvasTexts, template?.canvasImages)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +102,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         view.backgroundColor = UIColor(hexString: "#1C1F21")
         title = "Editor"
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        view.addSubview(backButton)
         view.addSubview(canvasView)
         view.addSubview(bottomControlView)
         view.addSubview(onlyAvailableWithPremiumView)
@@ -104,10 +113,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         }
 
         bottomControlView.backgroundSelectionButton.isHidden = !(template?.canBeAssignedFullBackground ?? false)
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(backButtonTapped))
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationController?.navigationBar.tintColor = .black
+        print("content 1 = ", template?.canvasTexts)
         
         setupLayout()
 
@@ -133,6 +139,9 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
 
     private func setupLayout() {
         
+        backButton.pinToTop()
+        backButton.equalsToLeadings(with: 24)
+        
         canvasView.anchorCenterXToSuperview()
         canvasView.anchorCenterYToSuperview(constant: -(bottomControlHeight + view.safeAreaInsets.bottom)/2)
         canvasWidthConstraint = canvasView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
@@ -140,7 +149,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         canvasWidthConstraint.isActive = true
         canvasView.heightAnchor.constraint(equalTo: canvasView.widthAnchor, multiplier: 1 / canvasRatio).isActive = true
         canvasView.bottomAnchor.constraint(lessThanOrEqualTo: bottomControlView.topAnchor, constant: -16).isActive = true
-        canvasView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 16).isActive = true
+        canvasView.topAnchor.constraint(greaterThanOrEqualTo: backButton.bottomAnchor, constant: 16).isActive = true
 
         bottomControlView.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         bottomControlView.heightAnchor.constraint(equalToConstant: bottomControlHeight).isActive = true
@@ -153,7 +162,6 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
 
         darkOverView.fillSuperview()
 
-        textEditInputUI.translatesAutoresizingMaskIntoConstraints = false
         textEditInputUI.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         textEditInputUI.heightAnchor.constraint(equalToConstant: 124).isActive = true
     }
@@ -185,6 +193,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
             return
         }
         self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 
     func prepareForSaving(withCompletionBlock completionBlock: (() -> Void)? = nil) {
@@ -295,7 +304,6 @@ extension EditorViewController: BottomControlViewDelegate {
         let canvasText = Template.CanvasText(frame1080x1920: .zero, text: "", font: UIFont.systemFont(ofSize: 18, weight: .regular))
         let editableTextField = EditableTextField()
         editableTextField.model = canvasText
-        print("template = ", template?.canvasTexts)
         template?.canvasTexts?.append(canvasText)
         canvasView.textFields.append(editableTextField)
         let textFieldWidth = canvasView.frame.width * 0.8
@@ -303,10 +311,7 @@ extension EditorViewController: BottomControlViewDelegate {
         editableTextField.delegate = canvasView
         canvasView.addSubview(editableTextField)
         editableTextField.isSelected = true
-        if !editableTextField.isFirstResponder
-        {
-            editableTextField.becomeFirstResponder()
-        }
+        editableTextField.becomeFirstResponder()
     }
 }
 

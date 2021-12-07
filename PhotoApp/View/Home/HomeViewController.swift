@@ -34,6 +34,12 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         TrendingCategoriesModel(id: 3, icon: "makeUp", backgrodundColors: ["#669FFF","#ACFAFF"], categoryName: "Beauty", filterCount: 224)
     ]
     
+    var templateSections: [TemplateSection] = [
+        TemplateSection(title: "Classic", templates: Template.generateMinimalModels(), hasSeeAllButton: true),
+        TemplateSection(title: "Vintage", templates: Template.generateVintageModels(), hasSeeAllButton: true),
+        TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
+    ]
+    
     let images = [
         "begum1-2",
         "template8-2",
@@ -130,8 +136,8 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     }
 }
 
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//MARK: - CollectionView Delegate, DataSource
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView
@@ -141,7 +147,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return topImagesItems.count
             case self.allUserPhotosCollectionView:
 
-                return self.images.count
+                return self.templateSections[0].templates?.count ?? 0
             case self.trendingCategoriesCollectionview:
             
                 return trendingImagesItems.count
@@ -169,7 +175,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case self.allUserPhotosCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCVC", for: indexPath) as! InterestSectionCVC
-                cell.image = UIImage(named: self.images[indexPath.row])
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.template = data
                 return cell
             
             default:
@@ -192,22 +199,30 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //                showPopup()
 //                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
             
-                DispatchQueue.main.async {
-                    let detailView = CategoryDetailVC()
-                    detailView.model = self.trendingImagesItems[indexPath.row]
-                    detailView.modalPresentationStyle = .fullScreen
-                    let navigationController = UINavigationController(rootViewController: detailView)
-                    self.presentInFullScreen(navigationController, animated: true, completion: nil)
-                }
+
+                let detailView = CategoryDetailVC()
+                detailView.model = self.trendingImagesItems[indexPath.row]
+                detailView.modalPresentationStyle = .fullScreen
+                let navigationController = UINavigationController(rootViewController: detailView)
+                self.presentInFullScreen(navigationController, animated: true, completion: nil)
             case self.allUserPhotosCollectionView:
             
-                showPopup()
-                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
+//                showPopup()
+//                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
              
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data 
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             default:
                 break
         }
     }
+}
+
+//MARK: - Collection View Delegate Flow Layout
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -255,6 +270,24 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return UIEdgeInsets()
         }
     }
+    
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        switch collectionView
+//        {
+//            case self.topImageCollectionView:
+//                return topImageCollectionView.intrinsicContentSize
+//
+//            case self.allUserPhotosCollectionView:
+//                return CGSize(width: (self.view.frame.width / 2) - 20, height: 300)
+//
+//            case self.trendingCategoriesCollectionview:
+//                return trendingCategoriesCollectionview.intrinsicContentSize
+//
+//            default:
+//                return collectionView.intrinsicContentSize
+//        }
+//    }
 }
 
 /*
