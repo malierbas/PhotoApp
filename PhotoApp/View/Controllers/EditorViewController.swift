@@ -5,17 +5,32 @@
 //  Created by Ali on 5.12.2021.
 //
 
+
 import UIKit
 
 class EditorViewController: UIViewController, UINavigationControllerDelegate {
     
+    private lazy var topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     private lazy var backButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 35))
-        button.backgroundColor = .clear
-        button.setImage(UIImage(named: "closeIconWithBackground"), for: .normal)
-        button.imageView?.contentMode = .center
-        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        return button
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        btn.backgroundColor = .clear
+        btn.setImage(UIImage(named: "backButtonWhite"), for: .normal)
+        btn.imageView?.contentMode = .scaleAspectFill
+        btn.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var topLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Editor"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .white
+        return label
     }()
     
     private lazy var canvasView: CanvasView = {
@@ -85,7 +100,6 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +116,9 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         view.backgroundColor = UIColor(hexString: "#1C1F21")
         title = "Editor"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        view.addSubview(backButton)
+        view.addSubview(topView)
+        topView.addSubview(backButton)
+        topView.addSubview(topLabel)
         view.addSubview(canvasView)
         view.addSubview(bottomControlView)
         view.addSubview(onlyAvailableWithPremiumView)
@@ -113,7 +129,10 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         }
 
         bottomControlView.backgroundSelectionButton.isHidden = !(template?.canBeAssignedFullBackground ?? false)
-        print("content 1 = ", template?.canvasTexts as Any)
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationController?.navigationBar.tintColor = .black
         
         setupLayout()
 
@@ -138,9 +157,16 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func setupLayout() {
-        
-        backButton.pinToTop()
-        backButton.equalsToLeadings(with: 24)
+        topView.setHeight(size: 100)
+        topView.equalsToLeadings()
+        topView.pinToTopWithSize(with: 10)
+        topView.equalsToTrailings()
+         
+        backButton.equalsToLeadings(with: 25)
+        backButton.centerYToSuperView(with: 8)
+         
+        topLabel.centerXToSuperView(with: 0)
+        topLabel.pinToTopWithSize(with: 50)
         
         canvasView.anchorCenterXToSuperview()
         canvasView.anchorCenterYToSuperview(constant: -(bottomControlHeight + view.safeAreaInsets.bottom)/2)
@@ -149,7 +175,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         canvasWidthConstraint.isActive = true
         canvasView.heightAnchor.constraint(equalTo: canvasView.widthAnchor, multiplier: 1 / canvasRatio).isActive = true
         canvasView.bottomAnchor.constraint(lessThanOrEqualTo: bottomControlView.topAnchor, constant: -16).isActive = true
-        canvasView.topAnchor.constraint(greaterThanOrEqualTo: backButton.bottomAnchor, constant: 16).isActive = true
+        canvasView.topAnchor.constraint(greaterThanOrEqualTo: topView.bottomAnchor, constant: 0).isActive = true
 
         bottomControlView.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         bottomControlView.heightAnchor.constraint(equalToConstant: bottomControlHeight).isActive = true
@@ -162,6 +188,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
 
         darkOverView.fillSuperview()
 
+        textEditInputUI.translatesAutoresizingMaskIntoConstraints = false
         textEditInputUI.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         textEditInputUI.heightAnchor.constraint(equalToConstant: 124).isActive = true
     }
@@ -394,7 +421,7 @@ extension EditorViewController: OnlyAvailableWithPremiumViewDelegate {
 
 extension EditorViewController: BackgroundSelectionViewControllerDelegate {
     func didSelectBackground(background: Background, onViewController viewController: BackgroundSelectionViewController) {
-//        AnalyticsManager.shared.log(event: .templateBackgroundSelected)
+        //AnalyticsManager.shared.log(event: .templateBackgroundSelected)
         guard let freeTemplate = template?.isFree, (freeTemplate && background.isFree) || LocalStorageManager.shared.isPremiumUser else {
             dismiss(animated: false, completion: { [weak self] in
                 guard let self = self else { return }

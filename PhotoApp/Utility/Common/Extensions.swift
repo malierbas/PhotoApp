@@ -10,6 +10,13 @@ import CoreML
 import Vision
 import VideoToolbox
 
+
+//MARK: - UIColor
+extension UIColor {
+    static let mainColor = UIColor.black
+}
+
+
 //MARK: - UIImageView
 extension UIImage {
     func mergeWith(topImage: UIImage) -> UIImage {
@@ -484,9 +491,9 @@ extension UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func centerYToSuperView() {
+    func centerYToSuperView(with size: CGFloat = 0) {
         guard let superView = superview else { return }
-        self.centerYAnchor.constraint(equalTo: superView.centerYAnchor, constant: 0).isActive = true
+        self.centerYAnchor.constraint(equalTo: superView.centerYAnchor, constant: size).isActive = true
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

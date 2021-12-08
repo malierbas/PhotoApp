@@ -254,7 +254,6 @@ class TextEditInputUI: UIView {
                 }
             }
         }
-
         printAllFontNames()
         backgroundColor = .white
         addSubview(topLineView)
