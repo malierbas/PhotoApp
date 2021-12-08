@@ -343,7 +343,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mR1-79-lTv">
-                                <rect key="frame" x="39" y="711" width="38.5" height="21"/>
+                                <rect key="frame" x="39" y="711" width="33.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="rQd-0x-4OR"/>
                                 </constraints>
@@ -386,7 +386,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDL-S0-QEb">
-                                                                    <rect key="frame" x="32.5" y="106" width="31" height="14"/>
+                                                                    <rect key="frame" x="34" y="106" width="28.5" height="14"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="14" id="Qeu-HS-8n1"/>
                                                                     </constraints>
@@ -576,7 +576,7 @@
                                                         <rect key="frame" x="0.0" y="189" width="326" height="197"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kogi Cosby sweat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pQ-T6-D1F">
-                                                        <rect key="frame" x="28" y="288" width="211.5" height="29"/>
+                                                        <rect key="frame" x="28" y="288" width="195.5" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="29" id="EdW-3U-Lf4"/>
                                                         </constraints>
@@ -585,7 +585,7 @@
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Burton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLA-yd-h7G">
-                                                        <rect key="frame" x="28" y="335" width="77" height="14"/>
+                                                        <rect key="frame" x="28" y="335" width="72" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="EpM-Pn-ubc"/>
                                                         </constraints>
@@ -739,7 +739,7 @@
                             </cells>
                         </collectionView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos from your interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bm6-LI-P8x">
-                            <rect key="frame" x="24" y="791" width="211.5" height="21"/>
+                            <rect key="frame" x="24" y="791" width="192.5" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="ZU4-6Q-sZK"/>
                             </constraints>
@@ -899,7 +899,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBu-AX-HXd">
-                                        <rect key="frame" x="35" y="21" width="200" height="20"/>
+                                        <rect key="frame" x="35" y="21" width="200" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="1QF-kU-jNC"/>
                                         </constraints>
@@ -908,7 +908,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bushwick meh Blue Bottle pork belly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGz-eW-07h">
-                                        <rect key="frame" x="35" y="45" width="245" height="17"/>
+                                        <rect key="frame" x="35" y="44" width="233" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Sailec" family="Sailec" pointSize="14"/>
                                         <color key="textColor" name="SoftBlack"/>
                                         <nil key="highlightedColor"/>
@@ -938,7 +938,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuS-Wy-7KY">
-                                        <rect key="frame" x="35" y="21" width="200" height="20"/>
+                                        <rect key="frame" x="35" y="21" width="200" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="XVM-cy-1Gf"/>
                                         </constraints>
@@ -947,7 +947,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bushwick meh Blue Bottle pork belly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-I5-HcR">
-                                        <rect key="frame" x="35" y="45" width="245" height="17"/>
+                                        <rect key="frame" x="35" y="44" width="233" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Sailec" family="Sailec" pointSize="14"/>
                                         <color key="textColor" name="SoftBlack"/>
                                         <nil key="highlightedColor"/>
@@ -977,7 +977,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favourites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouS-2h-CRH">
-                                        <rect key="frame" x="35" y="21" width="200" height="20"/>
+                                        <rect key="frame" x="35" y="21" width="200" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="2cP-g8-p9Y"/>
                                         </constraints>
@@ -986,7 +986,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bushwick meh Blue Bottle pork belly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obg-vQ-9Vl">
-                                        <rect key="frame" x="35" y="45" width="245" height="17"/>
+                                        <rect key="frame" x="35" y="44" width="233" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Sailec" family="Sailec" pointSize="14"/>
                                         <color key="textColor" name="SoftBlack"/>
                                         <nil key="highlightedColor"/>
@@ -1016,7 +1016,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbM-Mr-hEc">
-                                        <rect key="frame" x="35" y="21" width="200" height="20"/>
+                                        <rect key="frame" x="35" y="21" width="200" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="WoD-qu-ISS"/>
                                         </constraints>
@@ -1025,13 +1025,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bushwick meh Blue Bottle pork belly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="795-nJ-cJf">
-                                        <rect key="frame" x="35" y="45" width="245" height="17"/>
+                                        <rect key="frame" x="35" y="44" width="233" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Sailec" family="Sailec" pointSize="14"/>
                                         <color key="textColor" name="SoftBlack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="GFh-Yy-uMX">
-                                        <rect key="frame" x="350" y="15.5" width="51" height="31"/>
+                                        <rect key="frame" x="350" y="15" width="51" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="CPu-r9-8cY"/>
                                             <constraint firstAttribute="height" constant="31" id="HWL-Vd-5IF"/>
@@ -1405,7 +1405,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="backBlackArrow"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Nq-uh-RwK">
-                                <rect key="frame" x="145" y="66" width="124" height="21"/>
+                                <rect key="frame" x="151" y="66" width="112" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="42F-5g-nIB"/>
                                 </constraints>
@@ -1468,7 +1468,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="backBlackArrow"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziL-xh-SBx">
-                                <rect key="frame" x="160" y="66" width="94.5" height="21"/>
+                                <rect key="frame" x="164" y="66" width="86" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="zQt-v7-t66"/>
                                 </constraints>
@@ -1506,7 +1506,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your specific issue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39s-61-Kai">
-                                <rect key="frame" x="23" y="352" width="155" height="21"/>
+                                <rect key="frame" x="23" y="352" width="141.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="UpQ-Dy-o2X"/>
                                 </constraints>
@@ -1515,7 +1515,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpU-we-Ns1">
-                                <rect key="frame" x="23" y="162" width="37.5" height="21"/>
+                                <rect key="frame" x="23" y="162" width="34.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="VOY-MN-3ih"/>
                                 </constraints>
@@ -1524,7 +1524,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1P-2x-5j9">
-                                <rect key="frame" x="23" y="258" width="35" height="21"/>
+                                <rect key="frame" x="23" y="258" width="32" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="HbK-v4-IEy"/>
                                 </constraints>

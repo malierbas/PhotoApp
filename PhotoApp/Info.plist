@@ -2,53 +2,36 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Sailec Black Italic.otf</string>
-		<string>Sailec Black.otf</string>
-		<string>Sailec Bold Italic.otf</string>
-		<string>Sailec Bold.otf</string>
-		<string>Sailec Hairline Italic.otf</string>
-		<string>Sailec Hairline.otf</string>
-		<string>Sailec Light Italic.otf</string>
-		<string>Sailec Light.otf</string>
-		<string>Sailec Medium Italic.otf</string>
-		<string>Sailec Medium.otf</string>
-		<string>Sailec Regular Italic.otf</string>
-		<string>Sailec Regular.otf</string>
-		<string>Sailec Thin Italic.otf</string>
-		<string>Sailec Thin.otf</string>
-		<string>AmaticSC-Regular</string>
-		<string>Amiri-Regular</string>
-		<string>BadScript-Regular</string>
-		<string>Bevan-Regular</string>
-		<string>Caveat-Regular</string>
-		<string>Codystar-Regular</string>
-		<string>CourierPrime-Regular</string>
-		<string>CutiveMono-Regular</string>
-		<string>DancingScript-Bold</string>
-		<string>DancingScript-Regular</string>
-		<string>FrederickatheGreat-Regular</string>
-		<string>GiveYouGlory-Regular</string>
-		<string>HomemadeApple-Regular</string>
-		<string>IndieFlower-Regular</string>
-		<string>LibreBaskerville-Bold</string>
-		<string>LibreBaskerville-Italic</string>
-		<string>LibreBaskerville-Regular</string>
-		<string>Monoton-Regular</string>
-		<string>Montserrat-Regular</string>
-		<string>NanumBrushScript-Regular</string>
-		<string>NixieOne-Regular</string>
-		<string>OpenSans-Regular</string>
-		<string>PlayfairDisplay</string>
-		<string>PTSans-Regular</string>
-		<string>Quicksand</string>
-		<string>Raleway-Regular</string>
-		<string>Rustico-Regular</string>
-		<string>Sebastian_Signature</string>
-		<string>Tangerine-Bold</string>
-		<string>Tangerine-Regular</string>
-	</array>
+    <key>UIAppFonts</key>
+    <array>
+        <string>OpenSans-Regular.ttf</string>
+        <string>Raleway-Regular.ttf</string>
+        <string>Quicksand.ttf</string>
+        <string>Montserrat-Regular.ttf</string>
+        <string>Monoton-Regular.ttf</string>
+        <string>Rustico-Regular.otf</string>
+        <string>Amiri-Regular.ttf</string>
+        <string>BadScript-Regular.ttf</string>
+        <string>IndieFlower-Regular.ttf</string>
+        <string>NanumBrushScript-Regular.ttf</string>
+        <string>GiveYouGlory-Regular.ttf</string>
+        <string>HomemadeApple-Regular.ttf</string>
+        <string>Codystar-Regular.ttf</string>
+        <string>FrederickatheGreat-Regular.ttf</string>
+        <string>PTSans-Regular.ttf</string>
+        <string>PlayfairDisplay.ttf</string>
+        <string>Sebastian_Signature.ttf</string>
+        <string>NixieOne-Regular.ttf</string>
+        <string>CutiveMono-Regular.ttf</string>
+        <string>CourierPrime-Regular.ttf</string>
+        <string>Caveat-Regular.ttf</string>
+        <string>Bevan-Regular.ttf</string>
+        <string>AmaticSC-Regular.ttf</string>
+        <string>Tangerine-Bold.ttf</string>
+        <string>Tangerine-Regular.ttf</string>
+        <string>DancingScript-Regular.ttf</string>
+        <string>DancingScript-Bold.ttf</string>
+    </array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

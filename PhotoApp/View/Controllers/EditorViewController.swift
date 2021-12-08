@@ -113,7 +113,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         }
 
         bottomControlView.backgroundSelectionButton.isHidden = !(template?.canBeAssignedFullBackground ?? false)
-        print("content 1 = ", template?.canvasTexts)
+        print("content 1 = ", template?.canvasTexts as Any)
         
         setupLayout()
 
