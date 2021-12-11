@@ -1,13 +1,13 @@
 //
-//  SearchCVC.swift
+//  SearchThirdCVC.swift
 //  PhotoApp
 //
-//  Created by Ali on 20.11.2021.
+//  Created by Ali on 10.12.2021.
 //
 
 import UIKit
 
-class SearchCVC: UICollectionViewCell {
+class SearchThirdCVC: UICollectionViewCell {
     //MARK: - Properties
     //Views
     @IBOutlet weak var itemImageView: UIImageView!
@@ -15,12 +15,12 @@ class SearchCVC: UICollectionViewCell {
     //Variables
     var data: Template? {
         didSet {
-            setup()
+            self.setupView()
         }
     }
     
     //: setup view
-    func setup() {
+    func setupView() {
         DispatchQueue.main.async {
             guard let data = self.data else { return }
             self.itemImageView.image = data.background?.image

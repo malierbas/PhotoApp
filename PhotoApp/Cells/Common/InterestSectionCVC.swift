@@ -25,7 +25,8 @@ class InterestSectionCVC: UICollectionViewCell {
             self.photoImageView.backgroundColor = UIColor(hex: "#685C52")
             
             contentView.clipsToBounds = true
-            self.layer.cornerRadius = 14
+            self.layer.cornerRadius = 10
+            
         }
     }
     

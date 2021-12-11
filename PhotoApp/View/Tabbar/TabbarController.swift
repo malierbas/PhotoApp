@@ -30,12 +30,21 @@ class TabbarController: UITabBar {
         shapeLayer.shadowRadius = 10
         shapeLayer.shadowColor = UIColor.gray.cgColor
         shapeLayer.shadowOpacity = 0.3
+        
+        
 
         if let oldShapeLayer = self.shapeLayer {
             self.layer.replaceSublayer(oldShapeLayer, with: shapeLayer)
         } else {
             self.layer.insertSublayer(shapeLayer, at: 0)
         }
+        
+        if let filter = CIFilter(name:"CIGaussianBlur") {
+            filter.name = "myFilter"
+            shapeLayer.backgroundFilters = [filter]
+            shapeLayer.setValue(1, forKeyPath: "backgroundFilters.myFilter.inputRadius")
+        }
+        
         self.shapeLayer = shapeLayer
     }
 

@@ -84,28 +84,19 @@ class Template {
     static func generateMinimalModels() -> [Template] {
         return [
 
-            Template(canBeAssignedFullBackground: true,
-                     templateCoverImage: UIImage(named: "begum45"),
+            Template(isFree: true,
+                     canBeAssignedFullBackground: true,
+                     templateCoverImage: UIImage(named: "mobilePreview"),
                      canvasImages: [
-                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 735), defaultImage: UIImage(named: "begum45-1")),
-                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 1202, width: 1080, height: 718), defaultImage: UIImage(named: "begum45-2"))
+                        Template.CanvasImage(isPicker: false, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "mobileEditorBg")),
+                        Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 198, y: 348, width: 685, height: 959), defaultImage: UIImage(named: "mobileCanvasImage")),
             ], canvasTexts: [
-                CanvasText(frame1080x1920: CGRect(x: 124, y: 775, width: 860, height: 148),
-                           text: "The princesses are born in May!",
-                           font: UIFont(name: "BadScript-Regular", size: 18),
-                           textColor: UIColor(hexString: "#000000"),
-                           textAlignment: .center),
-                CanvasText(frame1080x1920: CGRect(x: 36, y: 897, width: 1009, height: 148),
-                    text: "SWEET TWENTYTH BIRTHDAY SHOOT!",
-                    font: UIFont(name: "Baskerville", size: 14),
-                    textColor: UIColor(hexString: "#000000"),
-                    textAlignment: .center),
-                CanvasText(frame1080x1920: CGRect(x: 332, y: 1022, width: 416, height: 140),
-                    text: "Happy birthday",
-                    font: UIFont(name: "Baskerville", size: 16),
-                    textColor: UIColor(hexString: "#000000"),
-                    textAlignment: .center)
-               ]
+                CanvasText(frame1080x1920: CGRect(x: 120, y: 1600, width: 800, height: 150),
+                           text: "“Chasing the dreams…”",
+                           font: UIFont(name: "Baskerville", size: 20),
+                           textColor: UIColor(hexString: "#4A4A4A"),
+                           textAlignment: .center)
+                ]
             ),
             Template(canBeAssignedFullBackground: false,
                      templateCoverImage: UIImage(named: "begum43"),
@@ -516,8 +507,8 @@ class Template {
                 Template.CanvasImage(frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "vintage7-1")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 235, y: 152, width: 580, height: 580), defaultImage: UIImage(named: "vintage7-2")),
                 Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 232, y: 1012, width: 580, height: 580), defaultImage: UIImage(named: "vintage7-3"))
-            ])
-//            Template(isFree: false, templateCoverImage: UIImage(named: "vintage5"))
+            ]),
+            
         ]
     }
 }

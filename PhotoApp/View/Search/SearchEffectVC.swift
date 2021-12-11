@@ -10,48 +10,46 @@ import UIKit
 class SearchEffectVC: BaseVC {
     //MARK: - Properties
     //Views
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryItemsCollectionView: UICollectionView!
+    @IBOutlet weak var secondCategoryItemsCollectionView: UICollectionView!
+    @IBOutlet weak var thirdCategoryItemsCollectionView: UICollectionView!
+    @IBOutlet weak var tryForFreeButton: UIButton!
     
     //Variables
-    var model: TrendingCategoriesModel? = nil
-    
-    var allImages = [
-        SuggestionsModel(itemID: 1, itemName: "Dummy hands 1", itemImage: "dummy1"),
-        SuggestionsModel(itemID: 2, itemName: "Dummy mountains 2", itemImage: "dummy2"),
-        SuggestionsModel(itemID: 3, itemName: "Dummy river 3", itemImage: "dummy3"),
-        SuggestionsModel(itemID: 4, itemName: "Dummy rainbow sky 4", itemImage: "dummy4"),
-        SuggestionsModel(itemID: 5, itemName: "Dummy black photo 5", itemImage: "dummy5"),
-        SuggestionsModel(itemID: 6, itemName: "Dummy rock in tree 6", itemImage: "dummy6"),
-        SuggestionsModel(itemID: 7, itemName: "Dummy 4 hands 7", itemImage: "dummy7"),
-        SuggestionsModel(itemID: 8, itemName: "Dummy leafs 8", itemImage: "dummy8"),
-        SuggestionsModel(itemID: 9, itemName: "Dummy nature img 9", itemImage: "dummy9"),
-        SuggestionsModel(itemID: 10, itemName: "Dummy draw img 10", itemImage: "dummy10")
+    var templateSections: [TemplateSection] = [
+        TemplateSection(title: "Classic", templates: Template.generateMinimalModels(), hasSeeAllButton: true),
+        TemplateSection(title: "Vintage", templates: Template.generateVintageModels(), hasSeeAllButton: true),
+        TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
     ]
     
-    
-    var images = [SuggestionsModel]()
+    var model: [Template]? = nil
     
     //MARK: - LifeCycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func setupView() {
         super.setupView()
-        DispatchQueue.main.async { [self] in
-            
-            //reload data
-            self.images = self.allImages
- 
-            //search bar
-            self.searchBar.delegate = self
-            self.searchBar.barTintColor = UIColor.clear
-            self.searchBar.backgroundColor = UIColor.clear
-            self.searchBar.isTranslucent = true
-            self.searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-            
-            //: collectionView
+        
+        DispatchQueue.main.async {
+            //: navigation bar
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            //: try for free btn
+            self.tryForFreeButton.layer.cornerRadius = 14
+            //: collectionViews
             self.categoryItemsCollectionView.delegate = self
             self.categoryItemsCollectionView.dataSource = self
-            self.categoryItemsCollectionView.register(SearchCVC.self, forCellWithReuseIdentifier: "SearchCVC")
+        
+            self.secondCategoryItemsCollectionView.delegate = self
+            self.secondCategoryItemsCollectionView.dataSource = self
+            
+            self.thirdCategoryItemsCollectionView.delegate = self
+            self.thirdCategoryItemsCollectionView.dataSource = self
+            
             self.categoryItemsCollectionView.reloadData()
+            self.secondCategoryItemsCollectionView.reloadData()
+            self.thirdCategoryItemsCollectionView.reloadData()
         }
     }
     
@@ -66,70 +64,36 @@ class SearchEffectVC: BaseVC {
 //MARK: - CollectionView, Delegate & DataSource
 extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        switch collectionView
+        {
+            case self.categoryItemsCollectionView:
+                return self.templateSections[0].templates?.count ?? 0
+            case self.secondCategoryItemsCollectionView:
+                return self.templateSections[0].templates?.count ?? 0
+            case self.thirdCategoryItemsCollectionView:
+                return self.templateSections[0].templates?.count ?? 0
+            default:
+                return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView
         {
-            case categoryItemsCollectionView:
+            case self.categoryItemsCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCVC", for: indexPath) as! SearchCVC
-                cell.itemImageView.image = UIImage(named: self.images[indexPath.row].itemImage ?? "")
-                cell.itemDescriptionLabel.text = self.images[indexPath.row].itemName ?? ""
+                cell.data = self.templateSections[0].templates?[indexPath.row]
+                return cell
+            case self.secondCategoryItemsCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchSecondCVC", for: indexPath) as! SearchSecondCVC
+                cell.data = self.templateSections[0].templates?[indexPath.row]
+                return cell
+            case self.thirdCategoryItemsCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchThirdCVC", for: indexPath) as! SearchThirdCVC
+                cell.data = self.templateSections[0].templates?[indexPath.row]
                 return cell
             default:
                 return UICollectionViewCell()
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        switch collectionView
-        {
-            case self.categoryItemsCollectionView:
-                if UIDevice.modelName == "iPhone 8" {
-                    
-                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
-                } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
-                    
-                    return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
-                } else {
-                    
-                    return UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-                }
-            default:
-                return UIEdgeInsets()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch collectionView
-        {
-            case self.categoryItemsCollectionView:
-                return CGSize(width: (self.view.frame.width / 2) - 40, height: 160)
-            default:
-                return CGSize()
-        }
-    }
-}
-
-//MARK: - Searchbar Delegates
-extension SearchEffectVC: UISearchBarDelegate {
-    
-     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-         
-         images = allImages.filter { $0.itemName!.contains(String(searchText.lowercased())) }
-
-         if searchBar.text?.count == 0 {
-
-             DispatchQueue.main.async {
-                 self.images = self.allImages
-                 self.categoryItemsCollectionView.reloadData()
-                 
-                 searchBar.resignFirstResponder()
-             }
-         }
-
-         categoryItemsCollectionView.reloadData()
-     }
-}
+} 

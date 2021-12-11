@@ -15,43 +15,19 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBOutlet weak var topImageCollectionView: UICollectionView!
     @IBOutlet weak var trendingCategoriesCollectionview: UICollectionView!
     @IBOutlet weak var allUserPhotosCollectionView: UICollectionView!
+    @IBOutlet weak var modernistCollectionView: UICollectionView!
+    @IBOutlet weak var collectionCategoryCV: UICollectionView!
     @IBOutlet weak var scrollView: IKScrollView!
-    @IBOutlet weak var allUserPhotosHeightAnchor: NSLayoutConstraint!
+    @IBOutlet weak var tryForFreeButton: UIButton!
     
     //Variables
-    let topImagesItems: [TopImageModel] = [
-        TopImageModel(id: 1, productName: "Kogi Cosby 1", productOwner: "John Cirro 1", isFavourite: true),
-        TopImageModel(id: 2, productName: "Kogi Cosby 2", productOwner: "John Cirro 2", isFavourite: false),
-        TopImageModel(id: 3, productName: "Kogi Cosby 3", productOwner: "John Cirro 3", isFavourite: false),
-        TopImageModel(id: 4, productName: "Kogi Cosby 4", productOwner: "John Cirro 4", isFavourite: false),
-        TopImageModel(id: 5, productName: "Kogi Cosby 5", productOwner: "John Cirro 5", isFavourite: true),
-        TopImageModel(id: 6, productName: "Kogi Cosby 6", productOwner: "John Cirro 6", isFavourite: false),
-    ]
-    
-    let trendingImagesItems: [TrendingCategoriesModel] = [
-        TrendingCategoriesModel(id: 1, icon: "sunset", backgrodundColors: ["#FF876B","#FFBCA6"], categoryName: "Sunset", filterCount: 123314),
-        TrendingCategoriesModel(id: 2, icon: "mountain", backgrodundColors: ["#A06CFC","#FF92CB"], categoryName: "Mountain", filterCount: 44553),
-        TrendingCategoriesModel(id: 3, icon: "makeUp", backgrodundColors: ["#669FFF","#ACFAFF"], categoryName: "Beauty", filterCount: 224)
-    ]
-    
     var templateSections: [TemplateSection] = [
         TemplateSection(title: "Classic", templates: Template.generateMinimalModels(), hasSeeAllButton: true),
         TemplateSection(title: "Vintage", templates: Template.generateVintageModels(), hasSeeAllButton: true),
         TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
     ]
     
-    let images = [
-        "begum1-2",
-        "template8-2",
-        "begum2-1",
-        "begum2-2",
-        "begum2",
-        "begum3-1",
-        "begum3",
-        "begum4",
-        "begum5-1",
-        "begum5-2"
-    ]
+    var destinationModel: CategoryContentModel!
     
     //MARK: - LifeCycle
     override func setupView() {
@@ -61,19 +37,27 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     override func initListeners() {
         DispatchQueue.main.async {
             super.initListeners()
+            //: navigation bar
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            //: try for free
+            self.tryForFreeButton.layer.cornerRadius = 14
+            //: collection view
             self.trendingCategoriesCollectionview.delegate = self
             self.trendingCategoriesCollectionview.dataSource = self
-            
             self.topImageCollectionView.delegate = self
             self.topImageCollectionView.dataSource = self
-            
             self.allUserPhotosCollectionView.delegate = self
             self.allUserPhotosCollectionView.dataSource = self
-            
+            self.modernistCollectionView.delegate = self
+            self.modernistCollectionView.dataSource = self
+            self.collectionCategoryCV.delegate = self
+            self.collectionCategoryCV.dataSource = self
             self.trendingCategoriesCollectionview.reloadData()
             self.allUserPhotosCollectionView.reloadData()
             self.topImageCollectionView.reloadData()
-            
+            self.modernistCollectionView.reloadData()
+            self.collectionCategoryCV.reloadData()
+            //: scroll view
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.showsHorizontalScrollIndicator = false
             GlobalConstants.isCameraShown = false
@@ -101,12 +85,26 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         GlobalConstants.isCameraShown = false
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier
+        {
+            case "showAllCollections":
+                if let viewC = segue.destination as? SeeAllCategoriesVC
+                {
+                    viewC.categoryContentModel = self.destinationModel
+                }
+                break
+            default:
+                break
+        }
+    }
+    
     //MARK: - Public Functions
     //Calculate scroll size
     func calculateScrollSize() -> CGFloat {
         var height = CGFloat(100)
         
-        height = height + self.topImageCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.contentSize.height + 300
+        height = height + self.topImageCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.frame.height + self.modernistCollectionView.frame.height + collectionCategoryCV.frame.height + 400
         
         return height
     }
@@ -134,6 +132,34 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
             self.present(detailView, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func showAllCategories(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.destinationModel = CategoryContentModel(contentName: "Popular", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+        }
+    }
+    
+    @IBAction func showAllCategoriesSecond(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.destinationModel = CategoryContentModel(contentName: "Lovely", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+        }
+    }
+    
+    @IBAction func showAllCategoriesThird(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.destinationModel = CategoryContentModel(contentName: "Modernist", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+        }
+    }
+    
+    @IBAction func showAllCategoriesFourth(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.destinationModel = CategoryContentModel(contentName: "Collection", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+        }
+    }
 }
 
 //MARK: - CollectionView Delegate, DataSource
@@ -144,13 +170,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         {
             case self.topImageCollectionView:
             
-                return topImagesItems.count
+                return self.templateSections[0].templates?.count ?? 0
             case self.allUserPhotosCollectionView:
 
                 return self.templateSections[0].templates?.count ?? 0
             case self.trendingCategoriesCollectionview:
             
-                return trendingImagesItems.count
+                return 4
+            case self.modernistCollectionView:
+            
+                return self.templateSections[0].templates?.count ?? 0
+            case self.collectionCategoryCV:
+            
+                return self.templateSections[0].templates?.count ?? 0
             default:
                 return 0
         }
@@ -163,22 +195,33 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case self.topImageCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
-                cell.data = self.topImagesItems[indexPath.row]
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.data = data
                 return cell
-            
             case self.trendingCategoriesCollectionview:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
-                cell.data = self.trendingImagesItems[indexPath.row]
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.data = data
                 return cell
-            
             case self.allUserPhotosCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCVC", for: indexPath) as! InterestSectionCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.template = data
                 return cell
+            case self.modernistCollectionView:
             
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionBCVC", for: indexPath) as! InterestSectionCVC
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.template = data
+                return cell
+            case self.collectionCategoryCV:
+            
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCCVC", for: indexPath) as! InterestSectionCVC
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.template = data
+                return cell
             default:
             
                 return UICollectionViewCell()
@@ -191,20 +234,26 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         {
             case self.topImageCollectionView:
             
-                showPopup()
-                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
+//                showPopup()
+//                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
+//
             
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             case self.trendingCategoriesCollectionview:
             
 //                showPopup()
 //                NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
             
 
-                let detailView = CategoryDetailVC()
-                detailView.model = self.trendingImagesItems[indexPath.row]
-                detailView.modalPresentationStyle = .fullScreen
-                let navigationController = UINavigationController(rootViewController: detailView)
-                self.presentInFullScreen(navigationController, animated: true, completion: nil)
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             case self.allUserPhotosCollectionView:
             
 //                showPopup()
@@ -214,6 +263,20 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 UIImpactFeedbackGenerator().impactOccurred()
                 let editorViewController = EditorViewController()
                 editorViewController.template = data 
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+            case self.modernistCollectionView:
+            
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+            case self.collectionCategoryCV:
+            
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
                 self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             default:
                 break

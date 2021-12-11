@@ -12,9 +12,8 @@ class TrendingCategoriesCVC: UICollectionViewCell {
     @IBOutlet weak var backgroundGradientView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productCount: UILabel!
     
-    var data: TrendingCategoriesModel! {
+    var data: Template! {
         didSet {
             setupView()
         }
@@ -23,20 +22,16 @@ class TrendingCategoriesCVC: UICollectionViewCell {
     //MARK: - SetupView
     func setupView() {
         DispatchQueue.main.async { [self] in
-            tag = data.id!
         
             self.backgroundGradientView.backgroundColor = .clear
-           
-            let startColor = UIColor().hexStringToUIColor(hex: data.backgrodundColors?.first ?? "")
-            let endColor = UIColor().hexStringToUIColor(hex: data.backgrodundColors?.last ?? "")
             
-            self.applyGradient(colours: [startColor, endColor]).cornerRadius = 10
+            self.iconImageView.image = data.templateCoverImage
             
-            self.iconImageView.image = UIImage(named: data.icon!)
+            self.iconImageView.layer.cornerRadius = 8
             
-            self.productName.text = data.categoryName!
+            guard let canvasText = data.canvasTexts else { return }
             
-            self.productCount.text = "\(data.filterCount!) photos"
+            self.productName.text = canvasText.count != 0 ? canvasText.first?.text : "Category item"
         }
     }
 }

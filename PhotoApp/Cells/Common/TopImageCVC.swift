@@ -11,11 +11,12 @@ class TopImageCVC: UICollectionViewCell {
     //MARK: - Iboutlets
     @IBOutlet weak var contentItemsView: UIView!
     @IBOutlet weak var rozetView: UIImageView!
+    @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productOwnerName: UILabel!
     @IBOutlet weak var gradiendView: UIImageView!
     
-    var data: TopImageModel! {
+    var data: Template! {
         didSet {
             setupView()
         }
@@ -24,21 +25,26 @@ class TopImageCVC: UICollectionViewCell {
     //MARK: - SetupView
     func setupView() {
         DispatchQueue.main.async { [self] in
-            tag = data.id!
+//            tag = data.id!
             
-            self.contentItemsView.layer.cornerRadius = 20
+            self.contentItemsView.layer.cornerRadius = 10
             
-            self.gradiendView.layer.cornerRadius = 14
+            self.productImageView.image = data.templateCoverImage
+            self.productImageView.layer.cornerRadius = 10
+            self.productImageView.clipsToBounds = true
+            
+//            self.gradiendView.layer.cornerRadius = 14
             
             self.layer.cornerRadius = 14
             
-            self.applyCornerRadiusShadow(with: 14)
             
-            rozetView.isHidden = data.isFavourite! ? false : true
+//            self.applyCornerRadiusShadow(with: 14)
             
-            productName.text = data.productName!
+            rozetView.isHidden = data.isFree! ? false : true
             
-            productOwnerName.text = data.productOwner!
+//            productName.text = data.productName!
+            
+//            productOwnerName.text = data.productOwner!
         }
     }
 }

@@ -1,13 +1,13 @@
 //
-//  SearchCVC.swift
+//  SearchSecondCVC.swift
 //  PhotoApp
 //
-//  Created by Ali on 20.11.2021.
+//  Created by Ali on 10.12.2021.
 //
 
 import UIKit
 
-class SearchCVC: UICollectionViewCell {
+class SearchSecondCVC: UICollectionViewCell {
     //MARK: - Properties
     //Views
     @IBOutlet weak var itemImageView: UIImageView!
