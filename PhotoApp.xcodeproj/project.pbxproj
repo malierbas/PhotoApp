@@ -57,6 +57,8 @@
 		4181E797273F376400359964 /* ChangeBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181E796273F376400359964 /* ChangeBackgroundViewController.swift */; };
 		4181E799273FC6AF00359964 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181E798273FC6AF00359964 /* Extensions.swift */; };
 		4181E79B273FFE4A00359964 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181E79A273FFE4A00359964 /* BaseVC.swift */; };
+		418F1504276523340051882F /* SearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F1503276523340051882F /* SearchDetailVC.swift */; };
+		418F1506276523890051882F /* SearchDetailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F1505276523890051882F /* SearchDetailCVC.swift */; };
 		4192BC6827413B2800FE231A /* InterestSectionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC6727413B2800FE231A /* InterestSectionCVC.swift */; };
 		4192BC6A274159C800FE231A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC69274159C800FE231A /* UIDevice.swift */; };
 		4192BC6D27415C5100FE231A /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192BC6C27415C5100FE231A /* TabbarViewController.swift */; };
@@ -266,6 +268,8 @@
 		4181E796273F376400359964 /* ChangeBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeBackgroundViewController.swift; sourceTree = "<group>"; };
 		4181E798273FC6AF00359964 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4181E79A273FFE4A00359964 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		418F1503276523340051882F /* SearchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVC.swift; sourceTree = "<group>"; };
+		418F1505276523890051882F /* SearchDetailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailCVC.swift; sourceTree = "<group>"; };
 		4192BC6727413B2800FE231A /* InterestSectionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSectionCVC.swift; sourceTree = "<group>"; };
 		4192BC69274159C800FE231A /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		4192BC6C27415C5100FE231A /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
@@ -523,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				41643C36274968BD00FF0EC6 /* SearchEffectVC.swift */,
+				418F1503276523340051882F /* SearchDetailVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				4128B5B22764C9A400EB99D3 /* QuotesCVC.swift */,
 				4128B5B42764CD8B00EB99D3 /* QuotesSecondCVC.swift */,
 				4128B5B62764CDAC00EB99D3 /* QuotesThirdCVC.swift */,
+				418F1505276523890051882F /* SearchDetailCVC.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1173,6 +1179,7 @@
 				41A4982E275CD702008EACDC /* SectionCollectionViewCell.swift in Sources */,
 				41A4975F275B8BD8008EACDC /* CGFloat+ZLPhotoBrowser.swift in Sources */,
 				41643C4D274A765100FF0EC6 /* OnboardingMainVC.swift in Sources */,
+				418F1504276523340051882F /* SearchDetailVC.swift in Sources */,
 				41A4983A275CD7BD008EACDC /* InAppPurchaseProductSelectionView.swift in Sources */,
 				41643C352749517D00FF0EC6 /* SuggestionsModel.swift in Sources */,
 				41A497F9275CD16D008EACDC /* BackgroundType.swift in Sources */,
@@ -1245,6 +1252,7 @@
 				41A49830275CD742008EACDC /* LabelWithPadding.swift in Sources */,
 				4128B5AC2763EC4700EB99D3 /* SearchSecondCVC.swift in Sources */,
 				419F5A80274AAFA3006C6DB0 /* FavsVC.swift in Sources */,
+				418F1506276523890051882F /* SearchDetailCVC.swift in Sources */,
 				41A49783275B9186008EACDC /* ZLFetchImageOperation.swift in Sources */,
 				4128B5B12764C92400EB99D3 /* QuotesVC.swift in Sources */,
 				41A497A1275B95DC008EACDC /* ZLPhotoPreviewPopInteractiveTransition.swift in Sources */,
@@ -1446,7 +1454,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PhotoApp/PhotoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = 5FPDY5T8R9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoApp/Info.plist;
@@ -1483,7 +1491,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PhotoApp/PhotoAppRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = 5FPDY5T8R9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoApp/Info.plist;

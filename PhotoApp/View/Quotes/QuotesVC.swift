@@ -23,6 +23,9 @@ class QuotesVC: BaseVC {
         TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
     ]
     
+    
+    var categoryContentModel: CategoryContentModel!
+    
     //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,7 +36,8 @@ class QuotesVC: BaseVC {
         
         DispatchQueue.main.async {
             //: navigation bar
-            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            self.navigationController?.navigationBar.isHidden = true
+//            self.navigationController?.setNavigationBarHidden(true, animated: false)
             //: collection views
             self.quotesFirstCollectionView.delegate = self
             self.quotesFirstCollectionView.dataSource = self
@@ -50,8 +54,12 @@ class QuotesVC: BaseVC {
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.showsHorizontalScrollIndicator = false
             self.scrollView.sizeMatching = .Dynamic(
-                width: { self.view.frame.width   },
-                height: { 900 }
+                width: {
+                    self.view.frame.width
+                },
+                height: {
+                    900
+                }
             )
         }
     }
@@ -64,10 +72,37 @@ class QuotesVC: BaseVC {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier
+        {
+        case "showDetailScreen":
+            if let vc = segue.destination as? CommonContentVC
+            {
+                vc.categoryContentModel = self.categoryContentModel
+            }
+        default:
+            break
+        }
+    }
+    
     //MARK: - Public Functions
     
     //MARK: - Actions
 
+    @IBAction func seeAllFirstAction(_ sender: Any) {
+        self.categoryContentModel = CategoryContentModel(contentName: "Category 1", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+        self.performSegue(withIdentifier: "showDetailScreen", sender: nil)
+    }
+    
+    @IBAction func seeAllSecondAction(_ sender: Any) {
+        self.categoryContentModel = CategoryContentModel(contentName: "Category 2", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+        self.performSegue(withIdentifier: "showDetailScreen", sender: nil)
+    }
+    
+    @IBAction func seeAllThirdAction(_ sender: Any) {
+        self.categoryContentModel = CategoryContentModel(contentName: "Category 3", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+        self.performSegue(withIdentifier: "showDetailScreen", sender: nil)
+    }
 }
 
 extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
@@ -107,5 +142,14 @@ extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
         default:
             return UICollectionViewCell()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+        UIImpactFeedbackGenerator().impactOccurred()
+        let editorViewController = EditorViewController()
+        editorViewController.template = data
+        self.presentInFullScreen(editorViewController, animated: true, completion: nil)
     }
 }

@@ -38,7 +38,8 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         DispatchQueue.main.async {
             super.initListeners()
             //: navigation bar
-            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            self.navigationController?.navigationBar.isHidden = true
+//            self.navigationController?.setNavigationBarHidden(true, animated: false)
             //: try for free
             self.tryForFreeButton.layer.cornerRadius = 14
             //: collection view

@@ -24,17 +24,17 @@ class SearchEffectVC: BaseVC {
     
     var model: [Template]? = nil
     
-    //MARK: - LifeCycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+    var destinationModel: CategoryContentModel!
     
+    //MARK: - LifeCycle
     override func setupView() {
         super.setupView()
-        
+    
         DispatchQueue.main.async {
+            //: set model
+            self.model = self.templateSections[0].templates?.shuffled()
             //: navigation bar
-            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            self.navigationController?.navigationBar.isHidden = true
             //: try for free btn
             self.tryForFreeButton.layer.cornerRadius = 14
             //: collectionViews
@@ -57,6 +57,19 @@ class SearchEffectVC: BaseVC {
         super.initListeners()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier
+        {
+            case "showAllCollections":
+                if let viewC = segue.destination as? SeeAllCategoriesVC
+                {
+                    viewC.categoryContentModel = self.destinationModel
+                }
+                break
+            default:
+                break
+        }
+    }
     //MARK: - Public Functions 
 }
 
@@ -67,11 +80,11 @@ extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         switch collectionView
         {
             case self.categoryItemsCollectionView:
-                return self.templateSections[0].templates?.count ?? 0
+                return self.model?.count ?? 0
             case self.secondCategoryItemsCollectionView:
-                return self.templateSections[0].templates?.count ?? 0
+                return self.model?.count ?? 0
             case self.thirdCategoryItemsCollectionView:
-                return self.templateSections[0].templates?.count ?? 0
+                return self.model?.count ?? 0
             default:
                 return 0
         }
@@ -82,18 +95,23 @@ extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         {
             case self.categoryItemsCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCVC", for: indexPath) as! SearchCVC
-                cell.data = self.templateSections[0].templates?[indexPath.row]
+                cell.data = self.model?[indexPath.row]
                 return cell
             case self.secondCategoryItemsCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchSecondCVC", for: indexPath) as! SearchSecondCVC
-                cell.data = self.templateSections[0].templates?[indexPath.row]
+                cell.data = self.model?[indexPath.row]
                 return cell
             case self.thirdCategoryItemsCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchThirdCVC", for: indexPath) as! SearchThirdCVC
-                cell.data = self.templateSections[0].templates?[indexPath.row]
+                cell.data = self.model?[indexPath.row]
                 return cell
             default:
                 return UICollectionViewCell()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.destinationModel = CategoryContentModel(contentName: "Category \(indexPath.row)", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+        self.performSegue(withIdentifier: "searchCategoryDetail", sender: nil)
     }
 } 

@@ -23,7 +23,7 @@ class SearchCVC: UICollectionViewCell {
     func setup() {
         DispatchQueue.main.async {
             guard let data = self.data else { return }
-            self.itemImageView.image = data.background?.image
+            self.itemImageView.image = data.templateCoverImage
             self.layer.cornerRadius = self.frame.width / 2
         }
     }
