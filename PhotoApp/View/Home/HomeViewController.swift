@@ -19,9 +19,29 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBOutlet weak var modernistCollectionView: UICollectionView!
     @IBOutlet weak var collectionCategoryCV: UICollectionView!
     @IBOutlet weak var templatesCollectionView: UICollectionView!
+    @IBOutlet weak var highlightsCollectionView: UICollectionView!
     @IBOutlet weak var scrollView: IKScrollView!
     @IBOutlet weak var tryForFreeButton: UIButton!
+    
+    //: collection title
     @IBOutlet weak var templatesTextLabel: UILabel!
+    @IBOutlet weak var lovelyBlushTextLabel: UILabel!
+    @IBOutlet weak var modernistTextLabel: UILabel!
+    @IBOutlet weak var collectionTextLabel: UILabel!
+    @IBOutlet weak var highlightsTextLabel: UILabel!
+    
+    //: collectionSeeAll
+    @IBOutlet weak var popularSeeMore: UIButton!
+    @IBOutlet weak var lovelyBlushSeeMore: UIButton!
+    @IBOutlet weak var modernistSeeMore: UIButton!
+    @IBOutlet weak var collectionSeeMore: UIButton!
+    @IBOutlet weak var highlightsSeeMore: UIButton!
+    
+    //: collection height constraints
+    @IBOutlet weak var lovelyBlushHeight: NSLayoutConstraint!//: 257
+    @IBOutlet weak var modernistHeight: NSLayoutConstraint!//: 257
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!//: 117
+    @IBOutlet weak var highlightsHeight: NSLayoutConstraint!//: 95
     
     //Variables
     var templateSections: [TemplateSection] = [
@@ -45,6 +65,8 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
             self.setupTrendCollectionView()
         }
     }
+    
+    var desctinationURL = "showCommonContent"
     
     //MARK: - LifeCycle
     override func setupView() {
@@ -72,26 +94,22 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         self.templatesCollectionView.dataSource = self
         self.templatesCollectionView.delegate = self
         
+        self.highlightsCollectionView.delegate = self
+        self.highlightsCollectionView.dataSource = self
+        
         self.topImageCollectionView.reloadData()
         self.trendingCategoriesCollectionview.reloadData()
         self.allUserPhotosCollectionView.reloadData()
         self.modernistCollectionView.reloadData()
         self.collectionCategoryCV.reloadData()
         self.templatesCollectionView.reloadData()
+        self.highlightsCollectionView.reloadData()
         //: scroll view
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.delegate = self
         GlobalConstants.isCameraShown = false
-        
-        self.scrollView.sizeMatching = .Dynamic(
-            width: {
-                self.view.frame.width
-            },
-            height: {
-                self.calculateScrollSize()
-            }
-        )
+        self.setupScrollView()
     }
     
     override func initListeners() {
@@ -107,8 +125,8 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier
         {
-            case "showAllCollections":
-                if let viewC = segue.destination as? SeeAllCategoriesVC
+            case desctinationURL:
+                if let viewC = segue.destination as? CommonContentVC
                 {
                     viewC.categoryContentModel = self.destinationModel
                 }
@@ -119,9 +137,22 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     }
     
     //MARK: - Public Functions
+    
+    //: setup scroll view
+    func setupScrollView() {
+        self.scrollView.sizeMatching = .Dynamic(
+            width: {
+                self.view.frame.width
+            },
+            height: {
+                self.calculateScrollSize()
+            }
+        )
+    }
+    
     //Calculate scroll size
     func calculateScrollSize() -> CGFloat {
-        var height = CGFloat(100)
+        var height = CGFloat(200)
         
         height = height + self.topImageCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.frame.height + self.modernistCollectionView.frame.height + self.collectionCategoryCV.frame.height + self.templatesCollectionView.frame.height + 450
         
@@ -158,12 +189,92 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         {
             case "All":
                 print("selected 1 = ", selectedItem ?? "nil")
+                DispatchQueue.main.async {
+                    self.lovelyBlushHeight.constant = 257
+                    self.modernistHeight.constant = 257
+                    self.collectionHeight.constant = 117
+                    self.highlightsHeight.constant = 95
+                    
+                    self.collectionSeeMore.isHidden = false
+                    self.collectionTextLabel.isHidden = false
+                    
+                    self.highlightsTextLabel.isHidden = false
+                    self.highlightsSeeMore.isHidden = false
+                    
+                    self.modernistTextLabel.isHidden = true
+                    self.modernistSeeMore.isHidden = false
+                    
+                    self.lovelyBlushSeeMore.isHidden = false
+                    self.lovelyBlushTextLabel.isHidden = false
+                    
+                    self.setupScrollView()
+                }
             case "Story":
                 print("selected 2 = ", selectedItem ?? "nil")
+                DispatchQueue.main.async {
+                    self.collectionHeight.constant = 95
+                    self.highlightsHeight.constant = 0
+                    self.modernistHeight.constant = 0
+                    self.lovelyBlushHeight.constant = 0
+                    
+                    self.collectionSeeMore.isHidden = false
+                    self.collectionTextLabel.isHidden = false
+                    
+                    self.highlightsTextLabel.isHidden = true
+                    self.highlightsSeeMore.isHidden = true
+                    
+                    self.modernistTextLabel.isHidden = true
+                    self.modernistSeeMore.isHidden = true
+                    
+                    self.lovelyBlushSeeMore.isHidden = true
+                    self.lovelyBlushTextLabel.isHidden = true
+                    
+                    self.setupScrollView()
+                }
             case "Post & Banner":
                 print("selected 3 = ", selectedItem ?? "nil")
+                DispatchQueue.main.async {
+                    self.collectionHeight.constant = 0
+                    self.highlightsHeight.constant = 0
+                    self.modernistHeight.constant = 257
+                    self.lovelyBlushHeight.constant = 257
+                    
+                    self.collectionSeeMore.isHidden = true
+                    self.collectionTextLabel.isHidden = true
+                    
+                    self.highlightsTextLabel.isHidden = true
+                    self.highlightsSeeMore.isHidden = true
+                    
+                    self.modernistTextLabel.isHidden = false
+                    self.modernistSeeMore.isHidden = false
+                    
+                    self.lovelyBlushSeeMore.isHidden = false
+                    self.lovelyBlushTextLabel.isHidden = false
+                    
+                    self.setupScrollView()
+                }
             case "Quote":
                 print("selected 4 = ", selectedItem ?? "nil")
+                DispatchQueue.main.async {
+                    self.collectionHeight.constant = 0
+                    self.highlightsHeight.constant = 0
+                    self.modernistHeight.constant = 0
+                    self.lovelyBlushHeight.constant = 0
+                    
+                    self.collectionSeeMore.isHidden = true
+                    self.collectionTextLabel.isHidden = true
+                    
+                    self.highlightsTextLabel.isHidden = true
+                    self.highlightsSeeMore.isHidden = true
+                    
+                    self.modernistTextLabel.isHidden = true
+                    self.modernistSeeMore.isHidden = true
+                    
+                    self.lovelyBlushSeeMore.isHidden = true
+                    self.lovelyBlushTextLabel.isHidden = true
+                    
+                    self.setupScrollView()
+                }
             default:
                 break
         }
@@ -184,28 +295,36 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBAction func showAllCategories(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Popular", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+            self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
         }
     }
     
     @IBAction func showAllCategoriesSecond(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Lovely", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+            self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
         }
     }
     
     @IBAction func showAllCategoriesThird(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Modernist", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+            self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
         }
     }
     
     @IBAction func showAllCategoriesFourth(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Collection", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+            self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+        }
+    }
+    
+    
+    @IBAction func showAllCategoriesFifth(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.destinationModel = CategoryContentModel(contentName: "Highlights", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
         }
     }
 }
@@ -235,6 +354,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case self.templatesCollectionView:
             
                 return self.templateNames.count
+            case self.highlightsCollectionView:
+            
+                return self.templateSections[0].templates?.count ?? 0
             default:
                 return 0
         }
@@ -290,6 +412,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     cell.templateName.textColor = .white
                 }
                 return cell
+            
+            case self.highlightsCollectionView:
+            
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHighlightsCell", for: indexPath) as! HomeHighlightsCell
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.data = data
+                return cell
+            
             default:
             
                 return UICollectionViewCell()
@@ -308,33 +438,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 editorViewController.template = data
                 self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             case self.trendingCategoriesCollectionview:
-
-                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
-                UIImpactFeedbackGenerator().impactOccurred()
-                let editorViewController = EditorViewController()
-                editorViewController.template = data
-                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.destinationModel = CategoryContentModel(contentName: "Popular", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+                }
             case self.allUserPhotosCollectionView:
              
-                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
-                UIImpactFeedbackGenerator().impactOccurred()
-                let editorViewController = EditorViewController()
-                editorViewController.template = data 
-                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.destinationModel = CategoryContentModel(contentName: "Lovely", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+                }
             case self.modernistCollectionView:
             
-                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
-                UIImpactFeedbackGenerator().impactOccurred()
-                let editorViewController = EditorViewController()
-                editorViewController.template = data
-                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.destinationModel = CategoryContentModel(contentName: "Modernist", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+                }
             case self.collectionCategoryCV:
             
-                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
-                UIImpactFeedbackGenerator().impactOccurred()
-                let editorViewController = EditorViewController()
-                editorViewController.template = data
-                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.destinationModel = CategoryContentModel(contentName: "Collection", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+                }
             case self.templatesCollectionView:
                 DispatchQueue.main.async {
                     let cell = self.templatesCollectionView.cellForItem(at: indexPath) as! TemplatesCVC
@@ -353,6 +478,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                         }
                     }
                 }
+            
+            case self.highlightsCollectionView:
+                
+                DispatchQueue.main.async {
+                    self.destinationModel = CategoryContentModel(contentName: "Highlights", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+                }
             default:
                 break
         }
@@ -364,6 +496,7 @@ extension HomeViewController: UIScrollViewDelegate {
         switch scrollView {
             case self.scrollView:
                 let frame: CGFloat = self.templatesTextLabel.frame.origin.y - 100
+            
                 if scrollView.contentOffset.y > frame
                 {
                     self.nightLabel.text = "Templates"

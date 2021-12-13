@@ -200,6 +200,7 @@
 		41A4983E275CD7F4008EACDC /* GradientLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A4983D275CD7F4008EACDC /* GradientLayerView.swift */; };
 		41A49840275CD80C008EACDC /* PreviewInstagramControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A4983F275CD80C008EACDC /* PreviewInstagramControlsView.swift */; };
 		41A49846275CDB0E008EACDC /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A49845275CDB0E008EACDC /* LocalNotificationManager.swift */; };
+		41E37CCA2767DC8A00B116F3 /* HomeHighlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */; };
 		41EB980F2745796600794586 /* CategoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB980E2745796600794586 /* CategoryDetailVC.swift */; };
 		41EB981127457D2E00794586 /* CategoriesDetailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */; };
 		41FA51BF275245F000C78E82 /* ImageStickerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA51BE275245F000C78E82 /* ImageStickerContainerView.swift */; };
@@ -431,6 +432,7 @@
 		41A4983D275CD7F4008EACDC /* GradientLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayerView.swift; sourceTree = "<group>"; };
 		41A4983F275CD80C008EACDC /* PreviewInstagramControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInstagramControlsView.swift; sourceTree = "<group>"; };
 		41A49845275CDB0E008EACDC /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHighlightsCell.swift; sourceTree = "<group>"; };
 		41EB980E2745796600794586 /* CategoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailVC.swift; sourceTree = "<group>"; };
 		41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCVC.swift; sourceTree = "<group>"; };
 		41FA51BE275245F000C78E82 /* ImageStickerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStickerContainerView.swift; sourceTree = "<group>"; };
@@ -785,6 +787,7 @@
 				4128B5B62764CDAC00EB99D3 /* QuotesThirdCVC.swift */,
 				418F1505276523890051882F /* SearchDetailCVC.swift */,
 				415DF50E27663B1400CB68B7 /* TemplatesCVC.swift */,
+				41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				415DF512276653EE00CB68B7 /* CNavigationController.swift in Sources */,
 				4192BC71274194E000FE231A /* CameraViewController.swift in Sources */,
 				41A497A3275B95F5008EACDC /* ZLPhotoPreviewSheet.swift in Sources */,
+				41E37CCA2767DC8A00B116F3 /* HomeHighlightsCell.swift in Sources */,
 				41A49820275CD61E008EACDC /* EditableTextEditModeView.swift in Sources */,
 				4157E839275CF33A0010FBFB /* SectionSeeAllViewController.swift in Sources */,
 				4157E837275CF3190010FBFB /* AccountViewController.swift in Sources */,

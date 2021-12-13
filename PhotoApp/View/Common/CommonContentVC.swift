@@ -14,6 +14,7 @@ class CommonContentVC: BaseVC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var tryForFreeButton: UIButton!
+    @IBOutlet weak var backButtonOutlet: UIButton!
     
     //: variables
     var categoryContentModel: CategoryContentModel!
@@ -24,7 +25,11 @@ class CommonContentVC: BaseVC {
         
         DispatchQueue.main.async {
             //: hide navibar
-            self.navigationController?.navigationBar.isHidden = true
+            let label = UIBarButtonItem(customView: self.categoryNameLabel)
+            let button = UIBarButtonItem(customView: self.backButtonOutlet)
+            let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
+            self.navigationItem.leftBarButtonItems = [button,label]
+            self.navigationItem.rightBarButtonItem = tryForFree
             //: collection
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
@@ -66,6 +71,9 @@ class CommonContentVC: BaseVC {
     }
     
     //MARK: - Actions
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 //MARK: - Delegates
