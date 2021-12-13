@@ -10,6 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
         <array key="Sailec Bold.otf">
             <string>Sailec-Bold</string>
         </array>
@@ -135,11 +141,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Öne Çıkanlar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPp-Au-QMa">
-                                <rect key="frame" x="18" y="68" width="139" height="35"/>
+                                <rect key="frame" x="18" y="68" width="162" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ndP-ID-sOE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -162,7 +168,7 @@
                                     <constraint firstAttribute="height" constant="21" id="SfN-Fd-s1a"/>
                                     <constraint firstAttribute="width" constant="200" id="z8J-Lc-B4e"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -175,7 +181,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="See more" subtitle="">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                     <color key="baseForegroundColor" name="WhiteGray"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -188,7 +194,7 @@
                                     <constraint firstAttribute="width" constant="200" id="12D-Jf-aHw"/>
                                     <constraint firstAttribute="height" constant="21" id="78y-nZ-4bb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -201,7 +207,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="See more" subtitle="">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                     <color key="baseForegroundColor" name="WhiteGray"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -214,7 +220,7 @@
                                     <constraint firstAttribute="height" constant="21" id="0Od-1y-RHK"/>
                                     <constraint firstAttribute="width" constant="200" id="3aO-L7-rUS"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -227,7 +233,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="See more" subtitle="">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                     <color key="baseForegroundColor" name="WhiteGray"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -833,11 +839,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7T2-sD-yt6">
-                            <rect key="frame" x="22" y="66" width="149.5" height="35"/>
+                            <rect key="frame" x="22" y="66" width="171" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="6Hh-XD-OFn"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="24"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -850,7 +856,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="rozet1" title="   Try for free">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </buttonConfiguration>
                         </button>
@@ -949,6 +955,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onG-a7-lGG" customClass="IKScrollView" customModule="PhotoApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" name="ViewBlackBG"/>
+                                <connections>
+                                    <outlet property="contentView" destination="32H-0M-thD" id="h6I-xk-j5A"/>
+                                </connections>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="YlX-Js-cAF">
                                 <rect key="frame" x="-12" y="-10" width="389" height="329"/>
                                 <constraints>
@@ -956,13 +969,6 @@
                                     <constraint firstAttribute="width" constant="389" id="UXh-9N-2DV"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onG-a7-lGG" customClass="IKScrollView" customModule="PhotoApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="contentView" destination="32H-0M-thD" id="h6I-xk-j5A"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Z33-r6-ydG"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -976,12 +982,15 @@
                             <constraint firstItem="onG-a7-lGG" firstAttribute="top" secondItem="XM6-VQ-orh" secondAttribute="top" id="z8f-o3-NtP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lC0-V4-WWB"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="lC0-V4-WWB"/>
                     <connections>
                         <outlet property="allUserPhotosCollectionView" destination="A1l-eK-T6k" id="Rdq-sk-wPJ"/>
                         <outlet property="collectionCategoryCV" destination="sXs-Oh-5Df" id="Wuu-Qr-oh6"/>
                         <outlet property="modernistCollectionView" destination="qh4-h0-cwn" id="ZZV-FX-M3F"/>
+                        <outlet property="nightLabel" destination="DZC-Zn-nfT" id="Sff-f4-RI0"/>
                         <outlet property="scrollView" destination="onG-a7-lGG" id="UAn-xa-2u7"/>
+                        <outlet property="templatesCollectionView" destination="9zO-3l-5ne" id="QQN-qs-8Pa"/>
+                        <outlet property="templatesTextLabel" destination="0XL-J9-Vaw" id="l2E-oO-d1c"/>
                         <outlet property="topImageCollectionView" destination="Bwx-2f-W0Q" id="DzV-qt-vYT"/>
                         <outlet property="trendingCategoriesCollectionview" destination="D26-yd-x26" id="kea-kf-lrR"/>
                         <outlet property="tryForFreeButton" destination="uIe-Is-p0K" id="cf9-IL-c8A"/>
@@ -990,30 +999,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAK-cd-kDH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="32H-0M-thD">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="1800"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="1900"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZC-Zn-nfT">
-                            <rect key="frame" x="22" y="67" width="140" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="35" id="LQl-GQ-MoU"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="27"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top popular filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxH-n3-Y5g">
-                            <rect key="frame" x="22" y="112" width="145" height="21"/>
+                            <rect key="frame" x="19" y="69" width="148" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="LPX-zr-gZN"/>
-                                <constraint firstAttribute="width" constant="145" id="pI0-ST-CNR"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bwx-2f-W0Q">
-                            <rect key="frame" x="0.0" y="153" width="414" height="340"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwx-2f-W0Q">
+                            <rect key="frame" x="0.0" y="110" width="414" height="340"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="414" id="2Kb-ok-B8G"/>
@@ -1023,11 +1022,11 @@
                                 <size key="itemSize" width="225" height="386"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
+                                <inset key="sectionInset" minX="19" minY="0.0" maxX="9" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <cells>
                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopImageCVC" id="dBq-6K-bfj" customClass="TopImageCVC" customModule="PhotoApp" customModuleProvider="target">
-                                    <rect key="frame" x="18" y="1" width="223" height="338"/>
+                                    <rect key="frame" x="19" y="1" width="223" height="338"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bOj-lj-J9E">
                                         <rect key="frame" x="0.0" y="0.0" width="223" height="338"/>
@@ -1082,17 +1081,17 @@
                             </cells>
                         </collectionView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDS-t8-e6T">
-                            <rect key="frame" x="24" y="537" width="200" height="21"/>
+                            <rect key="frame" x="19" y="494" width="200" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="Bdn-Pd-VXB"/>
                                 <constraint firstAttribute="height" constant="21" id="SaV-CB-Xwq"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D26-yd-x26">
-                            <rect key="frame" x="0.0" y="582" width="414" height="120"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D26-yd-x26">
+                            <rect key="frame" x="0.0" y="539" width="414" height="120"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" systemColor="tintColor"/>
                             <constraints>
@@ -1103,11 +1102,11 @@
                                 <size key="itemSize" width="180" height="83"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="sectionInset" minX="19" minY="0.0" maxX="19" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <cells>
                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrendingCategoriesCVC" id="Az7-tM-8Kq" customClass="TrendingCategoriesCVC" customModule="PhotoApp" customModuleProvider="target">
-                                    <rect key="frame" x="25" y="0.0" width="180" height="48"/>
+                                    <rect key="frame" x="19" y="0.0" width="180" height="48"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HNx-Zb-nOh">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="48"/>
@@ -1124,12 +1123,12 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNH-UB-hMN">
-                                                        <rect key="frame" x="60" y="14.5" width="120" height="19"/>
+                                                        <rect key="frame" x="60" y="14" width="120" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="9zN-3z-N9B"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1173,16 +1172,16 @@
                             </cells>
                         </collectionView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lovely Blush" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bm6-LI-P8x">
-                            <rect key="frame" x="24" y="745" width="97" height="21"/>
+                            <rect key="frame" x="19" y="807" width="106" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="ZU4-6Q-sZK"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1l-eK-T6k">
-                            <rect key="frame" x="0.0" y="788" width="414" height="257"/>
+                            <rect key="frame" x="0.0" y="850" width="414" height="257"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="414" id="52u-kE-8it"/>
@@ -1192,11 +1191,11 @@
                                 <size key="itemSize" width="159" height="183"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
+                                <inset key="sectionInset" minX="19" minY="0.0" maxX="19" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <cells>
                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="InterestSectionCVC" id="ZrT-kI-ykO" customClass="InterestSectionCVC" customModule="PhotoApp" customModuleProvider="target">
-                                    <rect key="frame" x="18" y="8.5" width="143" height="240"/>
+                                    <rect key="frame" x="19" y="8.5" width="143" height="240"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jrv-7M-FKM">
                                         <rect key="frame" x="0.0" y="0.0" width="143" height="240"/>
@@ -1226,21 +1225,18 @@
                                 </collectionViewCell>
                             </cells>
                         </collectionView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIe-Is-p0K">
-                            <rect key="frame" x="279" y="69.5" width="119" height="30"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="dqa-wx-K8i"/>
-                                <constraint firstAttribute="width" constant="119" id="guo-AH-5kO"/>
-                            </constraints>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIe-Is-p0K">
+                            <rect key="frame" x="293" y="15" width="119" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" name="ViewRedBG"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="rozet1" title="   Try for free">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </buttonConfiguration>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLu-fL-AOA">
-                            <rect key="frame" x="279" y="532.5" width="119" height="30"/>
+                            <rect key="frame" x="279" y="489.5" width="119" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="A3y-yy-TRf"/>
@@ -1248,7 +1244,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="See more" subtitle="">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" name="WhiteGray"/>
                             </buttonConfiguration>
                             <connections>
@@ -1256,7 +1252,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87m-Yh-Swy">
-                            <rect key="frame" x="279" y="740.5" width="119" height="30"/>
+                            <rect key="frame" x="279" y="802.5" width="119" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ap0-aT-NHd"/>
@@ -1264,7 +1260,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="See more">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" name="WhiteGray"/>
                             </buttonConfiguration>
                             <connections>
@@ -1272,16 +1268,16 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modernist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-T8-9X7">
-                            <rect key="frame" x="24" y="1069" width="77" height="21"/>
+                            <rect key="frame" x="19" y="1131" width="87" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Unj-aA-7nc"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh4-h0-cwn">
-                            <rect key="frame" x="0.0" y="1112" width="414" height="257"/>
+                            <rect key="frame" x="0.0" y="1174" width="414" height="257"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="257" id="leQ-LN-I0u"/>
@@ -1291,11 +1287,11 @@
                                 <size key="itemSize" width="159" height="183"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
+                                <inset key="sectionInset" minX="19" minY="0.0" maxX="19" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <cells>
                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="InterestSectionBCVC" id="ahK-J4-Eu8" customClass="InterestSectionCVC" customModule="PhotoApp" customModuleProvider="target">
-                                    <rect key="frame" x="18" y="8.5" width="143" height="240"/>
+                                    <rect key="frame" x="19" y="8.5" width="143" height="240"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="28U-qz-ctw">
                                         <rect key="frame" x="0.0" y="0.0" width="143" height="240"/>
@@ -1326,7 +1322,7 @@
                             </cells>
                         </collectionView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-7M-Qfr">
-                            <rect key="frame" x="279" y="1064.5" width="119" height="30"/>
+                            <rect key="frame" x="279" y="1126.5" width="119" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Nx8-WN-day"/>
@@ -1334,7 +1330,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="See more">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" name="WhiteGray"/>
                             </buttonConfiguration>
                             <connections>
@@ -1342,53 +1338,53 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIY-w8-tcQ">
-                            <rect key="frame" x="24" y="1398" width="77" height="21"/>
+                            <rect key="frame" x="19" y="1460" width="87.5" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="ckS-y3-tAf"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXs-Oh-5Df">
-                            <rect key="frame" x="0.0" y="1441" width="414" height="257"/>
+                            <rect key="frame" x="0.0" y="1503" width="414" height="118"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="414" id="aPN-wn-6wV"/>
-                                <constraint firstAttribute="height" constant="257" id="vLg-tj-s0T"/>
+                                <constraint firstAttribute="height" constant="118" id="vLg-tj-s0T"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="61Q-HF-KCp">
-                                <size key="itemSize" width="159" height="183"/>
+                                <size key="itemSize" width="117" height="117"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
+                                <inset key="sectionInset" minX="19" minY="0.0" maxX="19" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <cells>
                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="InterestSectionCCVC" id="1g5-Xf-Nfj" customClass="InterestSectionCVC" customModule="PhotoApp" customModuleProvider="target">
-                                    <rect key="frame" x="18" y="8.5" width="143" height="240"/>
+                                    <rect key="frame" x="19" y="0.5" width="117" height="117"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="azi-IE-4Yl">
-                                        <rect key="frame" x="0.0" y="0.0" width="143" height="240"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WgB-RJ-zbT">
-                                                <rect key="frame" x="0.0" y="0.0" width="143" height="240"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
                                                 <color key="backgroundColor" name="BoldGray"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="240" id="XJU-Zn-7ek"/>
-                                                    <constraint firstAttribute="width" constant="143" id="e3R-yu-dvR"/>
+                                                    <constraint firstAttribute="width" constant="117" id="lxo-P1-rzo"/>
+                                                    <constraint firstAttribute="height" constant="117" id="otx-ou-bfy"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="WgB-RJ-zbT" firstAttribute="top" secondItem="azi-IE-4Yl" secondAttribute="top" id="7HA-fm-KD3"/>
-                                            <constraint firstItem="WgB-RJ-zbT" firstAttribute="leading" secondItem="azi-IE-4Yl" secondAttribute="leading" id="ALQ-Cn-iq0"/>
-                                            <constraint firstAttribute="bottom" secondItem="WgB-RJ-zbT" secondAttribute="bottom" id="I8n-Bc-tjW"/>
-                                            <constraint firstAttribute="trailing" secondItem="WgB-RJ-zbT" secondAttribute="trailing" id="WDP-Dq-zEX"/>
+                                            <constraint firstItem="WgB-RJ-zbT" firstAttribute="leading" secondItem="azi-IE-4Yl" secondAttribute="leading" id="4Mp-li-K1u"/>
+                                            <constraint firstAttribute="bottom" secondItem="WgB-RJ-zbT" secondAttribute="bottom" id="6as-Pk-l27"/>
+                                            <constraint firstAttribute="trailing" secondItem="WgB-RJ-zbT" secondAttribute="trailing" id="ZuU-86-0XZ"/>
+                                            <constraint firstItem="WgB-RJ-zbT" firstAttribute="top" secondItem="azi-IE-4Yl" secondAttribute="top" id="xgp-Bw-daC"/>
                                         </constraints>
                                     </collectionViewCellContentView>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <size key="customSize" width="143" height="240"/>
+                                    <size key="customSize" width="117" height="117"/>
                                     <connections>
                                         <outlet property="photoImageView" destination="WgB-RJ-zbT" id="Nmp-eb-DQW"/>
                                     </connections>
@@ -1396,7 +1392,7 @@
                             </cells>
                         </collectionView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aD5-EI-hRz">
-                            <rect key="frame" x="279" y="1393.5" width="119" height="30"/>
+                            <rect key="frame" x="279" y="1455.5" width="119" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="119" id="JcC-SZ-sb3"/>
@@ -1404,13 +1400,70 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="See more">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" name="WhiteGray"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="showAllCategoriesFourth:" destination="J2D-3Q-GEp" eventType="touchUpInside" id="Wvf-58-Zxd"/>
                             </connections>
                         </button>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zO-3l-5ne">
+                            <rect key="frame" x="0.0" y="732" width="414" height="37"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37" id="JbY-iJ-VdL"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VXf-U4-86O">
+                                <size key="itemSize" width="128" height="33"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="19" minY="0.0" maxX="19" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <cells>
+                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TemplatesCVC" id="Nd4-Kd-F7u" customClass="TemplatesCVC" customModule="PhotoApp" customModuleProvider="target">
+                                    <rect key="frame" x="19" y="2.5" width="70" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gjz-tN-EtL">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="32"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35J-Qh-XIJ">
+                                                <rect key="frame" x="26" y="6" width="18" height="20"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="35J-Qh-XIJ" secondAttribute="trailing" constant="26" id="MJq-Es-kU2"/>
+                                            <constraint firstAttribute="bottom" secondItem="35J-Qh-XIJ" secondAttribute="bottom" constant="6" id="hYt-mS-qi9"/>
+                                            <constraint firstItem="35J-Qh-XIJ" firstAttribute="leading" secondItem="Gjz-tN-EtL" secondAttribute="leading" constant="26" id="pEl-wz-P9V"/>
+                                            <constraint firstItem="35J-Qh-XIJ" firstAttribute="top" secondItem="Gjz-tN-EtL" secondAttribute="top" constant="6" id="uyq-Fd-F0w"/>
+                                        </constraints>
+                                    </collectionViewCellContentView>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <outlet property="templateName" destination="35J-Qh-XIJ" id="pgc-Sw-Cue"/>
+                                    </connections>
+                                </collectionViewCell>
+                            </cells>
+                        </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Templates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XL-J9-Vaw">
+                            <rect key="frame" x="19" y="693" width="92.5" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="wt7-r8-I6R"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Good Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZC-Zn-nfT">
+                            <rect key="frame" x="275" y="54" width="155" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="27"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="gp7-Ny-eTh"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1418,23 +1471,21 @@
                         <constraint firstItem="Bwx-2f-W0Q" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" id="0Z4-3s-pDl"/>
                         <constraint firstItem="qh4-h0-cwn" firstAttribute="top" secondItem="CNv-T8-9X7" secondAttribute="bottom" constant="22" id="0dM-Ua-llB"/>
                         <constraint firstItem="D26-yd-x26" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" id="1pb-2o-Vwo"/>
+                        <constraint firstItem="0XL-J9-Vaw" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="19" id="2Uf-oG-VYj"/>
                         <constraint firstItem="A1l-eK-T6k" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" id="4jZ-er-931"/>
                         <constraint firstItem="LLu-fL-AOA" firstAttribute="centerY" secondItem="TDS-t8-e6T" secondAttribute="centerY" id="AlP-Hq-4to"/>
-                        <constraint firstItem="CNv-T8-9X7" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="24" id="Az6-LW-b7v"/>
+                        <constraint firstItem="IxH-n3-Y5g" firstAttribute="top" secondItem="gp7-Ny-eTh" secondAttribute="top" constant="25" id="AxG-P5-Zfd"/>
+                        <constraint firstItem="CNv-T8-9X7" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="19" id="Az6-LW-b7v"/>
                         <constraint firstItem="aD5-EI-hRz" firstAttribute="centerY" secondItem="bIY-w8-tcQ" secondAttribute="centerY" id="Blk-kh-uNz"/>
                         <constraint firstItem="A1l-eK-T6k" firstAttribute="top" secondItem="Bm6-LI-P8x" secondAttribute="bottom" constant="22" id="CBI-xv-ZvI"/>
                         <constraint firstItem="gp7-Ny-eTh" firstAttribute="trailing" secondItem="aD5-EI-hRz" secondAttribute="trailing" constant="16" id="CNw-KV-2C6"/>
-                        <constraint firstItem="DZC-Zn-nfT" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="22" id="GOC-wS-dAV"/>
-                        <constraint firstItem="IxH-n3-Y5g" firstAttribute="leading" secondItem="DZC-Zn-nfT" secondAttribute="leading" id="Ib6-nD-mxe"/>
                         <constraint firstItem="qh4-h0-cwn" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" id="JXf-hQ-cyS"/>
-                        <constraint firstItem="DZC-Zn-nfT" firstAttribute="top" secondItem="gp7-Ny-eTh" secondAttribute="top" constant="22.800000000000001" id="K4H-tl-Zya"/>
                         <constraint firstItem="gp7-Ny-eTh" firstAttribute="trailing" secondItem="HB7-7M-Qfr" secondAttribute="trailing" constant="16" id="M8G-NY-bqL"/>
                         <constraint firstItem="gp7-Ny-eTh" firstAttribute="trailing" secondItem="LLu-fL-AOA" secondAttribute="trailing" constant="16" id="MXr-Hf-Dsp"/>
-                        <constraint firstItem="uIe-Is-p0K" firstAttribute="centerY" secondItem="DZC-Zn-nfT" secondAttribute="centerY" id="TYA-ZM-RCC"/>
+                        <constraint firstItem="0XL-J9-Vaw" firstAttribute="top" secondItem="D26-yd-x26" secondAttribute="bottom" constant="34" id="NJA-D8-Wq3"/>
                         <constraint firstItem="HB7-7M-Qfr" firstAttribute="centerY" secondItem="CNv-T8-9X7" secondAttribute="centerY" id="WWx-8T-Nde"/>
-                        <constraint firstItem="IxH-n3-Y5g" firstAttribute="top" secondItem="DZC-Zn-nfT" secondAttribute="bottom" constant="10" id="XX2-PU-YNA"/>
                         <constraint firstItem="A1l-eK-T6k" firstAttribute="trailing" secondItem="gp7-Ny-eTh" secondAttribute="trailing" id="YDP-bg-Dzk"/>
-                        <constraint firstItem="gp7-Ny-eTh" firstAttribute="trailing" secondItem="uIe-Is-p0K" secondAttribute="trailing" constant="16" id="ZKL-5Z-0Mt"/>
+                        <constraint firstItem="9zO-3l-5ne" firstAttribute="top" secondItem="0XL-J9-Vaw" secondAttribute="bottom" constant="18" id="dXA-Ps-H61"/>
                         <constraint firstItem="D26-yd-x26" firstAttribute="trailing" secondItem="gp7-Ny-eTh" secondAttribute="trailing" id="e8A-hd-4Q1"/>
                         <constraint firstItem="gp7-Ny-eTh" firstAttribute="trailing" secondItem="87m-Yh-Swy" secondAttribute="trailing" constant="16" id="esB-u2-EJV"/>
                         <constraint firstItem="sXs-Oh-5Df" firstAttribute="top" secondItem="bIY-w8-tcQ" secondAttribute="bottom" constant="22" id="gEA-PK-ElB"/>
@@ -1443,15 +1494,18 @@
                         <constraint firstItem="sXs-Oh-5Df" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" id="ihE-iq-F6W"/>
                         <constraint firstItem="qh4-h0-cwn" firstAttribute="trailing" secondItem="gp7-Ny-eTh" secondAttribute="trailing" id="kQm-Nv-3YK"/>
                         <constraint firstItem="CNv-T8-9X7" firstAttribute="top" secondItem="A1l-eK-T6k" secondAttribute="bottom" constant="24" id="kSX-Ij-Zol"/>
-                        <constraint firstItem="Bm6-LI-P8x" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="24" id="l63-Gn-UVO"/>
+                        <constraint firstItem="Bm6-LI-P8x" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="19" id="l63-Gn-UVO"/>
                         <constraint firstItem="D26-yd-x26" firstAttribute="top" secondItem="TDS-t8-e6T" secondAttribute="bottom" constant="24" id="mJV-x7-56q"/>
                         <constraint firstItem="Bwx-2f-W0Q" firstAttribute="top" secondItem="IxH-n3-Y5g" secondAttribute="bottom" constant="20" id="mPd-Ws-tQf"/>
                         <constraint firstItem="bIY-w8-tcQ" firstAttribute="top" secondItem="qh4-h0-cwn" secondAttribute="bottom" constant="29" id="oOc-96-qXh"/>
                         <constraint firstItem="sXs-Oh-5Df" firstAttribute="trailing" secondItem="gp7-Ny-eTh" secondAttribute="trailing" id="oYd-vW-AxW"/>
-                        <constraint firstItem="Bm6-LI-P8x" firstAttribute="top" secondItem="D26-yd-x26" secondAttribute="bottom" constant="43" id="tK9-Lj-toy"/>
-                        <constraint firstItem="bIY-w8-tcQ" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="24" id="uVa-Bg-r5m"/>
+                        <constraint firstItem="bIY-w8-tcQ" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="19" id="uVa-Bg-r5m"/>
                         <constraint firstItem="Bwx-2f-W0Q" firstAttribute="trailing" secondItem="gp7-Ny-eTh" secondAttribute="trailing" id="unt-sX-xX7"/>
-                        <constraint firstItem="TDS-t8-e6T" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="24" id="vSA-Jn-fUy"/>
+                        <constraint firstItem="TDS-t8-e6T" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="19" id="vSA-Jn-fUy"/>
+                        <constraint firstItem="IxH-n3-Y5g" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" constant="19" id="xCr-X4-5FM"/>
+                        <constraint firstItem="9zO-3l-5ne" firstAttribute="leading" secondItem="gp7-Ny-eTh" secondAttribute="leading" id="xPD-08-cMf"/>
+                        <constraint firstItem="9zO-3l-5ne" firstAttribute="trailing" secondItem="gp7-Ny-eTh" secondAttribute="trailing" id="xq6-eS-vek"/>
+                        <constraint firstItem="Bm6-LI-P8x" firstAttribute="top" secondItem="9zO-3l-5ne" secondAttribute="bottom" constant="38" id="yid-fm-z28"/>
                     </constraints>
                 </view>
             </objects>
@@ -1529,16 +1583,16 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="rozet1" title="   Try for free">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </buttonConfiguration>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alıntılar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-2q-Qdx">
-                            <rect key="frame" x="18" y="68" width="79" height="35"/>
+                            <rect key="frame" x="18" y="68" width="100" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="Iry-rQ-d68"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="24"/>
+                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -1603,7 +1657,7 @@
                                 <constraint firstAttribute="height" constant="21" id="1Ix-cc-sKz"/>
                                 <constraint firstAttribute="width" constant="200" id="FRs-Su-iff"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -1616,7 +1670,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="See more" subtitle="">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" name="WhiteGray"/>
                             </buttonConfiguration>
                             <connections>
@@ -1685,7 +1739,7 @@
                                 <constraint firstAttribute="height" constant="21" id="1eS-gW-Il6"/>
                                 <constraint firstAttribute="width" constant="200" id="9fH-CL-PEv"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -1698,7 +1752,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="See more" subtitle="">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" name="WhiteGray"/>
                             </buttonConfiguration>
                             <connections>
@@ -1767,7 +1821,7 @@
                                 <constraint firstAttribute="height" constant="21" id="gXT-DQ-6Vz"/>
                                 <constraint firstAttribute="width" constant="200" id="tyU-Af-o6R"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -1780,7 +1834,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="See more" subtitle="">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" name="WhiteGray"/>
                             </buttonConfiguration>
                             <connections>
@@ -2628,11 +2682,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Common Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2c2-Bg-97h">
-                            <rect key="frame" x="22" y="66" width="204.5" height="35"/>
+                            <rect key="frame" x="22" y="66" width="236" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="wMm-Mq-Tcd"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Sailec-Bold" family="Sailec" pointSize="24"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -2645,7 +2699,7 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="rozet1" title="   Try for free">
-                                <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="titleFontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </buttonConfiguration>
                         </button>
@@ -2804,6 +2858,12 @@
         </namedColor>
         <namedColor name="ThinGray">
             <color red="0.35699999332427979" green="0.35699999332427979" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ViewBlackBG">
+            <color red="0.13699999451637268" green="0.13699999451637268" blue="0.13699999451637268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ViewRedBG">
+            <color red="0.96100002527236938" green="0.23100000619888306" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="WhiteGray">
             <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

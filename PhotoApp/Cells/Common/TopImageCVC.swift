@@ -12,9 +12,6 @@ class TopImageCVC: UICollectionViewCell {
     @IBOutlet weak var contentItemsView: UIView!
     @IBOutlet weak var rozetView: UIImageView!
     @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productOwnerName: UILabel!
-    @IBOutlet weak var gradiendView: UIImageView!
     
     var data: Template! {
         didSet {
