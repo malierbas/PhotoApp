@@ -11,6 +11,8 @@ class CommonViewCVC: UICollectionViewCell {
     
     @IBOutlet weak var contentImage: UIImageView!
     @IBOutlet weak var miniFavImage: UIImageView!
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
     var data: Template? {
         didSet
@@ -23,9 +25,10 @@ class CommonViewCVC: UICollectionViewCell {
         DispatchQueue.main.async {
             guard let data = self.data else { return }
             self.contentImage.image = data.templateCoverImage
-            self.contentImage.layer.cornerRadius = 8
-            
             self.contentImage.isHidden = data.isFree ?? false
+            
+            self.mainView.layer.cornerRadius =  12
+            self.contentImage.layer.cornerRadius = 12
         }
     }
 }

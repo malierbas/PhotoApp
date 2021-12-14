@@ -37,11 +37,12 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBOutlet weak var collectionSeeMore: UIButton!
     @IBOutlet weak var highlightsSeeMore: UIButton!
     
-    //: collection height constraints
-    @IBOutlet weak var lovelyBlushHeight: NSLayoutConstraint!//: 257
-    @IBOutlet weak var modernistHeight: NSLayoutConstraint!//: 257
-    @IBOutlet weak var collectionHeight: NSLayoutConstraint!//: 117
-    @IBOutlet weak var highlightsHeight: NSLayoutConstraint!//: 95
+    //: stack views
+    @IBOutlet weak var mainStackView: UIStackView!
+    @IBOutlet weak var lovelyBlushStack: UIStackView!
+    @IBOutlet weak var modernistStack: UIStackView!
+    @IBOutlet weak var collectionStack: UIStackView!
+    @IBOutlet weak var highlightsStack: UIStackView!
     
     //Variables
     var templateSections: [TemplateSection] = [
@@ -50,6 +51,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
     ]
     
+    var isPost: Bool? = false
     var destinationModel: CategoryContentModel!
     
     var templateNames: [String]! = [
@@ -129,6 +131,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
                 if let viewC = segue.destination as? CommonContentVC
                 {
                     viewC.categoryContentModel = self.destinationModel
+                    viewC.isPost = self.isPost
                 }
                 break
             default:
@@ -152,7 +155,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     
     //Calculate scroll size
     func calculateScrollSize() -> CGFloat {
-        var height = CGFloat(200)
+        var height = CGFloat(300)
         
         height = height + self.topImageCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.frame.height + self.modernistCollectionView.frame.height + self.collectionCategoryCV.frame.height + self.templatesCollectionView.frame.height + 450
         
@@ -182,6 +185,9 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         //: navigation view
         self.navigationController?.navigationBar.isTranslucent = isTranslucent ?? false
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "ViewBlackBG")
+        //: visible
+        self.tryForFreeButton.fadeIn()
+        self.nightLabel.fadeIn()
     }
     
     func setupTrendCollectionView() {
@@ -189,94 +195,48 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         {
             case "All":
                 print("selected 1 = ", selectedItem ?? "nil")
-                DispatchQueue.main.async {
-                    self.lovelyBlushHeight.constant = 257
-                    self.modernistHeight.constant = 257
-                    self.collectionHeight.constant = 117
-                    self.highlightsHeight.constant = 95
-                    
-                    self.collectionSeeMore.isHidden = false
-                    self.collectionTextLabel.isHidden = false
-                    
-                    self.highlightsTextLabel.isHidden = false
-                    self.highlightsSeeMore.isHidden = false
-                    
-                    self.modernistTextLabel.isHidden = true
-                    self.modernistSeeMore.isHidden = false
-                    
-                    self.lovelyBlushSeeMore.isHidden = false
-                    self.lovelyBlushTextLabel.isHidden = false
-                    
-                    self.setupScrollView()
-                }
+                self.animateStack(makeHidden: false, with: self.lovelyBlushStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.modernistStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.collectionStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.highlightsStack, reloadScroll: true)
             case "Story":
                 print("selected 2 = ", selectedItem ?? "nil")
-                DispatchQueue.main.async {
-                    self.collectionHeight.constant = 95
-                    self.highlightsHeight.constant = 0
-                    self.modernistHeight.constant = 0
-                    self.lovelyBlushHeight.constant = 0
-                    
-                    self.collectionSeeMore.isHidden = false
-                    self.collectionTextLabel.isHidden = false
-                    
-                    self.highlightsTextLabel.isHidden = true
-                    self.highlightsSeeMore.isHidden = true
-                    
-                    self.modernistTextLabel.isHidden = true
-                    self.modernistSeeMore.isHidden = true
-                    
-                    self.lovelyBlushSeeMore.isHidden = true
-                    self.lovelyBlushTextLabel.isHidden = true
-                    
-                    self.setupScrollView()
-                }
+                self.animateStack(makeHidden: false, with: self.lovelyBlushStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.modernistStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.collectionStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.highlightsStack, reloadScroll: true)
             case "Post & Banner":
                 print("selected 3 = ", selectedItem ?? "nil")
-                DispatchQueue.main.async {
-                    self.collectionHeight.constant = 0
-                    self.highlightsHeight.constant = 0
-                    self.modernistHeight.constant = 257
-                    self.lovelyBlushHeight.constant = 257
-                    
-                    self.collectionSeeMore.isHidden = true
-                    self.collectionTextLabel.isHidden = true
-                    
-                    self.highlightsTextLabel.isHidden = true
-                    self.highlightsSeeMore.isHidden = true
-                    
-                    self.modernistTextLabel.isHidden = false
-                    self.modernistSeeMore.isHidden = false
-                    
-                    self.lovelyBlushSeeMore.isHidden = false
-                    self.lovelyBlushTextLabel.isHidden = false
-                    
-                    self.setupScrollView()
-                }
+                self.animateStack(makeHidden: false, with: self.lovelyBlushStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.modernistStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.collectionStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.highlightsStack, reloadScroll: true)
             case "Quote":
                 print("selected 4 = ", selectedItem ?? "nil")
-                DispatchQueue.main.async {
-                    self.collectionHeight.constant = 0
-                    self.highlightsHeight.constant = 0
-                    self.modernistHeight.constant = 0
-                    self.lovelyBlushHeight.constant = 0
-                    
-                    self.collectionSeeMore.isHidden = true
-                    self.collectionTextLabel.isHidden = true
-                    
-                    self.highlightsTextLabel.isHidden = true
-                    self.highlightsSeeMore.isHidden = true
-                    
-                    self.modernistTextLabel.isHidden = true
-                    self.modernistSeeMore.isHidden = true
-                    
-                    self.lovelyBlushSeeMore.isHidden = true
-                    self.lovelyBlushTextLabel.isHidden = true
-                    
-                    self.setupScrollView()
-                }
+                self.animateStack(makeHidden: true, with: self.lovelyBlushStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.modernistStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.collectionStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.highlightsStack, reloadScroll: true)
             default:
                 break
+        }
+    }
+    
+    func animateStack(makeHidden: Bool, with animateView: UIStackView, reloadScroll: Bool) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.35, delay: 1, options: .curveEaseOut) {
+                animateView.alpha = 1
+            } completion: { didComplete in
+                if didComplete
+                {
+                    animateView.isHidden = makeHidden
+                }
+            }
+            
+            if reloadScroll
+            {
+                self.setupScrollView()
+            }
         }
     }
     
@@ -315,6 +275,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     
     @IBAction func showAllCategoriesFourth(_ sender: Any) {
         DispatchQueue.main.async {
+            self.isPost = true
             self.destinationModel = CategoryContentModel(contentName: "Collection", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
             self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
         }
@@ -344,7 +305,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return self.templateSections[0].templates?.count ?? 0
             case self.trendingCategoriesCollectionview:
             
-                return 4
+                return self.templateSections[0].templates?.count ?? 0
             case self.modernistCollectionView:
             
                 return self.templateSections[0].templates?.count ?? 0
@@ -371,30 +332,35 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.data = data
+                cell.addTransform()
                 return cell
             case self.trendingCategoriesCollectionview:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.data = data
+                cell.addTransform()
                 return cell
             case self.allUserPhotosCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCVC", for: indexPath) as! InterestSectionCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.template = data
+                cell.addTransform()
                 return cell
             case self.modernistCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionBCVC", for: indexPath) as! InterestSectionCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.template = data
+                cell.addTransform()
                 return cell
             case self.collectionCategoryCV:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCCVC", for: indexPath) as! InterestSectionCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.template = data
+                cell.addTransform()
                 return cell
             case self.templatesCollectionView:
             
@@ -405,7 +371,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.widthAnchor.constraint(equalToConstant: contentWidth).isActive = true
             
                 cell.data = self.templateNames[indexPath.row]
-            
+                cell.addTransform()
                 if indexPath.row == 0
                 {
                     cell.backgroundColor = UIColor(named: "ViewRedBG")
@@ -418,6 +384,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHighlightsCell", for: indexPath) as! HomeHighlightsCell
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.data = data
+                cell.addTransform()
                 return cell
             
             default:
@@ -457,6 +424,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case self.collectionCategoryCV:
             
                 DispatchQueue.main.async {
+                    self.isPost = true
                     self.destinationModel = CategoryContentModel(contentName: "Collection", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
                     self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
                 }

@@ -108,6 +108,16 @@ extension UICollectionViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)
     }
+    
+    func addTransform() {
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0)
+        self.layer.transform = rotationTransform
+        self.alpha = 0
+        UIView.animate(withDuration: 0.75) {
+            self.layer.transform = CATransform3DIdentity
+            self.alpha = 1.0
+        }
+    }
 }
 
 extension UITableView {

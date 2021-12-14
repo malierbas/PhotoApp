@@ -12,6 +12,7 @@ class SearchCVC: UICollectionViewCell {
     //Views
     @IBOutlet weak var itemImageView: UIImageView!
     
+    @IBOutlet weak var itemName: UILabel!
     //Variables
     var data: Template? {
         didSet {
@@ -24,7 +25,8 @@ class SearchCVC: UICollectionViewCell {
         DispatchQueue.main.async {
             guard let data = self.data else { return }
             self.itemImageView.image = data.templateCoverImage
-            self.layer.cornerRadius = self.frame.width / 2
+            self.itemImageView.layer.cornerRadius = 12
+            
         }
     }
 }

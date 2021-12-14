@@ -10,11 +10,10 @@ import UIKit
 class QuotesVC: BaseVC {
     //MARK: - Properties
     //: Views
+    @IBOutlet weak var topTitle: UILabel!
     @IBOutlet weak var scrollView: IKScrollView!
     @IBOutlet weak var tryForFreeButtonOutlet: UIButton!
     @IBOutlet weak var quotesFirstCollectionView: UICollectionView!
-    @IBOutlet weak var quotesSecondCollectionView: UICollectionView!
-    @IBOutlet weak var quotesThirdCollectionView: UICollectionView!
     
     //: Variables
     var templateSections: [TemplateSection] = [
@@ -36,31 +35,17 @@ class QuotesVC: BaseVC {
         
         DispatchQueue.main.async {
             //: navigation bar
-            self.navigationController?.navigationBar.isHidden = true
-//            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            self.setupNavigationView(isHidden: false)
             //: collection views
             self.quotesFirstCollectionView.delegate = self
             self.quotesFirstCollectionView.dataSource = self
-            self.quotesSecondCollectionView.dataSource = self
-            self.quotesSecondCollectionView.delegate = self
-            self.quotesThirdCollectionView.delegate = self
-            self.quotesThirdCollectionView.dataSource = self
             self.quotesFirstCollectionView.reloadData()
-            self.quotesSecondCollectionView.reloadData()
-            self.quotesThirdCollectionView.reloadData()
             //: try for free btn
             self.tryForFreeButtonOutlet.layer.cornerRadius = 14
             //: scrollView
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.showsHorizontalScrollIndicator = false
-            self.scrollView.sizeMatching = .Dynamic(
-                width: {
-                    self.view.frame.width
-                },
-                height: {
-                    900
-                }
-            )
+            
         }
     }
     
@@ -86,23 +71,23 @@ class QuotesVC: BaseVC {
     }
     
     //MARK: - Public Functions
+    func setupNavigationView(isHidden: Bool, isTranslucent: Bool? = true) {
+        //: right items
+        self.navigationController?.navigationBar.isHidden = isHidden
+        let tryForFreeBtn = UIBarButtonItem(customView: self.tryForFreeButtonOutlet)
+        self.navigationItem.rightBarButtonItem = tryForFreeBtn
+        //: left item
+        let viewNameLabel = UIBarButtonItem(customView: self.topTitle)
+        self.navigationItem.leftBarButtonItem = viewNameLabel
+        //: navigation view
+        self.navigationController?.navigationBar.isTranslucent = isTranslucent ?? false
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "ViewBlackBG")
+        //: visible
+        self.tryForFreeButtonOutlet.fadeIn()
+        self.topTitle.fadeIn()
+    }
     
     //MARK: - Actions
-
-    @IBAction func seeAllFirstAction(_ sender: Any) {
-        self.categoryContentModel = CategoryContentModel(contentName: "Category 1", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-        self.performSegue(withIdentifier: "showDetailScreen", sender: nil)
-    }
-    
-    @IBAction func seeAllSecondAction(_ sender: Any) {
-        self.categoryContentModel = CategoryContentModel(contentName: "Category 2", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-        self.performSegue(withIdentifier: "showDetailScreen", sender: nil)
-    }
-    
-    @IBAction func seeAllThirdAction(_ sender: Any) {
-        self.categoryContentModel = CategoryContentModel(contentName: "Category 3", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-        self.performSegue(withIdentifier: "showDetailScreen", sender: nil)
-    }
 }
 
 extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
@@ -112,10 +97,6 @@ extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
         {
             case self.quotesFirstCollectionView:
                 return self.templateSections[0].templates?.count ?? 0
-            case self.quotesSecondCollectionView:
-                return self.templateSections[0].templates?.count ?? 0
-            case self.quotesThirdCollectionView:
-                return self.templateSections[0].templates?.count ?? 0
             default:
                 return 0
         }
@@ -124,32 +105,55 @@ extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView
         {
-        case self.quotesFirstCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuotesCVC", for: indexPath) as! QuotesCVC
-            guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
-            cell.data = data
-            return cell
-        case self.quotesSecondCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuotesSecondCVC", for: indexPath) as! QuotesSecondCVC
-            guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
-            cell.data = data
-            return cell
-        case self.quotesThirdCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuotesThirdCVC", for: indexPath) as! QuotesThirdCVC
-            guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
-            cell.data = data
-            return cell
-        default:
-            return UICollectionViewCell()
+            case self.quotesFirstCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuotesCVC", for: indexPath) as! QuotesCVC
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.data = data
+                cell.addTransform()
+            
+                self.scrollView.sizeMatching = .Dynamic(
+                    width: {
+                        self.view.frame.width
+                    },
+                    height: {
+                        self.quotesFirstCollectionView.contentSize.height + 200
+                    }
+                )
+                return cell
+            default:
+                return UICollectionViewCell()
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
-        UIImpactFeedbackGenerator().impactOccurred()
-        let editorViewController = EditorViewController()
-        editorViewController.template = data
-        self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+}
+
+extension QuotesVC: UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView
+        {
+            case self.quotesFirstCollectionView:
+                return CGSize(width: (self.view.frame.width / 1.7) - 40, height: 280)
+            default:
+                return collectionViewLayout.collectionViewContentSize
+        }
     }
+     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch collectionView
+         {
+             case self.quotesFirstCollectionView:
+                 if UIDevice.modelName == "iPhone 8" {
+                     
+                     return UIEdgeInsets(top: 0, left: 18, bottom: 16, right: 18)
+                 } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
+                     
+                     return UIEdgeInsets(top: 0, left: 18, bottom: 16, right: 18)
+                 } else {
+                     
+                     return UIEdgeInsets(top: 0, left: 23, bottom: 16, right: 23)
+                 }
+             default:
+                 return UIEdgeInsets()
+         }
+     }
 }

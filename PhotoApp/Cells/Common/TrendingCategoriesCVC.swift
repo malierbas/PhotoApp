@@ -31,7 +31,7 @@ class TrendingCategoriesCVC: UICollectionViewCell {
             
             guard let canvasText = data.canvasTexts else { return }
             
-            self.productName.text = canvasText.count != 0 ? canvasText.first?.text : "Category item"
+//            self.productName.text = canvasText.count != 0 ? canvasText.first?.text : "Category item"
         }
     }
 }

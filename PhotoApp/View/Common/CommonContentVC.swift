@@ -18,6 +18,7 @@ class CommonContentVC: BaseVC {
     
     //: variables
     var categoryContentModel: CategoryContentModel!
+    var isPost: Bool? = false
     
     //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
@@ -25,11 +26,7 @@ class CommonContentVC: BaseVC {
         
         DispatchQueue.main.async {
             //: hide navibar
-            let label = UIBarButtonItem(customView: self.categoryNameLabel)
-            let button = UIBarButtonItem(customView: self.backButtonOutlet)
-            let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
-            self.navigationItem.leftBarButtonItems = [button,label]
-            self.navigationItem.rightBarButtonItem = tryForFree
+            self.setupNavigationView(isHidden: false)
             //: collection
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
@@ -63,11 +60,25 @@ class CommonContentVC: BaseVC {
     
     //MARK: - Public functions
     func calculateScrollHeight() -> CGFloat {
-        var height: CGFloat = 200
+        var height: CGFloat = 280
         
         height = height + collectionView.contentSize.height
         
         return height
+    }
+        
+    func setupNavigationView(isHidden: Bool? = false) {
+        //: subviews
+        let label = UIBarButtonItem(customView: self.categoryNameLabel)
+        let button = UIBarButtonItem(customView: self.backButtonOutlet)
+        let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
+        self.navigationItem.leftBarButtonItems = [button,label]
+        self.navigationItem.rightBarButtonItem = tryForFree
+        self.navigationController?.navigationBar.isHidden = isHidden ?? false
+        //: visible
+        self.backButtonOutlet.fadeIn()
+        self.tryForFreeButton.fadeIn()
+        self.categoryNameLabel.fadeIn()
     }
     
     //MARK: - Actions
@@ -88,6 +99,7 @@ extension CommonContentVC: UICollectionViewDelegate, UICollectionViewDataSource 
         {
             case self.collectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommonViewCVC", for: indexPath) as! CommonViewCVC
+                cell.contentViewHeight.constant = self.isPost! ? 160 : 280
                 cell.data = self.categoryContentModel.contents?[indexPath.row]
             
                 DispatchQueue.main.async {
@@ -100,9 +112,42 @@ extension CommonContentVC: UICollectionViewDelegate, UICollectionViewDataSource 
                         }
                     )
                 }
+                cell.addTransform()
                 return cell
             default:
                 return UICollectionViewCell()
         }
     }
+}
+
+extension CommonContentVC: UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView
+        {
+            case self.collectionView:
+                return CGSize(width: (self.view.frame.width / 1.7) - 40, height: isPost! ? 160 : 280)
+            default:
+                return collectionViewLayout.collectionViewContentSize
+        }
+    }
+     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch collectionView
+         {
+             case self.collectionView:
+                 if UIDevice.modelName == "iPhone 8" {
+                     
+                     return UIEdgeInsets(top: 0, left: 18, bottom: 16, right: 18)
+                 } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
+                     
+                     return UIEdgeInsets(top: 0, left: 18, bottom: 16, right: 18)
+                 } else {
+                     
+                     return UIEdgeInsets(top: 0, left: 23, bottom: 16, right: 23)
+                 }
+             default:
+                 return UIEdgeInsets()
+         }
+     }
 }

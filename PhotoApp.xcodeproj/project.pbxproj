@@ -13,8 +13,6 @@
 		4128B5A42763D24700EB99D3 /* CategoryContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A32763D24700EB99D3 /* CategoryContentModel.swift */; };
 		4128B5A82763D92500EB99D3 /* CommonViewCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A72763D92400EB99D3 /* CommonViewCVC.swift */; };
 		4128B5AA2763DA8500EB99D3 /* CommonContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A92763DA8500EB99D3 /* CommonContentVC.swift */; };
-		4128B5AC2763EC4700EB99D3 /* SearchSecondCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5AB2763EC4700EB99D3 /* SearchSecondCVC.swift */; };
-		4128B5AE2763EC8000EB99D3 /* SearchThirdCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5AD2763EC8000EB99D3 /* SearchThirdCVC.swift */; };
 		4128B5B12764C92400EB99D3 /* QuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5B02764C92400EB99D3 /* QuotesVC.swift */; };
 		4128B5B32764C9A400EB99D3 /* QuotesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5B22764C9A400EB99D3 /* QuotesCVC.swift */; };
 		4128B5B52764CD8B00EB99D3 /* QuotesSecondCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5B42764CD8B00EB99D3 /* QuotesSecondCVC.swift */; };
@@ -243,8 +241,6 @@
 		4128B5A32763D24700EB99D3 /* CategoryContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContentModel.swift; sourceTree = "<group>"; };
 		4128B5A72763D92400EB99D3 /* CommonViewCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCVC.swift; sourceTree = "<group>"; };
 		4128B5A92763DA8500EB99D3 /* CommonContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonContentVC.swift; sourceTree = "<group>"; };
-		4128B5AB2763EC4700EB99D3 /* SearchSecondCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSecondCVC.swift; sourceTree = "<group>"; };
-		4128B5AD2763EC8000EB99D3 /* SearchThirdCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThirdCVC.swift; sourceTree = "<group>"; };
 		4128B5B02764C92400EB99D3 /* QuotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesVC.swift; sourceTree = "<group>"; };
 		4128B5B22764C9A400EB99D3 /* QuotesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesCVC.swift; sourceTree = "<group>"; };
 		4128B5B42764CD8B00EB99D3 /* QuotesSecondCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesSecondCVC.swift; sourceTree = "<group>"; };
@@ -780,8 +776,6 @@
 				41643C3C2749712A00FF0EC6 /* EffectsCVC.swift */,
 				4128B5A12763B90B00EB99D3 /* SeeAllCategoriesCVC.swift */,
 				4128B5A72763D92400EB99D3 /* CommonViewCVC.swift */,
-				4128B5AB2763EC4700EB99D3 /* SearchSecondCVC.swift */,
-				4128B5AD2763EC8000EB99D3 /* SearchThirdCVC.swift */,
 				4128B5B22764C9A400EB99D3 /* QuotesCVC.swift */,
 				4128B5B42764CD8B00EB99D3 /* QuotesSecondCVC.swift */,
 				4128B5B62764CDAC00EB99D3 /* QuotesThirdCVC.swift */,
@@ -1277,7 +1271,6 @@
 				41A497F9275CD16D008EACDC /* BackgroundType.swift in Sources */,
 				4128B5A02763B3E300EB99D3 /* SeeAllCategoriesVC.swift in Sources */,
 				41A49828275CD6AD008EACDC /* ColorCollectionViewCell.swift in Sources */,
-				4128B5AE2763EC8000EB99D3 /* SearchThirdCVC.swift in Sources */,
 				41A49793275B9339008EACDC /* ZLPhotoConfiguration.swift in Sources */,
 				41A49743275B8825008EACDC /* Predictions.swift in Sources */,
 				41643C37274968BD00FF0EC6 /* SearchEffectVC.swift in Sources */,
@@ -1342,7 +1335,6 @@
 				41A4983C275CD7DF008EACDC /* ProductDiscountBadgeView.swift in Sources */,
 				41A497FB275CD17E008EACDC /* Coupon.swift in Sources */,
 				41A49830275CD742008EACDC /* LabelWithPadding.swift in Sources */,
-				4128B5AC2763EC4700EB99D3 /* SearchSecondCVC.swift in Sources */,
 				419F5A80274AAFA3006C6DB0 /* FavsVC.swift in Sources */,
 				418F1506276523890051882F /* SearchDetailCVC.swift in Sources */,
 				41A49783275B9186008EACDC /* ZLFetchImageOperation.swift in Sources */,
@@ -1546,7 +1538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PhotoApp/PhotoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.4;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_TEAM = 5FPDY5T8R9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoApp/Info.plist;
@@ -1583,7 +1575,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PhotoApp/PhotoAppRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.4;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_TEAM = 5FPDY5T8R9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoApp/Info.plist;

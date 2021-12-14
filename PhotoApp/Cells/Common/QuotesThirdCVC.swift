@@ -24,8 +24,7 @@ class QuotesThirdCVC: UICollectionViewCell {
         DispatchQueue.main.async {
 
             guard let data = self.data else { return }
-            self.contentImageView.image = data.templateCoverImage
-            self.contentImageView.layer.cornerRadius = 8
+            self.contentImageView.image = data.templateCoverImage 
         }
     }
 }

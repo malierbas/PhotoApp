@@ -10,9 +10,8 @@ import UIKit
 class SearchEffectVC: BaseVC {
     //MARK: - Properties
     //Views
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var categoryItemsCollectionView: UICollectionView!
-    @IBOutlet weak var secondCategoryItemsCollectionView: UICollectionView!
-    @IBOutlet weak var thirdCategoryItemsCollectionView: UICollectionView!
     @IBOutlet weak var tryForFreeButton: UIButton!
     
     //Variables
@@ -34,22 +33,14 @@ class SearchEffectVC: BaseVC {
             //: set model
             self.model = self.templateSections[0].templates?.shuffled()
             //: navigation bar
-            self.navigationController?.navigationBar.isHidden = true
+            self.setupNavigationView(isHidden: false)
             //: try for free btn
             self.tryForFreeButton.layer.cornerRadius = 14
             //: collectionViews
             self.categoryItemsCollectionView.delegate = self
             self.categoryItemsCollectionView.dataSource = self
-        
-            self.secondCategoryItemsCollectionView.delegate = self
-            self.secondCategoryItemsCollectionView.dataSource = self
-            
-            self.thirdCategoryItemsCollectionView.delegate = self
-            self.thirdCategoryItemsCollectionView.dataSource = self
             
             self.categoryItemsCollectionView.reloadData()
-            self.secondCategoryItemsCollectionView.reloadData()
-            self.thirdCategoryItemsCollectionView.reloadData()
         }
     }
     
@@ -70,20 +61,34 @@ class SearchEffectVC: BaseVC {
                 break
         }
     }
-    //MARK: - Public Functions 
+    //MARK: - Public Functions
+    //: navigation bar
+    func setupNavigationView(isHidden: Bool, isTranslucent: Bool? = true) {
+        //: right items
+        self.navigationController?.navigationBar.isHidden = isHidden
+        let tryForFreeBtn = UIBarButtonItem(customView: self.tryForFreeButton)
+        self.navigationItem.rightBarButtonItem = tryForFreeBtn
+        //: left item
+        let viewNameLabel = UIBarButtonItem(customView: self.titleLabel)
+        self.navigationItem.leftBarButtonItem = viewNameLabel
+        //: navigation view
+        self.navigationController?.navigationBar.isTranslucent = isTranslucent ?? false
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "ViewBlackBG")
+        //: visible
+        self.tryForFreeButton.fadeIn()
+        self.titleLabel.fadeIn()
+    }
+    
+    //MARK: - Action
 }
 
 
 //MARK: - CollectionView, Delegate & DataSource
-extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView
         {
             case self.categoryItemsCollectionView:
-                return self.model?.count ?? 0
-            case self.secondCategoryItemsCollectionView:
-                return self.model?.count ?? 0
-            case self.thirdCategoryItemsCollectionView:
                 return self.model?.count ?? 0
             default:
                 return 0
@@ -96,14 +101,7 @@ extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             case self.categoryItemsCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCVC", for: indexPath) as! SearchCVC
                 cell.data = self.model?[indexPath.row]
-                return cell
-            case self.secondCategoryItemsCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchSecondCVC", for: indexPath) as! SearchSecondCVC
-                cell.data = self.model?[indexPath.row]
-                return cell
-            case self.thirdCategoryItemsCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchThirdCVC", for: indexPath) as! SearchThirdCVC
-                cell.data = self.model?[indexPath.row]
+                cell.addTransform()
                 return cell
             default:
                 return UICollectionViewCell()
@@ -111,7 +109,20 @@ extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.destinationModel = CategoryContentModel(contentName: "Category \(indexPath.row)", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-        self.performSegue(withIdentifier: "searchCategoryDetail", sender: nil)
+//        self.destinationModel = CategoryContentModel(contentName: "Category \(indexPath.row)", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+//        self.performSegue(withIdentifier: "searchCategoryDetail", sender: nil)
     }
-} 
+}
+
+extension SearchEffectVC: UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView
+        {
+            case self.categoryItemsCollectionView:
+                return CGSize(width: 100, height: 138)
+            default:
+                return CGSize(width: 0, height: 0)
+        }
+    }
+}

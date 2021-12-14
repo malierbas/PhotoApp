@@ -25,7 +25,7 @@ class QuotesSecondCVC: UICollectionViewCell {
 
             guard let data = self.data else { return }
             self.contentImageView.image = data.templateCoverImage
-            self.contentImageView.layer.cornerRadius = 8
+            self.layer.cornerRadius = self.frame.width / 2
         }
     }
 }
