@@ -959,6 +959,18 @@ extension UIView {
         mask.path = path.cgPath
         self.layer.mask = mask
     }
+ 
+    func makeCircle()
+    {
+        if self.frame.height == self.frame.width
+        {
+            self.layer.cornerRadius = self.frame.height / 2
+        }
+        else
+        {
+            print("an error occured from circle view -> (width and height not equal)")
+        }
+    }
 }
 
 

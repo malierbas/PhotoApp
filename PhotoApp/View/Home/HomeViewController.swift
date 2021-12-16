@@ -115,6 +115,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         self.collectionCategoryCV.reloadData()
         self.templatesCollectionView.reloadData()
         self.highlightsCollectionView.reloadData()
+        
         //: scroll view
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.showsHorizontalScrollIndicator = false
@@ -134,6 +135,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.navigationController?.navigationBar.isHidden = true
         switch segue.identifier
         {
             case desctinationURL:
@@ -143,6 +145,14 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
                     viewC.isPost = self.isPost
                 }
                 break
+            
+            case "showAllCollections":
+                if let viewC = segue.destination as? AllHighlightsVC
+                {
+                    viewC.categoryContentModel = self.destinationModel
+                }
+                break
+            
             default:
                 break
         }
@@ -216,8 +226,8 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
                 self.animateStack(makeHidden: true, with: self.highlightsStack, reloadScroll: true)
             case "Post & Banner":
                 print("selected 3 = ", selectedItem ?? "nil")
-                self.animateStack(makeHidden: false, with: self.lovelyBlushStack, reloadScroll: true)
-                self.animateStack(makeHidden: false, with: self.modernistStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.lovelyBlushStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.modernistStack, reloadScroll: true)
                 self.animateStack(makeHidden: false, with: self.collectionStack, reloadScroll: true)
                 self.animateStack(makeHidden: true, with: self.highlightsStack, reloadScroll: true)
             case "Quote":
@@ -263,8 +273,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     
     @IBAction func showAllCategories(_ sender: Any) {
         DispatchQueue.main.async {
-            self.destinationModel = CategoryContentModel(contentName: "Popular", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-            self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+            self.tabBarController?.selectedIndex = 1
         }
     }
     
@@ -294,7 +303,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBAction func showAllCategoriesFifth(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Highlights", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-            self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
+            self.performSegue(withIdentifier: "showAllCollections", sender: nil)
         }
     }
 }
@@ -413,6 +422,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let editorViewController = EditorViewController()
                 editorViewController.template = data
                 self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+            
             case self.trendingCategoriesCollectionview:
                 DispatchQueue.main.async {
                     self.destinationModel = CategoryContentModel(contentName: "Popular", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
@@ -420,23 +430,26 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
             case self.allUserPhotosCollectionView:
              
-                DispatchQueue.main.async {
-                    self.destinationModel = CategoryContentModel(contentName: "Lovely", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
-                }
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             case self.modernistCollectionView:
             
-                DispatchQueue.main.async {
-                    self.destinationModel = CategoryContentModel(contentName: "Modernist", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
-                }
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             case self.collectionCategoryCV:
             
-                DispatchQueue.main.async {
-                    self.isPost = true
-                    self.destinationModel = CategoryContentModel(contentName: "Collection", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
-                }
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+            
             case self.templatesCollectionView:
                 DispatchQueue.main.async {
                     let cell = self.templatesCollectionView.cellForItem(at: indexPath) as! TemplatesCVC
@@ -458,10 +471,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             case self.highlightsCollectionView:
                 
-                DispatchQueue.main.async {
-                    self.destinationModel = CategoryContentModel(contentName: "Highlights", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-                    self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
-                }
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+            
             default:
                 break
         }

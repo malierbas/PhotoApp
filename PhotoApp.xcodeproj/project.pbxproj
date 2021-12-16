@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3C1981BB83C062FBBD353AF6 /* Pods_PhotoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F095ACE14B807C1DE5AE65D /* Pods_PhotoApp.framework */; };
-		4128B5A02763B3E300EB99D3 /* SeeAllCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B59F2763B3E300EB99D3 /* SeeAllCategoriesVC.swift */; };
-		4128B5A22763B90B00EB99D3 /* SeeAllCategoriesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A12763B90B00EB99D3 /* SeeAllCategoriesCVC.swift */; };
+		410391A4276BC1D500DA2091 /* AllHighlightSecondCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391A3276BC1D500DA2091 /* AllHighlightSecondCVC.swift */; };
+		410391A6276BC1FA00DA2091 /* AllHighlightThirtCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391A5276BC1FA00DA2091 /* AllHighlightThirtCVC.swift */; };
+		410391A8276BC21500DA2091 /* AllHighlightFourthCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391A7276BC21500DA2091 /* AllHighlightFourthCVC.swift */; };
+		410391AA276BC6D100DA2091 /* HighlightsDetailViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391A9276BC6D100DA2091 /* HighlightsDetailViewC.swift */; };
+		410391AC276BCB2F00DA2091 /* HighlightDetailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391AB276BCB2F00DA2091 /* HighlightDetailCVC.swift */; };
+		4128B5A02763B3E300EB99D3 /* AllHighlightsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B59F2763B3E300EB99D3 /* AllHighlightsVC.swift */; };
+		4128B5A22763B90B00EB99D3 /* AllHighlightCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A12763B90B00EB99D3 /* AllHighlightCVC.swift */; };
 		4128B5A42763D24700EB99D3 /* CategoryContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A32763D24700EB99D3 /* CategoryContentModel.swift */; };
 		4128B5A82763D92500EB99D3 /* CommonViewCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A72763D92400EB99D3 /* CommonViewCVC.swift */; };
 		4128B5AA2763DA8500EB99D3 /* CommonContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5A92763DA8500EB99D3 /* CommonContentVC.swift */; };
@@ -32,7 +37,6 @@
 		4157E843275CF3D80010FBFB /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E842275CF3D80010FBFB /* CustomAlertViewController.swift */; };
 		4157E845275CF3EB0010FBFB /* SubscriptionGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E844275CF3EB0010FBFB /* SubscriptionGiftViewController.swift */; };
 		415DF50F27663B1400CB68B7 /* TemplatesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415DF50E27663B1400CB68B7 /* TemplatesCVC.swift */; };
-		415DF512276653EE00CB68B7 /* CNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415DF511276653EE00CB68B7 /* CNavigationController.swift */; };
 		41643C352749517D00FF0EC6 /* SuggestionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41643C342749517D00FF0EC6 /* SuggestionsModel.swift */; };
 		41643C37274968BD00FF0EC6 /* SearchEffectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41643C36274968BD00FF0EC6 /* SearchEffectVC.swift */; };
 		41643C392749697C00FF0EC6 /* SearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41643C382749697C00FF0EC6 /* SearchCVC.swift */; };
@@ -237,8 +241,13 @@
 
 /* Begin PBXFileReference section */
 		1F095ACE14B807C1DE5AE65D /* Pods_PhotoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4128B59F2763B3E300EB99D3 /* SeeAllCategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllCategoriesVC.swift; sourceTree = "<group>"; };
-		4128B5A12763B90B00EB99D3 /* SeeAllCategoriesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllCategoriesCVC.swift; sourceTree = "<group>"; };
+		410391A3276BC1D500DA2091 /* AllHighlightSecondCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightSecondCVC.swift; sourceTree = "<group>"; };
+		410391A5276BC1FA00DA2091 /* AllHighlightThirtCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightThirtCVC.swift; sourceTree = "<group>"; };
+		410391A7276BC21500DA2091 /* AllHighlightFourthCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightFourthCVC.swift; sourceTree = "<group>"; };
+		410391A9276BC6D100DA2091 /* HighlightsDetailViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsDetailViewC.swift; sourceTree = "<group>"; };
+		410391AB276BCB2F00DA2091 /* HighlightDetailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightDetailCVC.swift; sourceTree = "<group>"; };
+		4128B59F2763B3E300EB99D3 /* AllHighlightsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightsVC.swift; sourceTree = "<group>"; };
+		4128B5A12763B90B00EB99D3 /* AllHighlightCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightCVC.swift; sourceTree = "<group>"; };
 		4128B5A32763D24700EB99D3 /* CategoryContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContentModel.swift; sourceTree = "<group>"; };
 		4128B5A72763D92400EB99D3 /* CommonViewCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCVC.swift; sourceTree = "<group>"; };
 		4128B5A92763DA8500EB99D3 /* CommonContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonContentVC.swift; sourceTree = "<group>"; };
@@ -261,7 +270,6 @@
 		4157E842275CF3D80010FBFB /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		4157E844275CF3EB0010FBFB /* SubscriptionGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionGiftViewController.swift; sourceTree = "<group>"; };
 		415DF50E27663B1400CB68B7 /* TemplatesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesCVC.swift; sourceTree = "<group>"; };
-		415DF511276653EE00CB68B7 /* CNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNavigationController.swift; sourceTree = "<group>"; };
 		41643C342749517D00FF0EC6 /* SuggestionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsModel.swift; sourceTree = "<group>"; };
 		41643C36274968BD00FF0EC6 /* SearchEffectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEffectVC.swift; sourceTree = "<group>"; };
 		41643C382749697C00FF0EC6 /* SearchCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCVC.swift; sourceTree = "<group>"; };
@@ -526,14 +534,6 @@
 			path = IAP;
 			sourceTree = "<group>";
 		};
-		415DF510276653CC00CB68B7 /* NavigationControllers */ = {
-			isa = PBXGroup;
-			children = (
-				415DF511276653EE00CB68B7 /* CNavigationController.swift */,
-			);
-			path = NavigationControllers;
-			sourceTree = "<group>";
-		};
 		41643C3E274A6DB100FF0EC6 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,7 +549,8 @@
 			isa = PBXGroup;
 			children = (
 				417E1C5E273F23D3004D6457 /* HomeViewController.swift */,
-				4128B59F2763B3E300EB99D3 /* SeeAllCategoriesVC.swift */,
+				4128B59F2763B3E300EB99D3 /* AllHighlightsVC.swift */,
+				410391A9276BC6D100DA2091 /* HighlightsDetailViewC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -666,7 +667,6 @@
 		417E1C6F273F23F7004D6457 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				415DF510276653CC00CB68B7 /* NavigationControllers */,
 				4128B5AF2764C90C00EB99D3 /* Quotes */,
 				4157E826275CEF5E0010FBFB /* Controllers */,
 				41A497D7275B9F85008EACDC /* BottomPopupVCs */,
@@ -777,7 +777,7 @@
 				41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */,
 				41643C382749697C00FF0EC6 /* SearchCVC.swift */,
 				41643C3C2749712A00FF0EC6 /* EffectsCVC.swift */,
-				4128B5A12763B90B00EB99D3 /* SeeAllCategoriesCVC.swift */,
+				4128B5A12763B90B00EB99D3 /* AllHighlightCVC.swift */,
 				4128B5A72763D92400EB99D3 /* CommonViewCVC.swift */,
 				4128B5B22764C9A400EB99D3 /* QuotesCVC.swift */,
 				4128B5B42764CD8B00EB99D3 /* QuotesSecondCVC.swift */,
@@ -785,6 +785,10 @@
 				418F1505276523890051882F /* SearchDetailCVC.swift */,
 				415DF50E27663B1400CB68B7 /* TemplatesCVC.swift */,
 				41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */,
+				410391A3276BC1D500DA2091 /* AllHighlightSecondCVC.swift */,
+				410391A5276BC1FA00DA2091 /* AllHighlightThirtCVC.swift */,
+				410391A7276BC21500DA2091 /* AllHighlightFourthCVC.swift */,
+				410391AB276BCB2F00DA2091 /* HighlightDetailCVC.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1241,12 +1245,12 @@
 				41A49824275CD64F008EACDC /* StickerViewEditModeView.swift in Sources */,
 				41A4977D275B90BB008EACDC /* ZLEditImageViewController.swift in Sources */,
 				41A49785275B91AE008EACDC /* ZLFilter.swift in Sources */,
+				410391A8276BC21500DA2091 /* AllHighlightFourthCVC.swift in Sources */,
 				41A4980E275CD52C008EACDC /* ImageCollectionViewCell.swift in Sources */,
 				4181E79B273FFE4A00359964 /* BaseVC.swift in Sources */,
 				4157E843275CF3D80010FBFB /* CustomAlertViewController.swift in Sources */,
 				41A497A9275B9659008EACDC /* ZLTextStickerView.swift in Sources */,
 				41A49814275CD58F008EACDC /* EditableImageView.swift in Sources */,
-				415DF512276653EE00CB68B7 /* CNavigationController.swift in Sources */,
 				4192BC71274194E000FE231A /* CameraViewController.swift in Sources */,
 				41A497A3275B95F5008EACDC /* ZLPhotoPreviewSheet.swift in Sources */,
 				41E37CCA2767DC8A00B116F3 /* HomeHighlightsCell.swift in Sources */,
@@ -1257,6 +1261,7 @@
 				41643C3D2749712A00FF0EC6 /* EffectsCVC.swift in Sources */,
 				41A49789275B91E8008EACDC /* ZLImageNavController.swift in Sources */,
 				4192BC772741A20400FE231A /* TakePhotoViewController.swift in Sources */,
+				410391A4276BC1D500DA2091 /* AllHighlightSecondCVC.swift in Sources */,
 				41A4976B275B8DE2008EACDC /* ZLAddPhotoCell.swift in Sources */,
 				41A49769275B8CF3008EACDC /* UIControl+ZLPhotoBrowser.swift in Sources */,
 				41A4974B275B88EA008EACDC /* MLMultiArray+Helpers.swift in Sources */,
@@ -1272,7 +1277,7 @@
 				41A4983A275CD7BD008EACDC /* InAppPurchaseProductSelectionView.swift in Sources */,
 				41643C352749517D00FF0EC6 /* SuggestionsModel.swift in Sources */,
 				41A497F9275CD16D008EACDC /* BackgroundType.swift in Sources */,
-				4128B5A02763B3E300EB99D3 /* SeeAllCategoriesVC.swift in Sources */,
+				4128B5A02763B3E300EB99D3 /* AllHighlightsVC.swift in Sources */,
 				41A49828275CD6AD008EACDC /* ColorCollectionViewCell.swift in Sources */,
 				41A49793275B9339008EACDC /* ZLPhotoConfiguration.swift in Sources */,
 				41A49743275B8825008EACDC /* Predictions.swift in Sources */,
@@ -1329,6 +1334,7 @@
 				4128B5AA2763DA8500EB99D3 /* CommonContentVC.swift in Sources */,
 				4157E83B275CF36A0010FBFB /* WebViewController.swift in Sources */,
 				417A921D2740222900C4DDEA /* IKScrollView.swift in Sources */,
+				410391A6276BC1FA00DA2091 /* AllHighlightThirtCVC.swift in Sources */,
 				41EB980F2745796600794586 /* CategoryDetailVC.swift in Sources */,
 				4157E833275CF2E20010FBFB /* ShareViewController.swift in Sources */,
 				4157E841275CF3C70010FBFB /* StickerSelectionViewController.swift in Sources */,
@@ -1343,6 +1349,7 @@
 				41A49783275B9186008EACDC /* ZLFetchImageOperation.swift in Sources */,
 				4128B5B12764C92400EB99D3 /* QuotesVC.swift in Sources */,
 				41A497A1275B95DC008EACDC /* ZLPhotoPreviewPopInteractiveTransition.swift in Sources */,
+				410391AA276BC6D100DA2091 /* HighlightsDetailViewC.swift in Sources */,
 				41A497F7275CD154008EACDC /* Sticker.swift in Sources */,
 				41A49791275B929A008EACDC /* ZLLanguageDefine.swift in Sources */,
 				41A49816275CD59E008EACDC /* FreeBadgeView.swift in Sources */,
@@ -1356,6 +1363,7 @@
 				41A497AD275B968F008EACDC /* ZLThumbnailViewController.swift in Sources */,
 				41EB981127457D2E00794586 /* CategoriesDetailCVC.swift in Sources */,
 				41A4981A275CD5DF008EACDC /* EditableImageEditModeView.swift in Sources */,
+				410391AC276BCB2F00DA2091 /* HighlightDetailCVC.swift in Sources */,
 				41A4979D275B9588008EACDC /* ZLPhotoPreviewCell.swift in Sources */,
 				41A49838275CD7A8008EACDC /* PlayerView.swift in Sources */,
 				41A2481F27403B5500BC90CC /* TrendingCategoriesCVC.swift in Sources */,
@@ -1387,7 +1395,7 @@
 				41FA45F4276A93D7000208EA /* PaywallViewController.swift in Sources */,
 				41A49745275B8845008EACDC /* UIImage+Extensions.swift in Sources */,
 				41A4980A275CD505008EACDC /* TableRowButton.swift in Sources */,
-				4128B5A22763B90B00EB99D3 /* SeeAllCategoriesCVC.swift in Sources */,
+				4128B5A22763B90B00EB99D3 /* AllHighlightCVC.swift in Sources */,
 				4192BC6A274159C800FE231A /* UIDevice.swift in Sources */,
 				41A497F5275CD13F008EACDC /* AnalyticsEvent.swift in Sources */,
 				41643C392749697C00FF0EC6 /* SearchCVC.swift in Sources */,

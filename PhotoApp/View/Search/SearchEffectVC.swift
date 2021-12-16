@@ -54,7 +54,7 @@ class SearchEffectVC: BaseVC {
         switch segue.identifier
         {
             case "showAllCollections":
-                if let viewC = segue.destination as? SeeAllCategoriesVC
+                if let viewC = segue.destination as? AllHighlightsVC
                 {
                     viewC.categoryContentModel = self.destinationModel
                 }

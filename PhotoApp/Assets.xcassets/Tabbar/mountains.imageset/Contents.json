@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "mountains.png",
+      "filename" : "homeICon1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Shape-2.png",
+      "filename" : "homeIcon2X.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Shape-3.png",
+      "filename" : "homeIcon3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
