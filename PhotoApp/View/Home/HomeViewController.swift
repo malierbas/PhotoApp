@@ -73,6 +73,15 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     //MARK: - LifeCycle
     override func setupView() {
         super.setupView()
+        //: add transform
+        self.scrollView.addTransform()
+        self.mainStackView.addTransform()
+        self.lovelyBlushStack.addTransform()
+        self.modernistStack.addTransform()
+        self.collectionStack.addTransform()
+        self.highlightsStack.addTransform()
+        self.tryForFreeButton.addTransform()
+        self.nightLabel.addTransform()
         //: navigation bar
         self.setupNavigationView(isHidden: false)
         //: try for free 

@@ -30,6 +30,8 @@ class SearchEffectVC: BaseVC {
         super.setupView()
     
         DispatchQueue.main.async {
+            //: add transform
+            self.view.addTransform()
             //: set model
             self.model = self.templateSections[0].templates?.shuffled()
             //: navigation bar

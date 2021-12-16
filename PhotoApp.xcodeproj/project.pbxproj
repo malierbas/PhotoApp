@@ -201,6 +201,7 @@
 		41E37CCA2767DC8A00B116F3 /* HomeHighlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */; };
 		41EB980F2745796600794586 /* CategoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB980E2745796600794586 /* CategoryDetailVC.swift */; };
 		41EB981127457D2E00794586 /* CategoriesDetailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */; };
+		41FA45F4276A93D7000208EA /* PaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA45F3276A93D7000208EA /* PaywallViewController.swift */; };
 		41FA51BF275245F000C78E82 /* ImageStickerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA51BE275245F000C78E82 /* ImageStickerContainerView.swift */; };
 		E66E82FA27609D1D009A4758 /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E66E82DE276097F2009A4758 /* AmaticSC-Regular.ttf */; };
 		E66E82FB27609D1D009A4758 /* Amiri-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E66E82E9276097F7009A4758 /* Amiri-Regular.ttf */; };
@@ -431,6 +432,7 @@
 		41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHighlightsCell.swift; sourceTree = "<group>"; };
 		41EB980E2745796600794586 /* CategoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailVC.swift; sourceTree = "<group>"; };
 		41EB981027457D2E00794586 /* CategoriesDetailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCVC.swift; sourceTree = "<group>"; };
+		41FA45F3276A93D7000208EA /* PaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewController.swift; sourceTree = "<group>"; };
 		41FA51BE275245F000C78E82 /* ImageStickerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStickerContainerView.swift; sourceTree = "<group>"; };
 		4DA4DD5F1B799C1AF2182DC0 /* Pods-PhotoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoApp.debug.xcconfig"; path = "Target Support Files/Pods-PhotoApp/Pods-PhotoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5F63409F5D09A1B852D3628F /* Pods-PhotoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoApp.release.xcconfig"; path = "Target Support Files/Pods-PhotoApp/Pods-PhotoApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				419F5A7D274AAF43006C6DB0 /* ContactUSVC.swift */,
 				419F5A7F274AAFA3006C6DB0 /* FavsVC.swift */,
 				4128B5A92763DA8500EB99D3 /* CommonContentVC.swift */,
+				41FA45F3276A93D7000208EA /* PaywallViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1381,6 +1384,7 @@
 				41A49781275B9163008EACDC /* ZLEmbedAlbumListView.swift in Sources */,
 				41A49804275CD47A008EACDC /* BackgroundSelectionView.swift in Sources */,
 				41A497F1275CD0FC008EACDC /* Template.swift in Sources */,
+				41FA45F4276A93D7000208EA /* PaywallViewController.swift in Sources */,
 				41A49745275B8845008EACDC /* UIImage+Extensions.swift in Sources */,
 				41A4980A275CD505008EACDC /* TableRowButton.swift in Sources */,
 				4128B5A22763B90B00EB99D3 /* SeeAllCategoriesCVC.swift in Sources */,

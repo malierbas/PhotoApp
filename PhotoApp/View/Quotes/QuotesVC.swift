@@ -34,6 +34,10 @@ class QuotesVC: BaseVC {
         super.setupView()
         
         DispatchQueue.main.async {
+            //: transform
+            self.scrollView.addTransform()
+            self.quotesFirstCollectionView.addTransform()
+            self.topTitle.addTransform()
             //: navigation bar
             self.setupNavigationView(isHidden: false)
             //: collection views

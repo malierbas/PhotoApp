@@ -135,7 +135,6 @@
         <!--Search EffectVC-->
         <scene sceneID="aXS-eF-Ucc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oVc-Ku-d3h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="deA-BB-OTL" customClass="SearchEffectVC" customModule="PhotoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LMc-6q-HBG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -251,6 +250,7 @@
                         <segue destination="0bL-8j-nF8" kind="show" identifier="searchCategoryDetail" id="owE-D4-gPy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oVc-Ku-d3h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2230.434782608696" y="-619.41964285714278"/>
         </scene>
@@ -637,6 +637,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaF-Op-eoR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3993" y="907"/>
+        </scene>
+        <!--Paywall View Controller-->
+        <scene sceneID="iLs-kQ-cxE">
+            <objects>
+                <viewController storyboardIdentifier="PaywallViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T0n-nq-yjP" customClass="PaywallViewController" customModule="PhotoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oir-HZ-2T7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paywallBG" translatesAutoresizingMaskIntoConstraints="NO" id="HhR-Ti-M4Z">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVy-ps-mIy">
+                                <rect key="frame" x="0.0" y="358" width="414" height="538"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="538" id="nlh-cm-bLI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rqf-jc-UVL"/>
+                        <color key="backgroundColor" name="ViewBlackBG"/>
+                        <constraints>
+                            <constraint firstItem="HhR-Ti-M4Z" firstAttribute="trailing" secondItem="rqf-jc-UVL" secondAttribute="trailing" id="2bG-Dk-i5l"/>
+                            <constraint firstItem="HhR-Ti-M4Z" firstAttribute="leading" secondItem="rqf-jc-UVL" secondAttribute="leading" id="YlW-54-LhB"/>
+                            <constraint firstItem="gVy-ps-mIy" firstAttribute="height" secondItem="oir-HZ-2T7" secondAttribute="height" multiplier="0.600446" id="gnh-0X-rCw"/>
+                            <constraint firstAttribute="bottom" secondItem="gVy-ps-mIy" secondAttribute="bottom" id="jgb-2d-ok4"/>
+                            <constraint firstItem="gVy-ps-mIy" firstAttribute="leading" secondItem="rqf-jc-UVL" secondAttribute="leading" id="p9d-eF-xmD"/>
+                            <constraint firstItem="HhR-Ti-M4Z" firstAttribute="height" secondItem="oir-HZ-2T7" secondAttribute="height" multiplier="0.8" id="q2n-Hu-9ba"/>
+                            <constraint firstItem="rqf-jc-UVL" firstAttribute="trailing" secondItem="gVy-ps-mIy" secondAttribute="trailing" id="t6S-iO-CZ8"/>
+                            <constraint firstItem="HhR-Ti-M4Z" firstAttribute="top" secondItem="oir-HZ-2T7" secondAttribute="top" id="uLi-vo-IRE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomView" destination="gVy-ps-mIy" id="dIc-Ao-G7A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgB-Po-uED" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2055.072463768116" y="375.66964285714283"/>
         </scene>
         <!-- -->
         <scene sceneID="MWW-RS-5jU">
@@ -2637,7 +2677,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7kG-N9-ukA"/>
+        <segue reference="3WY-DY-Csb"/>
         <segue reference="EDW-bY-NES"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -2650,6 +2690,7 @@
         <image name="makePhotoIcon" width="65" height="65"/>
         <image name="message" width="20" height="18"/>
         <image name="mountains" width="20.5" height="18"/>
+        <image name="paywallBG" width="562.5" height="921"/>
         <image name="returnCameraIcon" width="20" height="22.5"/>
         <image name="rozet" width="40" height="52.5"/>
         <image name="rozet1" width="16" height="16"/>

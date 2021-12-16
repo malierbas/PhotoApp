@@ -108,16 +108,7 @@ extension UICollectionViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)
     }
-    
-    func addTransform() {
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0)
-        self.layer.transform = rotationTransform
-        self.alpha = 0
-        UIView.animate(withDuration: 0.75) {
-            self.layer.transform = CATransform3DIdentity
-            self.alpha = 1.0
-        }
-    }
+     
 }
 
 extension UITableView {
@@ -329,6 +320,17 @@ extension UIView {
         gradient.startPoint = orientation.startPoint
         gradient.endPoint = orientation.endPoint
         self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    //MARK: - Add Transform
+    func addTransform() {
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0)
+        self.layer.transform = rotationTransform
+        self.alpha = 0
+        UIView.animate(withDuration: 0.75) {
+            self.layer.transform = CATransform3DIdentity
+            self.alpha = 1.0
+        }
     }
 }
 
@@ -891,6 +893,7 @@ public extension UIView {
         blurBackground.fillSuperview()
         return blurBackground
     }
+    
 }
 
 extension Data {
