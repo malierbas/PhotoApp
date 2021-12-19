@@ -19,34 +19,35 @@ class CommonContentVC: BaseVC {
     //: variables
     var categoryContentModel: CategoryContentModel!
     var isPost: Bool? = false
+    var isLoaded = false
     
     //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        DispatchQueue.main.async {
-            //: hide navibar
-            self.setupNavigationView(isHidden: false)
-            //: collection
-            self.collectionView.delegate = self
-            self.collectionView.dataSource = self
-            self.collectionView.reloadData()
-            //: try for free btn
-            self.tryForFreeButton.layer.cornerRadius = 14
-            //: scroll view
-            self.scrollView.showsVerticalScrollIndicator = false
-            self.scrollView.showsHorizontalScrollIndicator = false
-            //: setupView
-            guard let categoryModel = self.categoryContentModel else { return }
-            self.categoryNameLabel.text = categoryModel.contentName ?? "All Categories"
-        }
     }
     
     override func setupView() {
         super.setupView()
         
+        
         DispatchQueue.main.async {
-            
+            //: hide&setup navibar
+            self.setupNavigationView(isHidden: true)
+            //: collection
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
+            self.collectionView.reloadData()
+            self.collectionView.setContentOffset(CGPoint(x: 0, y: 200), animated: true)
+            self.collectionView.fadeOut()
+            //: try for free btn
+            self.tryForFreeButton.layer.cornerRadius = 14
+            //: scroll view
+            self.scrollView.showsVerticalScrollIndicator = false
+            self.scrollView.showsHorizontalScrollIndicator = false
+            self.scrollView.isScrollEnabled = false
+            //: setupView
+            guard let categoryModel = self.categoryContentModel else { return }
+            self.categoryNameLabel.text = categoryModel.contentName ?? "All Categories"
         }
     }
     
@@ -69,16 +70,22 @@ class CommonContentVC: BaseVC {
         
     func setupNavigationView(isHidden: Bool? = false) {
         //: subviews
-        let label = UIBarButtonItem(customView: self.categoryNameLabel)
-        let button = UIBarButtonItem(customView: self.backButtonOutlet)
-        let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
-        self.navigationItem.leftBarButtonItems = [button,label]
-        self.navigationItem.rightBarButtonItem = tryForFree
-        self.navigationController?.navigationBar.isHidden = isHidden ?? false
-        //: visible
-        self.backButtonOutlet.fadeIn()
-        self.tryForFreeButton.fadeIn()
-        self.categoryNameLabel.fadeIn()
+        if !isHidden!
+        {
+            let label = UIBarButtonItem(customView: self.categoryNameLabel)
+            let button = UIBarButtonItem(customView: self.backButtonOutlet)
+            let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
+            self.navigationItem.leftBarButtonItems = [button,label]
+            self.navigationItem.rightBarButtonItem = tryForFree
+            //: visible
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.backButtonOutlet.fadeIn()
+                self.tryForFreeButton.fadeIn()
+                self.categoryNameLabel.fadeIn()
+            }
+        }
+        //: set navigation bar hidden
+        self.navigationController?.navigationBar.isHidden = isHidden ?? true
     }
     
     //MARK: - Actions
@@ -101,22 +108,28 @@ extension CommonContentVC: UICollectionViewDelegate, UICollectionViewDataSource 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommonViewCVC", for: indexPath) as! CommonViewCVC
                 cell.contentViewHeight.constant = self.isPost! ? 160 : 280
                 cell.data = self.categoryContentModel.contents?[indexPath.row]
-            
-                DispatchQueue.main.async {
-                    self.scrollView.sizeMatching = .Dynamic(
-                        width: {
-                            self.view.frame.width
-                        },
-                        height: {
-                            self.calculateScrollHeight()
-                        }
-                    )
-                }
                 cell.addTransform()
+            
+                if indexPath.row > 3 && !self.isLoaded
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                        self.collectionView.fadeIn()
+                        self.isLoaded = true
+                    }
+                }
                 return cell
             default:
                 return UICollectionViewCell()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let data = self.categoryContentModel.contents?[indexPath.row] else { return }
+        UIImpactFeedbackGenerator().impactOccurred()
+        let editorViewController = EditorViewController()
+        editorViewController.template = data
+        self.presentInFullScreen(editorViewController, animated: true, completion: nil)
     }
 }
 
@@ -126,7 +139,7 @@ extension CommonContentVC: UICollectionViewDelegateFlowLayout
         switch collectionView
         {
             case self.collectionView:
-                return CGSize(width: (self.view.frame.width / 1.7) - 40, height: isPost! ? 160 : 280)
+                return CGSize(width: (self.view.frame.width / 1.7) - 50, height: isPost! ? 160 : 280)
             default:
                 return collectionViewLayout.collectionViewContentSize
         }

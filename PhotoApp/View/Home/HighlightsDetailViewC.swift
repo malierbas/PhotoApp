@@ -25,12 +25,9 @@ class HighlightsDetailViewC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.main.async {
-            //: transform
-            self.view.addTransform()
-            self.scrollView.addTransform()
+        DispatchQueue.main.async { 
             //: hide navibar
-            self.setupNavigationView(isHidden: false)
+            self.setupNavigationView(isHidden: true)
             //: collection
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
@@ -74,16 +71,21 @@ class HighlightsDetailViewC: BaseVC {
         
     func setupNavigationView(isHidden: Bool? = false) {
         //: subviews
-        let label = UIBarButtonItem(customView: self.categoryNameLabel)
-        let button = UIBarButtonItem(customView: self.backButtonOutlet)
-        let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
-        self.navigationItem.leftBarButtonItems = [button,label]
-        self.navigationItem.rightBarButtonItem = tryForFree
-        self.navigationController?.navigationBar.isHidden = isHidden ?? false
-        //: visible
-        self.backButtonOutlet.fadeIn()
-        self.tryForFreeButton.fadeIn()
-        self.categoryNameLabel.fadeIn()
+        if !isHidden!
+        {
+            let label = UIBarButtonItem(customView: self.categoryNameLabel)
+            let button = UIBarButtonItem(customView: self.backButtonOutlet)
+            let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
+            self.navigationItem.leftBarButtonItems = [button,label]
+            self.navigationItem.rightBarButtonItem = tryForFree
+            //: visible
+            self.backButtonOutlet.fadeIn()
+            self.tryForFreeButton.fadeIn()
+            self.categoryNameLabel.fadeIn()
+        }
+        
+        //: set navigation bar hidden
+        self.navigationController?.navigationBar.isHidden = isHidden ?? true
     }
     
     //MARK: - Actions

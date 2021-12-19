@@ -22,6 +22,10 @@
 		4128B5B32764C9A400EB99D3 /* QuotesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5B22764C9A400EB99D3 /* QuotesCVC.swift */; };
 		4128B5B52764CD8B00EB99D3 /* QuotesSecondCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5B42764CD8B00EB99D3 /* QuotesSecondCVC.swift */; };
 		4128B5B72764CDAC00EB99D3 /* QuotesThirdCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128B5B62764CDAC00EB99D3 /* QuotesThirdCVC.swift */; };
+		4130EE51276F823A0021E5F8 /* SearchPostCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130EE50276F823A0021E5F8 /* SearchPostCVC.swift */; };
+		4130EE53276F829C0021E5F8 /* SearchStoryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130EE52276F829C0021E5F8 /* SearchStoryCVC.swift */; };
+		4130EE55276F82B60021E5F8 /* SearchHighlightsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130EE54276F82B60021E5F8 /* SearchHighlightsCVC.swift */; };
+		4142A01C276D145300C94B0C /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4142A01B276D145300C94B0C /* ZoomAndSnapFlowLayout.swift */; };
 		4157E829275CEFC50010FBFB /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E828275CEFC50010FBFB /* InAppPurchaseManager.swift */; };
 		4157E82B275CF0670010FBFB /* BackgroundSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E82A275CF0670010FBFB /* BackgroundSelectionViewController.swift */; };
 		4157E82D275CF0880010FBFB /* InteractivePopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E82C275CF0880010FBFB /* InteractivePopNavigationController.swift */; };
@@ -255,6 +259,10 @@
 		4128B5B22764C9A400EB99D3 /* QuotesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesCVC.swift; sourceTree = "<group>"; };
 		4128B5B42764CD8B00EB99D3 /* QuotesSecondCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesSecondCVC.swift; sourceTree = "<group>"; };
 		4128B5B62764CDAC00EB99D3 /* QuotesThirdCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesThirdCVC.swift; sourceTree = "<group>"; };
+		4130EE50276F823A0021E5F8 /* SearchPostCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostCVC.swift; sourceTree = "<group>"; };
+		4130EE52276F829C0021E5F8 /* SearchStoryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoryCVC.swift; sourceTree = "<group>"; };
+		4130EE54276F82B60021E5F8 /* SearchHighlightsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHighlightsCVC.swift; sourceTree = "<group>"; };
+		4142A01B276D145300C94B0C /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		4157E828275CEFC50010FBFB /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		4157E82A275CF0670010FBFB /* BackgroundSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSelectionViewController.swift; sourceTree = "<group>"; };
 		4157E82C275CF0880010FBFB /* InteractivePopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopNavigationController.swift; sourceTree = "<group>"; };
@@ -498,6 +506,14 @@
 			path = Quotes;
 			sourceTree = "<group>";
 		};
+		4142A01A276D143200C94B0C /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				4142A01B276D145300C94B0C /* ZoomAndSnapFlowLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		4156C4342740216100D084E9 /* ScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +719,7 @@
 		417E1C71273F2407004D6457 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				4142A01A276D143200C94B0C /* Layout */,
 				416EC4B62752C7C300247932 /* DeepLav */,
 				41D3FCF7275015A20085A99F /* Common */,
 				419F5A75274A9176006C6DB0 /* ShareItems */,
@@ -789,6 +806,9 @@
 				410391A5276BC1FA00DA2091 /* AllHighlightThirtCVC.swift */,
 				410391A7276BC21500DA2091 /* AllHighlightFourthCVC.swift */,
 				410391AB276BCB2F00DA2091 /* HighlightDetailCVC.swift */,
+				4130EE50276F823A0021E5F8 /* SearchPostCVC.swift */,
+				4130EE52276F829C0021E5F8 /* SearchStoryCVC.swift */,
+				4130EE54276F82B60021E5F8 /* SearchHighlightsCVC.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1291,20 +1311,24 @@
 				41A4974D275B8965008EACDC /* CVPixelBuffer+Helpers.swift in Sources */,
 				41A497EF275CD0E0008EACDC /* TemplateSection.swift in Sources */,
 				41FA51BF275245F000C78E82 /* ImageStickerContainerView.swift in Sources */,
+				4142A01C276D145300C94B0C /* ZoomAndSnapFlowLayout.swift in Sources */,
 				4157E831275CF2A80010FBFB /* EditorViewController.swift in Sources */,
 				4128B5A82763D92500EB99D3 /* CommonViewCVC.swift in Sources */,
 				41A49846275CDB0E008EACDC /* LocalNotificationManager.swift in Sources */,
+				4130EE51276F823A0021E5F8 /* SearchPostCVC.swift in Sources */,
 				41A497FF275CD1A6008EACDC /* Constants.swift in Sources */,
 				41643C53274A7AD000FF0EC6 /* Switcher.swift in Sources */,
 				41A49812275CD54B008EACDC /* CanvasView.swift in Sources */,
 				41A49799275B9542008EACDC /* ZLPhotoModel.swift in Sources */,
 				41A49765275B8C7D008EACDC /* String+ZLPhotoBrowser.swift in Sources */,
 				41A49797275B9519008EACDC /* ZLPhotoManager.swift in Sources */,
+				4130EE55276F82B60021E5F8 /* SearchHighlightsCVC.swift in Sources */,
 				41A2481D274038F600BC90CC /* TopImageCVC.swift in Sources */,
 				41A4978F275B9278008EACDC /* ZLInputTextViewController.swift in Sources */,
 				41A49749275B88CF008EACDC /* UIImage+RawBytes.swift in Sources */,
 				41A497B1275B96D7008EACDC /* ZLWeakProxy.swift in Sources */,
 				41A4981C275CD5F6008EACDC /* BackgroundCollectionViewCell.swift in Sources */,
+				4130EE53276F829C0021E5F8 /* SearchStoryCVC.swift in Sources */,
 				4157E83D275CF3800010FBFB /* PreviewViewController.swift in Sources */,
 				41A49808275CD4B3008EACDC /* BottomControlView.swift in Sources */,
 				41A49836275CD781008EACDC /* ConfettiView.swift in Sources */,

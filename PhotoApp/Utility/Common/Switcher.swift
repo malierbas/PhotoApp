@@ -15,8 +15,8 @@ class Switcher {
         var rootVC : UIViewController?
         
         if(!LocalStorageManager.shared.isUserLoggedIn){
-            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingMainVC") as! OnboardingMainVC
-            
+//            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingMainVC") as! OnboardingMainVC
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarViewController") as! TabbarViewController
             LocalStorageManager.shared.isUserLoggedIn = true
             LocalStorageManager.shared.token = UUID().uuidString
             print("global user token = ", LocalStorageManager.shared.token)

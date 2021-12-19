@@ -17,7 +17,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     }()
     
     private lazy var backButton: UIButton = {
-        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 75))
         btn.backgroundColor = .clear
         btn.setImage(UIImage(named: "backButtonWhite"), for: .normal)
         btn.imageView?.contentMode = .scaleAspectFill
@@ -106,6 +106,10 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
 
     override var prefersStatusBarHidden: Bool {
         return false
@@ -145,6 +149,22 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
                     self.onlyAvailableWithPremiumView.isHidden = true
                 }
             }
+        }
+        
+        switch GlobalConstants.canvasType
+        {
+            case 916:
+                canvasView.backgroundColor = .clear
+                canvasView.backgroundImageView.alpha = 0
+            case 45:
+                canvasView.backgroundColor = .clear
+                canvasView.backgroundImageView.alpha = 0
+            case 11:
+                canvasView.backgroundColor = .clear
+                canvasView.backgroundImageView.alpha = 0
+            default:
+                canvasView.backgroundColor = .clear
+                canvasView.backgroundImageView.alpha = 0
         }
     }
     
@@ -344,9 +364,18 @@ extension EditorViewController: BottomControlViewDelegate {
 
 extension EditorViewController: ShareViewControllerDelegate {
     func willStartSaving(withCompletionBlock completionBlock: ((_ image: UIImage) -> Void)? = nil) {
-        prepareForSaving { [weak self] in
-            guard let self = self else { return }
-            completionBlock?(self.canvasView.asImage2())
+        switch GlobalConstants.canvasType
+        {
+            case 916, 45, 11:
+                prepareForSaving { [weak self] in
+                    guard let self = self else { return }
+                    completionBlock?(self.canvasView.imageViews[0].asImage2())
+                }
+            default:
+                prepareForSaving { [weak self] in
+                    guard let self = self else { return }
+                    completionBlock?(self.canvasView.asImage2())
+            }
         }
     }
     

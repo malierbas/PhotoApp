@@ -35,11 +35,8 @@ class AllHighlightsVC: BaseVC {
         super.viewWillAppear(animated)
     
         DispatchQueue.main.async {
-            //: add transform
-            self.view.addTransform()
-            self.scrollView.addTransform()
             //: hide navibar
-            self.setupNavigationView(isHidden: false)
+            self.setupNavigationView(isHidden: true)
             //: collection
             self.collectionView.delegate = self
             self.collectionView.dataSource = self
@@ -113,16 +110,21 @@ class AllHighlightsVC: BaseVC {
     
     func setupNavigationView(isHidden: Bool? = false) {
         //: subviews
-        let label = UIBarButtonItem(customView: self.categoryName)
-        let button = UIBarButtonItem(customView: self.backButtonOutlet)
-        let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
-        self.navigationItem.leftBarButtonItems = [button,label]
-        self.navigationItem.rightBarButtonItem = tryForFree
-        self.navigationController?.navigationBar.isHidden = isHidden ?? false
-        //: visible
-        self.tryForFreeButton.fadeIn()
-        self.categoryName.fadeIn()
-        self.backButtonOutlet.fadeIn()
+        if !isHidden!
+        {
+            let label = UIBarButtonItem(customView: self.categoryName)
+            let button = UIBarButtonItem(customView: self.backButtonOutlet)
+            let tryForFree = UIBarButtonItem(customView: self.tryForFreeButton)
+            self.navigationItem.leftBarButtonItems = [button,label]
+            self.navigationItem.rightBarButtonItem = tryForFree
+            //: visible
+            self.tryForFreeButton.fadeIn()
+            self.categoryName.fadeIn()
+            self.backButtonOutlet.fadeIn()
+        }
+        
+        //: set visible
+        self.navigationController?.navigationBar.isHidden = isHidden ?? true
     }
     
     //MARK: - Actions

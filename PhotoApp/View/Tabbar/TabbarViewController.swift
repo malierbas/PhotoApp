@@ -6,72 +6,122 @@
 //
 
 import UIKit
+import BottomPopup
 import RevealingSplashView
 
-class TabbarViewController: UITabBarController {
+class TabbarViewController: UITabBarController, BottomPopupDelegate {
     
     var revealingSplashView: RevealingSplashView?
 
     var hasAddedSplashView: Bool = false
+    
+    var currentEmptyCanvasItem : Template!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let networkManager = NetworkManager()
-//        networkManager.request(StoriaEndpoint.constants) { (result: Result<Constants>) in
-//            switch result {
-//            case .success(let constants):
-//                globalAppConstants = constants
-//
-//                self.prepareUI()
-//
-//                InAppPurchaseManager.shared.receiptValidation()
-//
-//                //Starts animation
-//                self.revealingSplashView?.startAnimation() {
-//                    LocalNotificationManager.shared.registerForRemoteNotifications()
-//                }
-//
-//            case .error(let error):
-//                print(error)
-//            }
-//        }
-    }
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-//        if !hasAddedSplashView {
-//            //Initialize a revealing Splash with with the iconImage, the initial size and the background color
-//            self.revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "icon-with-background-dark")!,
-//                                                           iconInitialSize: CGSize(width: self.view.frame.width, height: self.view.frame.width * 319/414),
-//                                                          backgroundColor: UIColor(hexString: "#1C1F21"))
-//
-//            //Adds the revealing splash view as a sub view
-//            self.view.addSubview(self.revealingSplashView!)
-//            hasAddedSplashView = true
-//        }
-    }
-    
-    private func prepareUI() {
-        let templateSections = [
-            TemplateSection(title: "Classic", templates: Template.generateMinimalModels(), hasSeeAllButton: true),
-            TemplateSection(title: "Vintage", templates: Template.generateVintageModels(), hasSeeAllButton: true),
-            TemplateSection(title: "Frame", templates: Template.generateFrameModels(), hasSeeAllButton: true)
-        ]
-        let sectionSeeAllViewController = SectionSeeAllViewController()
-        sectionSeeAllViewController.sections = templateSections
-        sectionSeeAllViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "templates"), selectedImage: UIImage(named: "templates"))
-        sectionSeeAllViewController.tabBarItem.imageInsets = .init(topPadding: 6, bottomPadding: -6)
         
-        let accountViewController = AccountViewController()
-        accountViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "account"), selectedImage: UIImage(named: "account"))
-        accountViewController.tabBarItem.imageInsets = .init(topPadding: 6, bottomPadding: -6)
-        viewControllers = [InteractivePopNavigationController(rootViewController: sectionSeeAllViewController) , InteractivePopNavigationController(rootViewController: accountViewController)]
-        tabBar.tintColor = .white
-        tabBar.barTintColor = UIColor(hexString: "#1C1F21")
-        tabBar.isTranslucent = false
+        //: add gesture recognizer
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageItemClicked(gestureRec:)))
+//        self.tabBar.addGestureRecognizer(gesture)
+        
+        //: Tabbar item y position
+        if let centeredITem = self.tabBar.items?[2]
+        {
+            centeredITem.imageInsets = UIEdgeInsets(top: -15, left: 0, bottom: 15, right: 0)
+        }
+        
+//        if selectedIndex == 2
+//        {
+//            print("mali = ")
+//            self.showPopup()
+//        }
+        
+//        guard let home = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+//        home.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home"), selectedImage: UIImage(named: "home-selected"))
+//
+//        guard let searchEffectVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchEffectVC") as? SearchEffectVC else { return }
+//        searchEffectVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "program"), selectedImage: UIImage(named: "program-selected"))
+//
+//        guard let bottomPP = UIStoryboard(name: "MainPopup", bundle: nil).instantiateViewController(withIdentifier: "M72-OA-TgW") as? BasePopupVC else { return }
+//        bottomPP.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "music"), selectedImage: UIImage(named: "music-selected"))
+//
+//        guard let quotesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "QuotesVC") as? QuotesVC else { return }
+//        quotesVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "profile"), selectedImage: UIImage(named: "profile-selected"))
+//
+//        guard let settingsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingsVC") as? SettingsVC else { return }
+//        settingsVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "profile"), selectedImage: UIImage(named: "profile-selected"))
+//
+//        tabBar.unselectedItemTintColor = .white
+//        tabBar.tintColor = .white
+//        tabBar.isTranslucent = false
+//        tabBar.layer.cornerRadius = 15
+//        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//        tabBar.layer.masksToBounds = true
+//
+//        viewControllers = [
+//            InteractivePopNavigationController(rootViewController: home),
+//            InteractivePopNavigationController(rootViewController: searchEffectVC),
+//            InteractivePopNavigationController(rootViewController: bottomPP),
+//            InteractivePopNavigationController(rootViewController: quotesVC),
+//            InteractivePopNavigationController(rootViewController: settingsVC)
+//        ]
     }
-
     
+    //MARK: - Public Funtions
+    func showPopup() {
+        DispatchQueue.main.async {
+            
+            guard let popupVC = UIStoryboard(name: "MainPopup", bundle: nil).instantiateViewController(withIdentifier: "M72-OA-TgW") as? BasePopupVC else { return }
+            popupVC.height = popupVC.view.frame.height * 1.3 / 3
+            popupVC.topCornerRadius = 35
+            popupVC.presentDuration = 0.5
+            popupVC.dismissDuration = 0.5
+            popupVC.popupDelegate = self
+            
+            self.present(popupVC, animated: true, completion: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.getMaskView(notification:)), name: .init(rawValue: "canvas selected"), object: nil)
+        }
+    }
+    
+    //MARK: - Action
+    @objc func imageItemClicked(gestureRec: UITapGestureRecognizer) {
+        switch self.selectedIndex
+        {
+            case 0:
+                print("memoli = 0")
+            case 1:
+                print("memoli = 1")
+            case 2:
+                print("memoli = 2")
+            case 3:
+                print("memoli = 3")
+            case 4:
+                print("memoli = 4")
+            default:
+                break
+        }
+        print("image item clicked")
+    }
+    
+    @objc func getMaskView(notification: Notification) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+           //: show empty canvas
+            UIImpactFeedbackGenerator().impactOccurred()
+            let editorViewController = EditorViewController()
+            //: image container view
+            switch GlobalConstants.canvasType
+            {
+                case 916:
+                    self.currentEmptyCanvasItem = Template.generateEmptyCanvas(with: 1)
+                case 45:
+                    self.currentEmptyCanvasItem = Template.generateEmptyCanvas(with: 2)
+                case 11:
+                    self.currentEmptyCanvasItem = Template.generateEmptyCanvas(with: 3)
+                default:
+                    self.currentEmptyCanvasItem = Template.generateEmptyCanvas(with: 1)
+            }
+            editorViewController.template = self.currentEmptyCanvasItem
+            self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+        }
+    }
 }

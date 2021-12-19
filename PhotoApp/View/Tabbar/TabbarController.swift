@@ -49,15 +49,20 @@ class TabbarController: UITabBar {
     }
 
     func createPath() -> CGPath {
-        let height: CGFloat = 96.0
+        let height: CGFloat = 80
         let path = UIBezierPath()
         let centerWidth = self.frame.width / 2
         path.move(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: (centerWidth - height ), y: 0))
-        path.addCurve(to: CGPoint(x: centerWidth, y: height - 40),
-                      controlPoint1: CGPoint(x: (centerWidth - 30), y: 0), controlPoint2: CGPoint(x: centerWidth - 35, y: height - 40))
+        
+        path.addCurve(to: CGPoint(x: centerWidth, y: height - 35),
+                      controlPoint1: CGPoint(x: (centerWidth - 30), y: 0),
+                      controlPoint2: CGPoint(x: centerWidth - 35, y: height - 35))
+        
         path.addCurve(to: CGPoint(x: (centerWidth + height ), y: 0),
-                      controlPoint1: CGPoint(x: centerWidth + 35, y: height - 40), controlPoint2: CGPoint(x: (centerWidth + 30), y: 0))
+                      controlPoint1: CGPoint(x: centerWidth + 30, y: height - 35),
+                      controlPoint2: CGPoint(x: (centerWidth + 30), y: 0))
+        
         path.addLine(to: CGPoint(x: self.frame.width, y: 0))
         path.addLine(to: CGPoint(x: self.frame.width, y: self.frame.height))
         path.addLine(to: CGPoint(x: 0, y: self.frame.height))

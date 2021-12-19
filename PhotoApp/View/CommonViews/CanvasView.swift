@@ -92,6 +92,19 @@ class CanvasView: UIView {
                 textFields.append(editableTextField)
             }
         }
+        
+        switch GlobalConstants.canvasType
+        {
+            case 916:
+                break
+            case 45:
+                break
+            case 11:
+                break
+            default:
+                break
+        }
+        
         setupLayout()
     }
 
@@ -176,6 +189,19 @@ class CanvasView: UIView {
                 editableCanvasImageView.layoutSubviews()
             } else if let nonEditableCanvasImageView = imageViews[index] as? UIImageView {
                 nonEditableCanvasImageView.image = canvasImage.defaultImage
+            }
+        }
+    }
+    
+    func hideNonEditableView() {
+        guard let canvasImages = template?.canvasImages else { return }
+        for (index, canvasImage) in canvasImages.enumerated() {
+            if let editableCanvasImageView = imageViews[index] as? EditableImageView {
+                editableCanvasImageView.canvasImage = canvasImage
+                editableCanvasImageView.layoutSubviews()
+            } else if let nonEditableCanvasImageView = imageViews[index] as? UIImageView {
+                nonEditableCanvasImageView.image = canvasImage.defaultImage
+                nonEditableCanvasImageView.alpha = 0
             }
         }
     }

@@ -24,32 +24,28 @@ class QuotesVC: BaseVC {
     
     
     var categoryContentModel: CategoryContentModel!
+    var isLoaded: Bool! = false
     
     //MARK: - LifeCycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func setupView() {
         super.setupView()
-        
+
         DispatchQueue.main.async {
             //: transform
-            self.scrollView.addTransform()
             self.quotesFirstCollectionView.addTransform()
-            self.topTitle.addTransform()
             //: navigation bar
             self.setupNavigationView(isHidden: false)
             //: collection views
             self.quotesFirstCollectionView.delegate = self
             self.quotesFirstCollectionView.dataSource = self
             self.quotesFirstCollectionView.reloadData()
+            self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 120), animated: true)
+            self.quotesFirstCollectionView.fadeOut()
             //: try for free btn
             self.tryForFreeButtonOutlet.layer.cornerRadius = 14
             //: scrollView
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.showsHorizontalScrollIndicator = false
-            
         }
     }
     
@@ -113,7 +109,6 @@ extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuotesCVC", for: indexPath) as! QuotesCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.data = data
-                cell.addTransform()
             
                 self.scrollView.sizeMatching = .Dynamic(
                     width: {
@@ -123,6 +118,17 @@ extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
                         self.quotesFirstCollectionView.contentSize.height + 200
                     }
                 )
+            
+                if indexPath.row > 3 && !self.isLoaded
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                        self.quotesFirstCollectionView.fadeIn()
+                        self.isLoaded = true
+                    }
+                }
+            
+                cell.addTransform()
                 return cell
             default:
                 return UICollectionViewCell()

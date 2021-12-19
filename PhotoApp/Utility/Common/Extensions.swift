@@ -71,6 +71,17 @@ extension UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: animated, completion: completion)
     }
+    
+    //: Hide keyboard when tapped arround
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 extension UILabel {
@@ -406,7 +417,7 @@ extension UIColor {
 extension UITabBar {
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = 74
+        sizeThatFits.height = 50
         return sizeThatFits
     }
 }

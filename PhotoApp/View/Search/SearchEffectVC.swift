@@ -13,6 +13,7 @@ class SearchEffectVC: BaseVC {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var categoryItemsCollectionView: UICollectionView!
     @IBOutlet weak var tryForFreeButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     //Variables
     var templateSections: [TemplateSection] = [
@@ -26,12 +27,10 @@ class SearchEffectVC: BaseVC {
     var destinationModel: CategoryContentModel!
     
     //MARK: - LifeCycle
-    override func setupView() {
-        super.setupView()
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         DispatchQueue.main.async {
-            //: add transform
-            self.view.addTransform()
             //: set model
             self.model = self.templateSections[0].templates?.shuffled()
             //: navigation bar
@@ -41,9 +40,17 @@ class SearchEffectVC: BaseVC {
             //: collectionViews
             self.categoryItemsCollectionView.delegate = self
             self.categoryItemsCollectionView.dataSource = self
-            
             self.categoryItemsCollectionView.reloadData()
+            //: hide keyboard
+            self.hideKeyboardWhenTappedAround()
+            //: search bar
+            self.searchBar.layer.cornerRadius = self.searchBar.frame.height / 2
+            self.searchBar.backgroundColor = .clear
         }
+    }
+    
+    override func setupView() {
+        super.setupView()
     }
     
     override func initListeners() {
@@ -53,7 +60,7 @@ class SearchEffectVC: BaseVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier
         {
-            case "showAllCollections":
+            case "searchCategoryDetail":
                 if let viewC = segue.destination as? AllHighlightsVC
                 {
                     viewC.categoryContentModel = self.destinationModel
@@ -79,6 +86,8 @@ class SearchEffectVC: BaseVC {
         //: visible
         self.tryForFreeButton.fadeIn()
         self.titleLabel.fadeIn()
+        //: search bar
+        self.searchBar.delegate = self
     }
     
     //MARK: - Action
@@ -111,8 +120,8 @@ extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.destinationModel = CategoryContentModel(contentName: "Category \(indexPath.row)", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
-//        self.performSegue(withIdentifier: "searchCategoryDetail", sender: nil)
+        self.destinationModel = CategoryContentModel(contentName: "Category \(indexPath.row)", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+        self.performSegue(withIdentifier: "searchCategoryDetail", sender: nil)
     }
 }
 
@@ -126,5 +135,27 @@ extension SearchEffectVC: UICollectionViewDelegateFlowLayout
             default:
                 return CGSize(width: 0, height: 0)
         }
+    }
+}
+
+extension SearchEffectVC: UISearchBarDelegate
+{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.model = self.templateSections[0].templates?.filter {
+            $0.templateName!.contains(String(searchText.lowercased()))
+        }
+        
+        if searchBar.text?.count == 0 {
+
+            DispatchQueue.main.async {
+                self.model = self.templateSections[0].templates
+                self.categoryItemsCollectionView.reloadData()
+
+                searchBar.resignFirstResponder()
+            }
+        }
+
+        self.categoryItemsCollectionView.reloadData()
     }
 }

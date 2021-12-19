@@ -100,7 +100,6 @@ class BottomControlView: UIView {
     @objc func saveButtonTapped() {
         UIImpactFeedbackGenerator().impactOccurred()
         self.delegate?.didTapShareButton(onView: self)
-        
     }
 
     @objc func previewButtonTapped() {

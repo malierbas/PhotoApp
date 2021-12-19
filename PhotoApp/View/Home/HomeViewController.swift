@@ -45,6 +45,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBOutlet weak var highlightsStack: UIStackView!
     
     //Variables
+    var cellScale: CGFloat = 0.6
     var templateSections: [TemplateSection] = [
         TemplateSection(title: "Classic", templates: Template.generateMinimalModels(), hasSeeAllButton: true),
         TemplateSection(title: "Vintage", templates: Template.generateVintageModels(), hasSeeAllButton: true),
@@ -69,19 +70,18 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     }
     
     var desctinationURL = "showCommonContent"
+    var isCollectionAppearEnded = false
     
     //MARK: - LifeCycle
     override func setupView() {
         super.setupView()
         //: add transform
-        self.scrollView.addTransform()
-        self.mainStackView.addTransform()
-        self.lovelyBlushStack.addTransform()
-        self.modernistStack.addTransform()
-        self.collectionStack.addTransform()
-        self.highlightsStack.addTransform()
         self.tryForFreeButton.addTransform()
         self.nightLabel.addTransform()
+        //: flow layout
+        let flowLayout = ZoomAndSnapFlowLayout()
+        self.topImageCollectionView.contentInsetAdjustmentBehavior = .always
+        self.topImageCollectionView.collectionViewLayout = flowLayout
         //: navigation bar
         self.setupNavigationView(isHidden: false)
         //: try for free 
@@ -92,6 +92,8 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         
         self.topImageCollectionView.delegate = self
         self.topImageCollectionView.dataSource = self
+        self.topImageCollectionView.alwaysBounceVertical = false
+        self.topImageCollectionView.alwaysBounceHorizontal = false
         
         self.allUserPhotosCollectionView.delegate = self
         self.allUserPhotosCollectionView.dataSource = self
@@ -115,7 +117,6 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         self.collectionCategoryCV.reloadData()
         self.templatesCollectionView.reloadData()
         self.highlightsCollectionView.reloadData()
-        
         //: scroll view
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.showsHorizontalScrollIndicator = false
@@ -128,8 +129,8 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         super.initListeners()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         GlobalConstants.isCameraShown = false
     }
@@ -156,6 +157,12 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
             default:
                 break
         }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - 65
     }
     
     //MARK: - Public Functions
@@ -232,10 +239,10 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
                 self.animateStack(makeHidden: true, with: self.highlightsStack, reloadScroll: true)
             case "Quote":
                 print("selected 4 = ", selectedItem ?? "nil")
-                self.animateStack(makeHidden: true, with: self.lovelyBlushStack, reloadScroll: true)
+                self.animateStack(makeHidden: false, with: self.lovelyBlushStack, reloadScroll: true)
                 self.animateStack(makeHidden: true, with: self.modernistStack, reloadScroll: true)
                 self.animateStack(makeHidden: true, with: self.collectionStack, reloadScroll: true)
-                self.animateStack(makeHidden: false, with: self.highlightsStack, reloadScroll: true)
+                self.animateStack(makeHidden: true, with: self.highlightsStack, reloadScroll: true)
             default:
                 break
         }
@@ -255,6 +262,22 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
             if reloadScroll
             {
                 self.setupScrollView()
+            }
+        }
+    }
+    
+    func animateSelection(animateView: UIView, reloadScroll: Bool) {
+        DispatchQueue.main.async {
+            animateView.alpha = 0
+            UIView.animate(withDuration: 0.35, delay: 0.35, options: .curveLinear) {
+                animateView.alpha = 1
+            } completion: { didComplete in
+                animateView.isHidden = false
+                
+                if reloadScroll
+                {
+                    self.setupScrollView()
+                }
             }
         }
     }
@@ -280,6 +303,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBAction func showAllCategoriesSecond(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Lovely", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.isPost = false
             self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
         }
     }
@@ -287,6 +311,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBAction func showAllCategoriesThird(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Modernist", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.isPost = false
             self.performSegue(withIdentifier: self.desctinationURL, sender: nil)
         }
     }
@@ -303,6 +328,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBAction func showAllCategoriesFifth(_ sender: Any) {
         DispatchQueue.main.async {
             self.destinationModel = CategoryContentModel(contentName: "Highlights", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.isPost = false
             self.performSegue(withIdentifier: "showAllCollections", sender: nil)
         }
     }
@@ -320,7 +346,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return self.templateSections[0].templates?.count ?? 0
             case self.allUserPhotosCollectionView:
 
-                return self.templateSections[0].templates?.count ?? 0
+                return 8
             case self.trendingCategoriesCollectionview:
             
                 return self.templateSections[0].templates?.count ?? 0
@@ -351,6 +377,20 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.data = data
                 cell.addTransform()
+            
+                if !self.isCollectionAppearEnded
+                {
+                    if indexPath.row == 1
+                    {
+                        let item = IndexPath(row: 1, section: 0)
+                        self.topImageCollectionView.scrollToItem(at: item, at: .centeredHorizontally, animated: false)
+                        let secondItem = IndexPath(row: 0, section: 0)
+                        self.topImageCollectionView.scrollToItem(at: secondItem, at: .centeredHorizontally, animated: true)
+                        self.isCollectionAppearEnded = true
+                    }
+                }
+               
+            
                 return cell
             case self.trendingCategoriesCollectionview:
             
@@ -400,7 +440,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case self.highlightsCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHighlightsCell", for: indexPath) as! HomeHighlightsCell
-                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                guard let data = self.templateSections[0].templates?[indexPath.row]  else { return UICollectionViewCell() }
                 cell.data = data
                 cell.addTransform()
                 return cell
@@ -457,6 +497,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                         if let firstCell = item as? TemplatesCVC {
                             if cell == firstCell {
                                 //selected
+                                self.animateSelection(animateView: self.mainStackView, reloadScroll: true)
                                 cell.templateName.textColor = .white
                                 cell.backgroundColor = UIColor(named: "ViewRedBG")
                                 self.selectedItem = cell.templateName.text
@@ -485,7 +526,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        switch scrollView {
+        switch scrollView
+        {
             case self.scrollView:
                 let frame: CGFloat = self.templatesTextLabel.frame.origin.y - 100
             
