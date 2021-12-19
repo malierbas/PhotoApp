@@ -44,6 +44,20 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBOutlet weak var collectionStack: UIStackView!
     @IBOutlet weak var highlightsStack: UIStackView!
     
+    //: limited time offer view
+    @IBOutlet weak var timerImageView: UIImageView!
+    
+    @IBOutlet weak var timerBackgroundview: UIImageView!
+    
+    @IBOutlet weak var timerOneView: UIView!
+    @IBOutlet weak var timerOneLAbel: UILabel!
+    
+    @IBOutlet weak var timerTwoView: UIView!
+    @IBOutlet weak var timerTwoLAbel: UILabel!
+    
+    @IBOutlet weak var timerThreeView: UIView!
+    @IBOutlet weak var timerThreeLabel: UILabel!
+    
     //Variables
     var cellScale: CGFloat = 0.6
     var templateSections: [TemplateSection] = [
@@ -71,6 +85,10 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     
     var desctinationURL = "showCommonContent"
     var isCollectionAppearEnded = false
+    
+    var seconds = 90000
+    var timer = Timer()
+    var isTimerRunning = false
     
     //MARK: - LifeCycle
     override func setupView() {
@@ -123,6 +141,20 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         self.scrollView.delegate = self
         GlobalConstants.isCameraShown = false
         self.setupScrollView()
+        //: offer view
+        self.timerBackgroundview.layer.cornerRadius = 12
+        
+        self.timerOneView.layer.cornerRadius = 4
+        self.timerTwoView.layer.cornerRadius = 4
+        self.timerThreeView.layer.cornerRadius = 4
+        
+        //: run timer
+        self.runTimer()
+        
+        //: gesture
+        let timerDetailGesture = UITapGestureRecognizer(target: self, action: #selector(self.showTimerDetailVC))
+        self.timerImageView.isUserInteractionEnabled = true
+        self.timerImageView.addGestureRecognizer(timerDetailGesture)
     }
     
     override func initListeners() {
@@ -181,7 +213,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     
     //Calculate scroll size
     func calculateScrollSize() -> CGFloat {
-        var height = CGFloat(300)
+        var height = CGFloat(600)
         
         height = height + self.topImageCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.frame.height + self.modernistCollectionView.frame.height + self.collectionCategoryCV.frame.height + self.templatesCollectionView.frame.height + 450
         
@@ -282,6 +314,20 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         }
     }
     
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    func timeString(time: TimeInterval) {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let second = Int(time) % 60
+        
+        self.timerOneLAbel.text = String(hours)
+        self.timerTwoLAbel.text = String(minutes)
+        self.timerThreeLabel.text = String(second)
+    }
+    
     //MARK: - Actions
     @objc func getMaskView(notification: Notification) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -330,6 +376,19 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
             self.destinationModel = CategoryContentModel(contentName: "Highlights", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
             self.isPost = false
             self.performSegue(withIdentifier: "showAllCollections", sender: nil)
+        }
+    }
+    
+    @objc func updateTimer() {
+        seconds -= 1
+        timeString(time: TimeInterval(seconds))
+    }
+    
+    @objc func showTimerDetailVC() {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PurchaseTimerViewController") as? PurchaseTimerViewController else { return }
+        
+        self.presentInFullScreen(vc, animated: true) {
+            //: do something
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C1981BB83C062FBBD353AF6 /* Pods_PhotoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F095ACE14B807C1DE5AE65D /* Pods_PhotoApp.framework */; };
+		41027A68276FB58700547195 /* PurchaseTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41027A67276FB58700547195 /* PurchaseTimerViewController.swift */; };
 		410391A4276BC1D500DA2091 /* AllHighlightSecondCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391A3276BC1D500DA2091 /* AllHighlightSecondCVC.swift */; };
 		410391A6276BC1FA00DA2091 /* AllHighlightThirtCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391A5276BC1FA00DA2091 /* AllHighlightThirtCVC.swift */; };
 		410391A8276BC21500DA2091 /* AllHighlightFourthCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410391A7276BC21500DA2091 /* AllHighlightFourthCVC.swift */; };
@@ -245,6 +246,7 @@
 
 /* Begin PBXFileReference section */
 		1F095ACE14B807C1DE5AE65D /* Pods_PhotoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41027A67276FB58700547195 /* PurchaseTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTimerViewController.swift; sourceTree = "<group>"; };
 		410391A3276BC1D500DA2091 /* AllHighlightSecondCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightSecondCVC.swift; sourceTree = "<group>"; };
 		410391A5276BC1FA00DA2091 /* AllHighlightThirtCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightThirtCVC.swift; sourceTree = "<group>"; };
 		410391A7276BC21500DA2091 /* AllHighlightFourthCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHighlightFourthCVC.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				419F5A7F274AAFA3006C6DB0 /* FavsVC.swift */,
 				4128B5A92763DA8500EB99D3 /* CommonContentVC.swift */,
 				41FA45F3276A93D7000208EA /* PaywallViewController.swift */,
+				41027A67276FB58700547195 /* PurchaseTimerViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1394,6 +1397,7 @@
 				41A49822275CD636008EACDC /* StickerView.swift in Sources */,
 				41A49834275CD76B008EACDC /* LoadingButton.swift in Sources */,
 				41A4983E275CD7F4008EACDC /* GradientLayerView.swift in Sources */,
+				41027A68276FB58700547195 /* PurchaseTimerViewController.swift in Sources */,
 				41A49763275B8C48008EACDC /* PHAsset+ZLPhotoBrowser.swift in Sources */,
 				41A4973D275B87A3008EACDC /* Array+Extensions.swift in Sources */,
 				41A49753275B8A46008EACDC /* CGImage+RawBytes.swift in Sources */,
