@@ -217,7 +217,9 @@ class ShareViewController: UIViewController {
     @objc func saveToPhotoLibraryButtonTapped() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         UIImpactFeedbackGenerator().impactOccurred()
-        SVProgressHUD.show()
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
         self.delegate?.willStartSaving(withCompletionBlock: { [weak self] (image) in
             guard let self = self else { return }
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -227,11 +229,17 @@ class ShareViewController: UIViewController {
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let _ = error {
             // we got back an error!
-            SVProgressHUD.showError(withStatus: "Saving failed.")
-            SVProgressHUD.dismiss(withDelay: 1)
+            DispatchQueue.main.async {
+                SVProgressHUD.showError(withStatus: "Saving failed.")
+                SVProgressHUD.dismiss(withDelay: 1)
+            }
+           
         } else {
-            SVProgressHUD.showSuccess(withStatus: "Saved!")
-            SVProgressHUD.dismiss(withDelay: 1)
+            DispatchQueue.main.async {
+                SVProgressHUD.showSuccess(withStatus: "Saved!")
+                SVProgressHUD.dismiss(withDelay: 1)
+            }
+           
         }
         animateScrollView(withCompletion: nil)
         self.delegate?.didFinishSaving()

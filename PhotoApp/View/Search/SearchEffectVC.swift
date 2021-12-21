@@ -49,8 +49,14 @@ class SearchEffectVC: UIViewController {
             self.searchBar.backgroundColor = .clear
             self.searchBar.searchTextField.textColor = .white
             self.searchBar.searchTextField.leftView?.tintColor = .white
-            
+            self.searchBar.delegate = self
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //: show top bar
+        self.setupNavigationView(isHidden: false, isload: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,25 +74,26 @@ class SearchEffectVC: UIViewController {
     }
     //MARK: - Public Functions
     //: navigation bar
-    func setupNavigationView(isHidden: Bool, isTranslucent: Bool? = true) {
-        //: right items
-        self.navigationController?.navigationBar.isHidden = isHidden
-        let tryForFreeBtn = UIBarButtonItem(customView: self.tryForFreeButton)
-        self.navigationItem.rightBarButtonItem = tryForFreeBtn
-        //: add transform
-        self.tryForFreeButton.addTransform()
-        self.titleLabel.addTransform()
-        //: left item
-        let viewNameLabel = UIBarButtonItem(customView: self.titleLabel)
-        self.navigationItem.leftBarButtonItem = viewNameLabel
+    func setupNavigationView(isHidden: Bool, isTranslucent: Bool? = true, isload: Bool? = true) {
         //: navigation view
         self.navigationController?.navigationBar.isTranslucent = isTranslucent ?? false
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "ViewBlackBG")
-        //: visible
-        self.tryForFreeButton.fadeIn()
-        self.titleLabel.fadeIn()
-        //: search bar
-        self.searchBar.delegate = self
+        self.navigationController?.navigationBar.isHidden = isHidden
+        if isload!
+        {
+            //: right items
+            let tryForFreeBtn = UIBarButtonItem(customView: self.tryForFreeButton)
+            self.navigationItem.rightBarButtonItem = tryForFreeBtn
+            //: add transform
+            self.tryForFreeButton.addTransform()
+            self.titleLabel.addTransform()
+            //: left item
+            let viewNameLabel = UIBarButtonItem(customView: self.titleLabel)
+            self.navigationItem.leftBarButtonItem = viewNameLabel
+            //: visible
+            self.tryForFreeButton.fadeIn()
+            self.titleLabel.fadeIn()
+        }
     }
     
     //MARK: - Action

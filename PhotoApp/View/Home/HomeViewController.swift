@@ -8,6 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import BottomPopup
+import SVProgressHUD
 
 class HomeViewController: UIViewController, BottomPopupDelegate {
     //MARK: - Properties

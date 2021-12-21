@@ -154,18 +154,11 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         //: empty canvas view
         switch GlobalConstants.canvasType
         {
-            case 916:
-                canvasView.backgroundColor = .clear
-                canvasView.backgroundImageView.alpha = 0
-            case 45:
-                canvasView.backgroundColor = .clear
-                canvasView.backgroundImageView.alpha = 0
-            case 11:
+            case 916, 11, 45:
                 canvasView.backgroundColor = .clear
                 canvasView.backgroundImageView.alpha = 0
             default:
-                canvasView.backgroundColor = .clear
-                canvasView.backgroundImageView.alpha = 0
+                canvasView.backgroundImageView.alpha = 1
         }
         
         //: backButton
@@ -339,6 +332,7 @@ extension EditorViewController: BottomControlViewDelegate {
         backgroundSelectionViewController.modalTransitionStyle = .crossDissolve
         backgroundSelectionViewController.modalPresentationStyle = .overFullScreen
         backgroundSelectionViewController.delegate = self
+        self.canvasView.backgroundImageView.alpha = 1
         present(backgroundSelectionViewController, animated: true, completion: nil)
     }
 
@@ -371,9 +365,19 @@ extension EditorViewController: ShareViewControllerDelegate {
         switch GlobalConstants.canvasType
         {
             case 916, 45, 11:
-                prepareForSaving { [weak self] in
-                    guard let self = self else { return }
-                    completionBlock?(self.canvasView.imageViews[0].asImage2())
+                if self.canvasView.backgroundImageView.alpha == 1
+                {
+                    prepareForSaving { [weak self] in
+                        guard let self = self else { return }
+                        completionBlock?(self.canvasView.asImage2())
+                    }
+                }
+                else
+                {
+                    prepareForSaving { [weak self] in
+                        guard let self = self else { return }
+                        completionBlock?(self.canvasView.imageViews[0].asImage2())
+                    }
                 }
             default:
                 prepareForSaving { [weak self] in
