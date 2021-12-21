@@ -151,6 +151,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
             }
         }
         
+        //: empty canvas view
         switch GlobalConstants.canvasType
         {
             case 916:
@@ -166,6 +167,9 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
                 canvasView.backgroundColor = .clear
                 canvasView.backgroundImageView.alpha = 0
         }
+        
+        //: backButton
+        self.backButton.expandValidTouchArea(inset: 40)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

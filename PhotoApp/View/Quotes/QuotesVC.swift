@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuotesVC: BaseVC {
+class QuotesVC: UIViewController {
     //MARK: - Properties
     //: Views
     @IBOutlet weak var topTitle: UILabel!
@@ -27,33 +27,23 @@ class QuotesVC: BaseVC {
     var isLoaded: Bool! = false
     
     //MARK: - LifeCycle
-    override func setupView() {
-        super.setupView()
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         DispatchQueue.main.async {
-            //: transform
-            self.quotesFirstCollectionView.addTransform()
             //: navigation bar
             self.setupNavigationView(isHidden: false)
             //: collection views
+            self.quotesFirstCollectionView.alpha = 0
             self.quotesFirstCollectionView.delegate = self
             self.quotesFirstCollectionView.dataSource = self
             self.quotesFirstCollectionView.reloadData()
-            self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 120), animated: true)
-            self.quotesFirstCollectionView.fadeOut()
+            self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 120), animated: false)
             //: try for free btn
             self.tryForFreeButtonOutlet.layer.cornerRadius = 14
             //: scrollView
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.showsHorizontalScrollIndicator = false
-        }
-    }
-    
-    override func initListeners() {
-        super.initListeners()
-        
-        DispatchQueue.main.async {
-            
         }
     }
     
@@ -76,6 +66,9 @@ class QuotesVC: BaseVC {
         self.navigationController?.navigationBar.isHidden = isHidden
         let tryForFreeBtn = UIBarButtonItem(customView: self.tryForFreeButtonOutlet)
         self.navigationItem.rightBarButtonItem = tryForFreeBtn
+        //: add transform
+        self.tryForFreeButtonOutlet.addTransform()
+        self.topTitle.addTransform()
         //: left item
         let viewNameLabel = UIBarButtonItem(customView: self.topTitle)
         self.navigationItem.leftBarButtonItem = viewNameLabel
@@ -119,10 +112,10 @@ extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
                     }
                 )
             
-                if indexPath.row > 3 && !self.isLoaded
+                if indexPath.row > 5 && !self.isLoaded
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                        self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
                         self.quotesFirstCollectionView.fadeIn()
                         self.isLoaded = true
                     }

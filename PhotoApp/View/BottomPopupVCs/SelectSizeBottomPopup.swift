@@ -35,6 +35,7 @@ class SelectSizeBottomPopup: BottomPopupViewController {
     @IBOutlet weak var postImageView: UIImageView!
     
     //: Variables
+    var isSizeSelected: Bool = false
     
 
     //MARK: - LifeCycle
@@ -43,6 +44,15 @@ class SelectSizeBottomPopup: BottomPopupViewController {
 
         //: setup view
         self.setupView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if !self.isSizeSelected
+        {
+            NotificationCenter.default.post(name: .init(rawValue: "return home"), object: nil)
+        }
     }
     
     func setupView() {
@@ -86,6 +96,7 @@ class SelectSizeBottomPopup: BottomPopupViewController {
     //MARK: - Actions
     @objc func firstStoryAction() {
         //: first canvas
+        isSizeSelected = true
         GlobalConstants.canvasType = 916
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.dismiss(animated: true) {
@@ -96,6 +107,7 @@ class SelectSizeBottomPopup: BottomPopupViewController {
     
     @objc func secondPostAction() {
         //: center canvas
+        isSizeSelected = true
         GlobalConstants.canvasType = 45
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.dismiss(animated: true) {
@@ -106,6 +118,7 @@ class SelectSizeBottomPopup: BottomPopupViewController {
     
     @objc func postAction() {
         //: last canvas
+        isSizeSelected = true
         GlobalConstants.canvasType = 11
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.dismiss(animated: true) {

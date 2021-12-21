@@ -28,6 +28,8 @@ class ContactUSVC: BaseVC {
             self.issueTextView.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
             self.issueTextView.layer.borderWidth = 1
             self.issueTextView.layer.cornerRadius = 12
+            
+            self.hideKeyboardWhenTappedAround()
         }
     }
     

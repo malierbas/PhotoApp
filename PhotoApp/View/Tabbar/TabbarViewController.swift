@@ -67,6 +67,12 @@ class TabbarViewController: UITabBarController, BottomPopupDelegate {
 //        ]
     }
     
+    override func viewDidLayoutSubviews() {
+        let height = UIScreen.main.bounds.height - 65
+        tabBar.frame = CGRect(x: 0, y: height ?? 0, width: tabBar.frame.size.width, height: tabBar.frame.size.height)
+        super.viewDidLayoutSubviews()
+    }
+    
     //MARK: - Public Funtions
     func showPopup() {
         DispatchQueue.main.async {

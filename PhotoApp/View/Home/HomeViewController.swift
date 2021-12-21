@@ -9,9 +9,22 @@ import UIKit
 import IQKeyboardManagerSwift
 import BottomPopup
 
-class HomeViewController: BaseVC, BottomPopupDelegate {
+class HomeViewController: UIViewController, BottomPopupDelegate {
     //MARK: - Properties
     //Views
+    private lazy var topCollectionView: UICollectionView = {
+        let flowLayout = ZoomAndSnapFlowLayout()
+        flowLayout.itemSize = CGSize(width: 223, height: 338)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)  
+        collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     @IBOutlet weak var nightLabel: UILabel!
     @IBOutlet weak var topImageCollectionView: UICollectionView!
     @IBOutlet weak var trendingCategoriesCollectionview: UICollectionView!
@@ -38,6 +51,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     @IBOutlet weak var highlightsSeeMore: UIButton!
     
     //: stack views
+    @IBOutlet weak var topImageStackView: UIStackView!
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var lovelyBlushStack: UIStackView!
     @IBOutlet weak var modernistStack: UIStackView!
@@ -91,8 +105,13 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     var isTimerRunning = false
     
     //MARK: - LifeCycle
-    override func setupView() {
-        super.setupView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //: code collection view
+        self.topCollectionView.register(TopImageCollectionViewCell.self, forCellWithReuseIdentifier: "TopImageCollectionViewCell")
+        self.topImageStackView.addArrangedSubview(self.topCollectionView)
+        self.topCollectionView.fillSuperview()
+        self.topCollectionView.reloadData()
         //: add transform
         self.tryForFreeButton.addTransform()
         self.nightLabel.addTransform()
@@ -102,7 +121,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         self.topImageCollectionView.collectionViewLayout = flowLayout
         //: navigation bar
         self.setupNavigationView(isHidden: false)
-        //: try for free 
+        //: try for free
         self.tryForFreeButton.layer.cornerRadius = 14
         //: collection view
         self.trendingCategoriesCollectionview.delegate = self
@@ -155,10 +174,7 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         let timerDetailGesture = UITapGestureRecognizer(target: self, action: #selector(self.showTimerDetailVC))
         self.timerImageView.isUserInteractionEnabled = true
         self.timerImageView.addGestureRecognizer(timerDetailGesture)
-    }
-    
-    override func initListeners() {
-        super.initListeners()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -191,12 +207,6 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - 65
-    }
-    
     //MARK: - Public Functions
     
     //: setup scroll view
@@ -213,9 +223,9 @@ class HomeViewController: BaseVC, BottomPopupDelegate {
     
     //Calculate scroll size
     func calculateScrollSize() -> CGFloat {
-        var height = CGFloat(600)
+        var height = CGFloat(400)
         
-        height = height + self.topImageCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.frame.height + self.modernistCollectionView.frame.height + self.collectionCategoryCV.frame.height + self.templatesCollectionView.frame.height + 450
+        height = height + self.topCollectionView.frame.height + self.trendingCategoriesCollectionview.frame.height + self.allUserPhotosCollectionView.frame.height + self.modernistCollectionView.frame.height + self.collectionCategoryCV.frame.height + self.templatesCollectionView.frame.height + 450
         
         return height
     }
@@ -400,15 +410,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         switch collectionView
         {
+            case self.topCollectionView:
+            
+                return self.templateSections[0].templates?.count ?? 0
             case self.topImageCollectionView:
             
                 return self.templateSections[0].templates?.count ?? 0
             case self.allUserPhotosCollectionView:
 
-                return 8
+                return self.templateSections[0].templates?.count ?? 0
             case self.trendingCategoriesCollectionview:
             
-                return self.templateSections[0].templates?.count ?? 0
+                return 8
             case self.modernistCollectionView:
             
                 return self.templateSections[0].templates?.count ?? 0
@@ -430,6 +443,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         switch collectionView
         {
+            case self.topCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCollectionViewCell", for: indexPath) as! TopImageCollectionViewCell
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
+                cell.imageView.image = data.templateCoverImage
+                return cell
             case self.topImageCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
@@ -514,7 +532,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         switch collectionView
         {
-            case self.topImageCollectionView:
+            case self.topCollectionView:
             
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
                 UIImpactFeedbackGenerator().impactOccurred()
@@ -583,6 +601,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+//MARK: - Change Tabbar Label
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         switch scrollView

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchEffectVC: BaseVC {
+class SearchEffectVC: UIViewController {
     //MARK: - Properties
     //Views
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,8 +27,8 @@ class SearchEffectVC: BaseVC {
     var destinationModel: CategoryContentModel!
     
     //MARK: - LifeCycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         DispatchQueue.main.async {
             //: set model
@@ -38,6 +38,7 @@ class SearchEffectVC: BaseVC {
             //: try for free btn
             self.tryForFreeButton.layer.cornerRadius = 14
             //: collectionViews
+            self.categoryItemsCollectionView.alpha = 0
             self.categoryItemsCollectionView.delegate = self
             self.categoryItemsCollectionView.dataSource = self
             self.categoryItemsCollectionView.reloadData()
@@ -46,15 +47,10 @@ class SearchEffectVC: BaseVC {
             //: search bar
             self.searchBar.layer.cornerRadius = self.searchBar.frame.height / 2
             self.searchBar.backgroundColor = .clear
+            self.searchBar.searchTextField.textColor = .white
+            self.searchBar.searchTextField.leftView?.tintColor = .white
+            
         }
-    }
-    
-    override func setupView() {
-        super.setupView()
-    }
-    
-    override func initListeners() {
-        super.initListeners()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,6 +73,9 @@ class SearchEffectVC: BaseVC {
         self.navigationController?.navigationBar.isHidden = isHidden
         let tryForFreeBtn = UIBarButtonItem(customView: self.tryForFreeButton)
         self.navigationItem.rightBarButtonItem = tryForFreeBtn
+        //: add transform
+        self.tryForFreeButton.addTransform()
+        self.titleLabel.addTransform()
         //: left item
         let viewNameLabel = UIBarButtonItem(customView: self.titleLabel)
         self.navigationItem.leftBarButtonItem = viewNameLabel
@@ -112,6 +111,10 @@ extension SearchEffectVC: UICollectionViewDelegate, UICollectionViewDataSource {
             case self.categoryItemsCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCVC", for: indexPath) as! SearchCVC
                 cell.data = self.model?[indexPath.row]
+                if indexPath.row > 5
+                {
+                    self.categoryItemsCollectionView.fadeIn()
+                }
                 cell.addTransform()
                 return cell
             default:

@@ -22,7 +22,10 @@ class TermsAndPolicyVC: BaseVC, WKNavigationDelegate {
         super.setupView()
         
         DispatchQueue.main.async {
+            //: webview
+            self.webView.roundCorners([.topLeft, .topRight], radius: 30)
             
+            //: get source
             self.getViewSource()
         }
     }

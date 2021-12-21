@@ -32,6 +32,12 @@ class TakePhotoViewController: BaseVC, BottomPopupDelegate {
         DispatchQueue.main.async {
             self.view.backgroundColor = UIColor(named: "ViewBlackBG")
             
+            NotificationCenter.default.addObserver(forName: .init(rawValue: "return home"), object: nil, queue: .main) { notification in
+                DispatchQueue.main.async {
+                    self.tabBarController?.selectedIndex = 0
+                }
+            }
+            
             if !GlobalConstants.isCameraShown
             {
                 self.showPopup()
