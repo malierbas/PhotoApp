@@ -60,18 +60,19 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
     @IBOutlet weak var highlightsStack: UIStackView!
     
     //: limited time offer view
+    @IBOutlet weak var limitedTimerStackView: UIStackView!
+    @IBOutlet weak var mainOfferView: UIView!
     @IBOutlet weak var timerImageView: UIImageView!
-    
     @IBOutlet weak var timerBackgroundview: UIImageView!
-    
     @IBOutlet weak var timerOneView: UIView!
     @IBOutlet weak var timerOneLAbel: UILabel!
-    
     @IBOutlet weak var timerTwoView: UIView!
     @IBOutlet weak var timerTwoLAbel: UILabel!
-    
     @IBOutlet weak var timerThreeView: UIView!
     @IBOutlet weak var timerThreeLabel: UILabel!
+    @IBOutlet weak var limitedOfferViewDescLabel: UILabel!
+    //: limited offer view cons
+    @IBOutlet weak var limitetOfferStackViewCons: NSLayoutConstraint!
     
     //Variables
     var cellScale: CGFloat = 0.6
@@ -101,7 +102,7 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
     var desctinationURL = "showCommonContent"
     var isCollectionAppearEnded = false
     
-    var seconds = 90000
+    var seconds = LocalStorageManager.shared.offerTimerTime ?? 90000
     var timer = Timer()
     var isTimerRunning = false
     
@@ -170,18 +171,59 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
         
         //: run timer
         self.runTimer()
+        self.updateTimer()
         
         //: gesture
         let timerDetailGesture = UITapGestureRecognizer(target: self, action: #selector(self.showTimerDetailVC))
-        self.timerImageView.isUserInteractionEnabled = true
-        self.timerImageView.addGestureRecognizer(timerDetailGesture)
+        self.limitedTimerStackView.addGestureRecognizer(timerDetailGesture)
         
+        if LocalStorageManager.shared.isOfferViewShown
+        {
+            //: hide offer view
+            DispatchQueue.main.async {
+                self.mainOfferView.isHidden = true
+                self.limitetOfferStackViewCons.constant = 0
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("is premium user = ", LocalStorageManager.shared.isPremiumUser)
+        if LocalStorageManager.shared.isPremiumUser
+        {
+            //: hide offer view
+            DispatchQueue.main.async {
+                self.tryForFreeButton.fadeOut()
+                self.mainOfferView.isHidden = true
+                self.limitetOfferStackViewCons.constant = 0
+            }
+        }
         
         GlobalConstants.isCameraShown = false
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var height: CGFloat = 0
+        
+        switch UIDevice.modelName
+        {
+            case "iPhone 8", "Simulator iPhone 8":
+                height = self.view.frame.height - 48
+            case "iPhone 6", "Simulator iPhone 6":
+                height = self.view.frame.height - 48
+            case "iPhone 5", "Simulator iPhone 5":
+                height = self.view.frame.height - 48
+            case "iPhone 6s", "Simulator iPhone 6s":
+                height = self.view.frame.height - 48
+            case "iPhone 8 Plus", "Simulator iPhone 8 Plus":
+                height = self.view.frame.height - 49
+            default:
+                height = self.view.frame.height - 65
+        }
+        self.tabBarController?.tabBar.frame = CGRect(x: 0, y: height, width: self.tabBarController?.tabBar.frame.size.width ?? 0, height: self.tabBarController?.tabBar.frame.size.height ?? 0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -198,6 +240,13 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
             
             case "showAllCollections":
                 if let viewC = segue.destination as? AllHighlightsVC
+                {
+                    viewC.categoryContentModel = self.destinationModel
+                }
+                break
+            
+            case "showHiglightsVC":
+                if let viewC = segue.destination as? HighlightsDetailViewC
                 {
                     viewC.categoryContentModel = self.destinationModel
                 }
@@ -337,6 +386,8 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
         self.timerOneLAbel.text = String(hours)
         self.timerTwoLAbel.text = String(minutes)
         self.timerThreeLabel.text = String(second)
+        
+        LocalStorageManager.shared.offerTimerTime = Int(time)
     }
     
     //MARK: - Actions
@@ -390,6 +441,14 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
         }
     }
     
+    @IBAction func tryForFreeBtnAction(_ sender: Any) {
+        
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaywallViewController") as? PaywallViewController else { return }
+        self.presentInFullScreen(vc, animated: true) {
+            //: do something
+        }
+    }
+    
     @objc func updateTimer() {
         seconds -= 1
         timeString(time: TimeInterval(seconds))
@@ -397,7 +456,7 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
     
     @objc func showTimerDetailVC() {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PurchaseTimerViewController") as? PurchaseTimerViewController else { return }
-        
+        vc.seconds = LocalStorageManager.shared.offerTimerTime ?? 90000
         self.presentInFullScreen(vc, animated: true) {
             //: do something
         }
@@ -454,7 +513,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageCVC", for: indexPath) as! TopImageCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.data = data
-                cell.addTransform()
             
                 if !self.isCollectionAppearEnded
                 {
@@ -468,35 +526,30 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     }
                 }
                
-            
                 return cell
             case self.trendingCategoriesCollectionview:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCategoriesCVC", for: indexPath) as! TrendingCategoriesCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.data = data
-                cell.addTransform()
                 return cell
             case self.allUserPhotosCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCVC", for: indexPath) as! InterestSectionCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.template = data
-                cell.addTransform()
                 return cell
             case self.modernistCollectionView:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionBCVC", for: indexPath) as! InterestSectionCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.template = data
-                cell.addTransform()
                 return cell
             case self.collectionCategoryCV:
             
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestSectionCCVC", for: indexPath) as! InterestSectionCVC
                 guard let data = self.templateSections[0].templates?[indexPath.row] else { return UICollectionViewCell() }
                 cell.template = data
-                cell.addTransform()
                 return cell
             case self.templatesCollectionView:
             
@@ -507,7 +560,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.widthAnchor.constraint(equalToConstant: contentWidth).isActive = true
             
                 cell.data = self.templateNames[indexPath.row]
-                cell.addTransform()
                 if indexPath.row == 0
                 {
                     cell.backgroundColor = UIColor(named: "ViewRedBG")
@@ -520,7 +572,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHighlightsCell", for: indexPath) as! HomeHighlightsCell
                 guard let data = self.templateSections[0].templates?[indexPath.row]  else { return UICollectionViewCell() }
                 cell.data = data
-                cell.addTransform()
                 return cell
             
             default:
@@ -530,6 +581,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
         
         switch collectionView
         {
@@ -539,6 +592,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 UIImpactFeedbackGenerator().impactOccurred()
                 let editorViewController = EditorViewController()
                 editorViewController.template = data
+                GlobalConstants.canvasType = -1
                 self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             
             case self.trendingCategoriesCollectionview:
@@ -552,6 +606,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 UIImpactFeedbackGenerator().impactOccurred()
                 let editorViewController = EditorViewController()
                 editorViewController.template = data
+                GlobalConstants.canvasType = -1
                 self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             case self.modernistCollectionView:
             
@@ -559,6 +614,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 UIImpactFeedbackGenerator().impactOccurred()
                 let editorViewController = EditorViewController()
                 editorViewController.template = data
+                GlobalConstants.canvasType = -1
                 self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             case self.collectionCategoryCV:
             
@@ -566,6 +622,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 UIImpactFeedbackGenerator().impactOccurred()
                 let editorViewController = EditorViewController()
                 editorViewController.template = data
+                GlobalConstants.canvasType = -1
                 self.presentInFullScreen(editorViewController, animated: true, completion: nil)
             
             case self.templatesCollectionView:
@@ -589,13 +646,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
             
             case self.highlightsCollectionView:
-                
-                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
-                UIImpactFeedbackGenerator().impactOccurred()
-                let editorViewController = EditorViewController()
-                editorViewController.template = data
-                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
-            
+                DispatchQueue.main.async {
+                    self.destinationModel = CategoryContentModel(contentName: "Content \(indexPath.row)", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+                    self.performSegue(withIdentifier: "showHiglightsVC", sender: nil)
+                }
             default:
                 break
         }

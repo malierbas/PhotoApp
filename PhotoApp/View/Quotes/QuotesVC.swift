@@ -38,12 +38,22 @@ class QuotesVC: UIViewController {
             self.quotesFirstCollectionView.delegate = self
             self.quotesFirstCollectionView.dataSource = self
             self.quotesFirstCollectionView.reloadData()
-            self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 120), animated: false)
+//            self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 120), animated: false)
             //: try for free btn
             self.tryForFreeButtonOutlet.layer.cornerRadius = 14
             //: scrollView
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.showsHorizontalScrollIndicator = false
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("is premium user = ", LocalStorageManager.shared.isPremiumUser)
+        if LocalStorageManager.shared.isPremiumUser
+        {
+            self.tryForFreeButtonOutlet.fadeOut()
         }
     }
     
@@ -112,19 +122,37 @@ extension QuotesVC: UICollectionViewDelegate, UICollectionViewDataSource
                     }
                 )
             
-                if indexPath.row > 5 && !self.isLoaded
+                if indexPath.row == 4 && !self.isLoaded
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+//                        self.quotesFirstCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
                         self.quotesFirstCollectionView.fadeIn()
                         self.isLoaded = true
                     }
                 }
-            
-                cell.addTransform()
+             
                 return cell
             default:
                 return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        
+        switch collectionView
+        {
+            case self.quotesFirstCollectionView:
+            
+                guard let data = self.templateSections[0].templates?[indexPath.row] else { return }
+                UIImpactFeedbackGenerator().impactOccurred()
+                let editorViewController = EditorViewController()
+                editorViewController.template = data
+                GlobalConstants.canvasType = -1
+                self.presentInFullScreen(editorViewController, animated: true, completion: nil)
+            default:
+                break
         }
     }
 }
@@ -135,7 +163,17 @@ extension QuotesVC: UICollectionViewDelegateFlowLayout
         switch collectionView
         {
             case self.quotesFirstCollectionView:
-                return CGSize(width: (self.view.frame.width / 1.7) - 40, height: 280)
+                if UIDevice.modelName == "iPhone 8" {
+                    
+                    return CGSize(width: (self.view.frame.width / 1.9) - 36, height: 280)
+                } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
+                    
+                    return CGSize(width: (self.view.frame.width / 1.9) - 36, height: 280)
+                } else {
+                    
+                    return CGSize(width: (self.view.frame.width / 1.9) - 46, height: 280)
+                }
+                
             default:
                 return collectionViewLayout.collectionViewContentSize
         }

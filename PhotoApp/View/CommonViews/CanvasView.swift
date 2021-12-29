@@ -62,26 +62,52 @@ class CanvasView: UIView {
     private func prepareUI() {
         clipsToBounds = true
         addSubview(backgroundImageView)
-        backgroundImageView.addSubview(gradientLayerView)
-
-        if let canvasImages = template?.canvasImages {
-            for canvasImage in canvasImages {
-                if canvasImage.isPicker {
-                    let editableImageView = EditableImageView(frame: .zero)
-                    editableImageView.delegate = self
-                    editableImageView.canvasImage = canvasImage
-                    addSubview(editableImageView)
-                    imageViews.append(editableImageView)
-                } else {
-                    let staticImageView = UIImageView(frame: .zero)
-                    staticImageView.contentMode = .scaleAspectFit
-                    staticImageView.image = canvasImage.defaultImage
-                    addSubview(staticImageView)
-                    imageViews.append(staticImageView)
+        
+        switch GlobalConstants.canvasType
+        {
+            case 916, 11, 45:
+                if let canvasImages = template?.canvasImages {
+                    for canvasImage in canvasImages {
+                        if canvasImage.isPicker {
+                            let editableImageView = EditableImageView(frame: .zero)
+                            editableImageView.delegate = self
+                            editableImageView.canvasImage = canvasImage
+                            addSubview(editableImageView)
+                            imageViews.append(editableImageView)
+                        } else {
+                            let staticImageView = UIImageView(frame: .zero)
+                            staticImageView.contentMode = .scaleAspectFit
+                            staticImageView.image = canvasImage.defaultImage
+                            addSubview(staticImageView)
+                            imageViews.append(staticImageView)
+                        }
+                    }
                 }
-            }
+            
+                break
+            default:
+                backgroundImageView.addSubview(gradientLayerView)
+                if let canvasImages = template?.canvasImages {
+                    for canvasImage in canvasImages {
+                        if canvasImage.isPicker {
+                            let editableImageView = EditableImageView(frame: .zero)
+                            editableImageView.delegate = self
+                            editableImageView.canvasImage = canvasImage
+                            addSubview(editableImageView)
+                            imageViews.append(editableImageView)
+                        } else {
+                            let staticImageView = UIImageView(frame: .zero)
+                            staticImageView.contentMode = .scaleAspectFit
+                            staticImageView.image = canvasImage.defaultImage
+                            addSubview(staticImageView)
+                            imageViews.append(staticImageView)
+                        }
+                    }
+                }
+                break
         }
 
+   
         if let canvasTexts = template?.canvasTexts {
             for canvasText in canvasTexts {
                 let editableTextField = EditableTextField(frame: .zero)
@@ -91,18 +117,6 @@ class CanvasView: UIView {
                 addSubview(editableTextField)
                 textFields.append(editableTextField)
             }
-        }
-        
-        switch GlobalConstants.canvasType
-        {
-            case 916:
-                break
-            case 45:
-                break
-            case 11:
-                break
-            default:
-                break
         }
         
         setupLayout()
@@ -161,23 +175,61 @@ class CanvasView: UIView {
     }
 
     func refreshBackground() {
-        if let canBeAssignedFullBackground = template?.canBeAssignedFullBackground,
-            let indexOfImageFillingCanvasFully = template?.canvasImages?.firstIndex( where: { $0.frame1080x1920 == CGRect(x: 0, y: 0, width: 1080, height: 1920) }), canBeAssignedFullBackground {
-            imageViews[indexOfImageFillingCanvasFully].isHidden = true
-        }
+      
+        //: canvas view
+        switch GlobalConstants.canvasType
+        {
+            case 916, 11, 45:
+                if let gradientLayerView = template?.background?.gradientLayerView {
+                    
+                    if let mainView = self.imageViews.first as? EditableImageView
+                    {
+                        mainView.backgroundImageView.isHidden = true
+                        
+                        mainView.gradientLayerView.isHidden = false
+                        mainView.gradientLayerView.colors = gradientLayerView.colors
+                        mainView.gradientLayerView.locations = gradientLayerView.locations
+                        mainView.gradientLayerView.startPoint = gradientLayerView.startPoint
+                        mainView.gradientLayerView.endPoint = gradientLayerView.endPoint
+                        mainView.gradientLayerView.layoutSubviews()
+                        print("memo 1")
+                    }
+                } else {
+                    self.gradientLayerView.isHidden = true
+                    
+                    if let mainView = self.imageViews.first as? EditableImageView
+                    {
+                        mainView.gradientLayerView.isHidden = true
+                        mainView.backgroundImageView.isHidden = false
+                        mainView.backgroundImageView.image = template?.background?.image
+                        mainView.backgroundImageView.backgroundColor = template?.background?.color
+                        mainView.backgroundImageView.contentMode = .scaleToFill
+                        print("memo 2")
+                    }
+                }
+                break
+            default:
+            
+                if let canBeAssignedFullBackground = template?.canBeAssignedFullBackground,
+                    let indexOfImageFillingCanvasFully = template?.canvasImages?.firstIndex( where: { $0.frame1080x1920 == CGRect(x: 0, y: 0, width: 1080, height: 1920) }), canBeAssignedFullBackground {
+                    imageViews[indexOfImageFillingCanvasFully].isHidden = true
+                }
+                
+            
+                backgroundImageView.image = template?.background?.image
+                backgroundColor = template?.background?.color
 
-        backgroundImageView.image = template?.background?.image
-        backgroundColor = template?.background?.color
-
-        if let gradientLayerView = template?.background?.gradientLayerView {
-            self.gradientLayerView.isHidden = false
-            self.gradientLayerView.colors = gradientLayerView.colors
-            self.gradientLayerView.locations = gradientLayerView.locations
-            self.gradientLayerView.startPoint = gradientLayerView.startPoint
-            self.gradientLayerView.endPoint = gradientLayerView.endPoint
-            self.gradientLayerView.layoutSubviews()
-        } else {
-            self.gradientLayerView.isHidden = true
+                if let gradientLayerView = template?.background?.gradientLayerView {
+                    self.gradientLayerView.isHidden = false
+                    self.gradientLayerView.colors = gradientLayerView.colors
+                    self.gradientLayerView.locations = gradientLayerView.locations
+                    self.gradientLayerView.startPoint = gradientLayerView.startPoint
+                    self.gradientLayerView.endPoint = gradientLayerView.endPoint
+                    self.gradientLayerView.layoutSubviews()
+                } else {
+                    self.gradientLayerView.isHidden = true
+                }
+                break
         }
     }
 

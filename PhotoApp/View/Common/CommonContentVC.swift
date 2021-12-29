@@ -139,7 +139,16 @@ extension CommonContentVC: UICollectionViewDelegateFlowLayout
         switch collectionView
         {
             case self.collectionView:
-                return CGSize(width: (self.view.frame.width / 1.7) - 50, height: isPost! ? 160 : 280)
+                if UIDevice.modelName == "iPhone 8" {
+                    
+                    return CGSize(width: (self.view.frame.width / 1.9) - 36, height: isPost! ? 160 : 280)
+                } else if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6" {
+                    
+                    return CGSize(width: (self.view.frame.width / 1.9) - 36, height: isPost! ? 160 : 280)
+                } else {
+                    
+                    return CGSize(width: (self.view.frame.width / 1.9) - 46, height: isPost! ? 160 : 280)
+                }
             default:
                 return collectionViewLayout.collectionViewContentSize
         }

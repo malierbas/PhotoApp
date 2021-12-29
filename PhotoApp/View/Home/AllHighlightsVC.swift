@@ -132,6 +132,34 @@ class AllHighlightsVC: BaseVC {
     @IBAction func backButtonACtion(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func seeAllFirstAction(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.categoryContentModel = CategoryContentModel(contentName: "Çalışma ve Üretkenlik", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showDetailCAtegory", sender: nil)
+        }
+    }
+    
+    @IBAction func seeAllSecondAction(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.categoryContentModel = CategoryContentModel(contentName: "Kişisel Gelişim", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showDetailCAtegory", sender: nil)
+        }
+    }
+    
+    @IBAction func seeAllThirdAction(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.categoryContentModel = CategoryContentModel(contentName: "Sağlıklı Yaşam", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showDetailCAtegory", sender: nil)
+        }
+    }
+    
+    @IBAction func seeAllFourthAction(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.categoryContentModel = CategoryContentModel(contentName: "Modernist", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
+            self.performSegue(withIdentifier: "showDetailCAtegory", sender: nil)
+        }
+    }
 }
 
 //MARK: - Delegates
@@ -244,6 +272,7 @@ extension AllHighlightsVC: UICollectionViewDelegate, UICollectionViewDataSource 
                     self.categoryContentModel = CategoryContentModel(contentName: "Modernist", contentSize: self.templateSections[0].templates?.count ?? 0, contents: self.templateSections[0].templates)
                     self.performSegue(withIdentifier: "showDetailCAtegory", sender: nil)
                 }
+            
             default:
                 break
         }

@@ -55,6 +55,7 @@ class PurchaseTimerViewController: BaseVC {
             
             //: run timer
             self.runTimer()
+            self.updateTimer()
             
             //: continue
             self.continueButtonOutlet.layer.cornerRadius = self.continueButtonOutlet.frame.height / 2
@@ -97,6 +98,8 @@ class PurchaseTimerViewController: BaseVC {
         self.timerOneLAbel.text = String(hours)
         self.timerTwoLAbel.text = String(minutes)
         self.timerThreeLabel.text = String(second)
+        
+        LocalStorageManager.shared.offerTimerTime = Int(time)
     }
     //MARK: - Actions
      

@@ -6,10 +6,10 @@ target 'PhotoApp' do
   use_frameworks!
 
   # Pods for PhotoApp
+  pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
   pod 'SnapKit', '~> 5.0.0'
   pod 'BottomPopup'
-  pod 'SVProgressHUD'
   pod 'Kingfisher', '~> 5.0'
   pod 'Hero'
   pod 'ColorSlider', '~> 4.3' 

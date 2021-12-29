@@ -7,6 +7,7 @@
 
 
 import UIKit
+import SVProgressHUD
 
 class EditorViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -150,6 +151,8 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         }
+        
+        print("content = ", GlobalConstants.canvasType)
         
         //: empty canvas view
         switch GlobalConstants.canvasType
@@ -332,7 +335,6 @@ extension EditorViewController: BottomControlViewDelegate {
         backgroundSelectionViewController.modalTransitionStyle = .crossDissolve
         backgroundSelectionViewController.modalPresentationStyle = .overFullScreen
         backgroundSelectionViewController.delegate = self
-        self.canvasView.backgroundImageView.alpha = 1
         present(backgroundSelectionViewController, animated: true, completion: nil)
     }
 

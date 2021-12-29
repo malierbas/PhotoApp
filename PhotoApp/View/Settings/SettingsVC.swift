@@ -22,7 +22,7 @@ class SettingsVC: BaseVC {
         super.setupView()
         
         DispatchQueue.main.async {
-            
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
         }
     }
     

@@ -207,6 +207,7 @@
 		41A4983E275CD7F4008EACDC /* GradientLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A4983D275CD7F4008EACDC /* GradientLayerView.swift */; };
 		41A49840275CD80C008EACDC /* PreviewInstagramControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A4983F275CD80C008EACDC /* PreviewInstagramControlsView.swift */; };
 		41A49846275CDB0E008EACDC /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A49845275CDB0E008EACDC /* LocalNotificationManager.swift */; };
+		41C101C82777E4AE00545450 /* PaywallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C101C72777E4AE00545450 /* PaywallTableViewCell.swift */; };
 		41D07263277111D5009FE527 /* TopImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D07262277111D5009FE527 /* TopImageCollectionViewCell.swift */; };
 		41E37CCA2767DC8A00B116F3 /* HomeHighlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */; };
 		41EB980F2745796600794586 /* CategoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB980E2745796600794586 /* CategoryDetailVC.swift */; };
@@ -448,6 +449,7 @@
 		41A4983D275CD7F4008EACDC /* GradientLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayerView.swift; sourceTree = "<group>"; };
 		41A4983F275CD80C008EACDC /* PreviewInstagramControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInstagramControlsView.swift; sourceTree = "<group>"; };
 		41A49845275CDB0E008EACDC /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		41C101C72777E4AE00545450 /* PaywallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallTableViewCell.swift; sourceTree = "<group>"; };
 		41D07262277111D5009FE527 /* TopImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		41E37CC92767DC8A00B116F3 /* HomeHighlightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHighlightsCell.swift; sourceTree = "<group>"; };
 		41EB980E2745796600794586 /* CategoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailVC.swift; sourceTree = "<group>"; };
@@ -688,13 +690,13 @@
 		417E1C6F273F23F7004D6457 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4128B5AF2764C90C00EB99D3 /* Quotes */,
 				4157E826275CEF5E0010FBFB /* Controllers */,
 				41A497D7275B9F85008EACDC /* BottomPopupVCs */,
 				41A49738275B85C0008EACDC /* ImageEditor */,
 				41FA51BD2752458300C78E82 /* StickerVC */,
 				41643C3E274A6DB100FF0EC6 /* Onboarding */,
 				4192BC6B27415C0500FE231A /* Tabbar */,
+				4128B5AF2764C90C00EB99D3 /* Quotes */,
 				41643C40274A6DCE00FF0EC6 /* Camera */,
 				41643C3F274A6DBA00FF0EC6 /* Home */,
 				41643C41274A6DED00FF0EC6 /* Photo */,
@@ -815,6 +817,7 @@
 				4130EE52276F829C0021E5F8 /* SearchStoryCVC.swift */,
 				4130EE54276F82B60021E5F8 /* SearchHighlightsCVC.swift */,
 				41D07262277111D5009FE527 /* TopImageCollectionViewCell.swift */,
+				41C101C72777E4AE00545450 /* PaywallTableViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1390,6 +1393,7 @@
 				41A49747275B88B7008EACDC /* CGImagePropertyOrientation.swift in Sources */,
 				419F5A7E274AAF43006C6DB0 /* ContactUSVC.swift in Sources */,
 				41A49755275B8A6F008EACDC /* MLMultiArray+Image.swift in Sources */,
+				41C101C82777E4AE00545450 /* PaywallTableViewCell.swift in Sources */,
 				41A497AD275B968F008EACDC /* ZLThumbnailViewController.swift in Sources */,
 				41EB981127457D2E00794586 /* CategoriesDetailCVC.swift in Sources */,
 				41A4981A275CD5DF008EACDC /* EditableImageEditModeView.swift in Sources */,
@@ -1582,7 +1586,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PhotoApp/PhotoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = 5FPDY5T8R9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoApp/Info.plist;
@@ -1619,7 +1623,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PhotoApp/PhotoAppRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = 5FPDY5T8R9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoApp/Info.plist;

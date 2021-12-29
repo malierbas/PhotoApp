@@ -19,18 +19,34 @@ class EditableImageView: UIView, UIGestureRecognizerDelegate {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
+    
+    lazy var gradientLayerView: GradientLayerView = {
+        let gradientLayerView = GradientLayerView()
+        gradientLayerView.clipsToBounds = true
+        gradientLayerView.isHidden = true
+        return gradientLayerView
+    }()
+    
+    let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.tintColor = UIColor(hexString: "#021B32")
+        imageView.clipsToBounds = true
         return imageView
     }()
 
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
-        scrollView.layer.borderWidth = 0.5
+        scrollView.layer.borderWidth = 0
         scrollView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.8).cgColor
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.maximumZoomScale = 100.0
-        scrollView.minimumZoomScale = 0.01
+        scrollView.minimumZoomScale = 0.001
         scrollView.delegate = self
         return scrollView
     }()
@@ -68,6 +84,11 @@ class EditableImageView: UIView, UIGestureRecognizerDelegate {
     }
 
     var shouldTryToFitImage: Bool = true
+    
+    //: image gestures
+    var panGesture = UIPanGestureRecognizer()
+    var pinchGesture = UIPinchGestureRecognizer()
+    var rotationGesture = UIRotationGestureRecognizer()
 
     init() {
         super.init(frame: .zero)
@@ -96,6 +117,8 @@ class EditableImageView: UIView, UIGestureRecognizerDelegate {
     private func prepareUI() {
         addSubview(scrollView)
         addSubview(editModeView)
+        scrollView.addSubview(gradientLayerView)
+        scrollView.addSubview(backgroundImageView)
         scrollView.addSubview(plusButton)
         scrollView.addSubview(imageView)
 
@@ -107,12 +130,38 @@ class EditableImageView: UIView, UIGestureRecognizerDelegate {
         scrollView.addGestureRecognizer(tapGestureRecognizer)
 
         setupLayout()
+        
+        //: gestures for decelerate to image
+        panGesture.delegate = self
+        pinchGesture.delegate = self
+        rotationGesture.delegate = self
+        
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPanGesture))
+        pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.didPinchGesture))
+        rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(didRotateGesture))
+        
+        self.imageView.addGestureRecognizer(panGesture)
+        self.imageView.addGestureRecognizer(pinchGesture)
+        self.imageView.addGestureRecognizer(rotationGesture)
     }
 
     private func setupLayout() {
         scrollView.fillSuperview()
         imageView.fillSuperview()
         editModeView.fillSuperview()
+        
+        gradientLayerView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        gradientLayerView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        gradientLayerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        gradientLayerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        gradientLayerView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
 
         plusButton.anchorCenterSuperview()
         plusButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
@@ -162,7 +211,44 @@ class EditableImageView: UIView, UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+    
+    @objc func didPanGesture(sender:UIPanGestureRecognizer){
+         
+        guard let object = sender.view else { return }
+        let tappedImage = object as! UIImageView
 
+        let panelRadius = self.frame.size.width
+        let translation = sender.translation(in: self.imageView)
+        var newX = object.center.x + translation.x
+        var newY = object.center.y + translation.y
+        let r = sqrt((newX - self.center.x) * (newX - self.center.x) + (newY - self.center.y) * (newY - self.center.y))
+        if (r > panelRadius ){
+            newX = object.center.x
+            newY = object.center.y
+        }
+          
+        object.center = CGPoint(x: newX, y: newY)
+        sender.setTranslation(CGPoint.zero, in: self.imageView)
+    }
+
+    @objc func didPinchGesture(gesture: UIPinchGestureRecognizer) {
+        if let selectedImage = gesture.view {
+            let tappedImage = selectedImage as! UIImageView 
+             
+            selectedImage.transform = selectedImage.transform.scaledBy(x: gesture.scale, y: gesture.scale)
+            gesture.scale = 1
+        }
+    }
+    
+    @objc func didRotateGesture(gesture: UIRotationGestureRecognizer) {
+        
+        if let selectedImage = gesture.view {
+            selectedImage.transform = selectedImage.transform.rotated(by: gesture.rotation)
+            gesture.rotation = 0
+            
+            let tappedImage = selectedImage as! UIImageView
+        }
+    }
 }
 
 extension EditableImageView: UIScrollViewDelegate {
@@ -177,7 +263,6 @@ extension EditableImageView: UIScrollViewDelegate {
             print("setting content offset with scrollViewDidScroll to: \(scrollView.contentOffset)")
             print("scrollView.isTracking: \(scrollView.isTracking)")
             print("scrollView.isDragging: \(scrollView.isDragging)")
-            self.canvasImage?.scrollContentOffset = scrollView.contentOffset
         }
     }
 
@@ -189,8 +274,6 @@ extension EditableImageView: UIScrollViewDelegate {
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         print("scrollViewDidEndZooming")
         print("scrollView.contentOffset: \(scrollView.contentOffset)")
-        self.canvasImage?.scrollZoomScale = scrollView.zoomScale
-        self.canvasImage?.scrollContentOffset = scrollView.contentOffset
     }
 }
 

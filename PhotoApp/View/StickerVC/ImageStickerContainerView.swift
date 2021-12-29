@@ -25,7 +25,7 @@ class ImageStickerContainerView: UIView, ZLImageStickerContainerDelegate {
             "imageSticker" + String(v)
         }
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupUI()

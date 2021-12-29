@@ -62,10 +62,8 @@ class HighlightsDetailViewC: BaseVC {
     
     //MARK: - Public functions
     func calculateScrollHeight() -> CGFloat {
-        var height: CGFloat = 280
-        
+        var height: CGFloat = 150
         height = height + collectionView.contentSize.height
-        
         return height
     }
         

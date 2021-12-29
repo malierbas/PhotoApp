@@ -7,10 +7,9 @@
 
 import Foundation
  
-
+private let defaults = UserDefaults.standard
 class LocalStorageManager {
     //MARK: - UserPreferences
-    private let defaults = UserDefaults.standard
     static let shared = LocalStorageManager()
     
     //: UserDemoToken
@@ -43,6 +42,8 @@ class LocalStorageManager {
         case initialNotificationsScheduleTimestamp
         case shouldUpdate
         case weeklyGiftScarcityTimeLeft
+        case offerTime
+        case isOfferViewShown
     }
 
     var purchaseExpirationDate: Date {
@@ -109,6 +110,41 @@ class LocalStorageManager {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.weeklyGiftScarcityTimeLeft.rawValue)
+        }
+    }
+    
+    var offerTimerTime: Int?
+    {
+        get
+        {
+            if let integer = defaults.value(forKey: Keys.offerTime.rawValue) as? Int
+            {
+                print("integer value = ", integer)
+                self.isOfferViewShown = integer < 0
+                return integer < 0 ? 90000 : integer
+            }
+            else
+            {
+                return nil
+            }
+        }
+        
+        set
+        {
+            defaults.set(newValue, forKey: Keys.offerTime.rawValue)
+        }
+    }
+    
+    var isOfferViewShown: Bool
+    {
+        get
+        {
+            return defaults.bool(forKey: Keys.isOfferViewShown.rawValue)
+        }
+        
+        set
+        {
+            defaults.set(newValue, forKey: Keys.isOfferViewShown.rawValue)
         }
     }
 

@@ -113,6 +113,10 @@ extension UITableViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)
     }
+    
+    func hideSelectionColor() {
+        self.selectionStyle = .none
+    }
 }
 
 extension UICollectionViewCell {
@@ -287,7 +291,7 @@ extension UIView {
 
     //For animating
     func fadeIn() {
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.25) {
             self.alpha = 1
         } completion: { boolean in
             if self.isHidden {
@@ -297,7 +301,7 @@ extension UIView {
     }
     
     func fadeOut() {
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.25) {
             self.alpha = 0
         } completion: { boolean in
             if !self.isHidden {
@@ -307,7 +311,7 @@ extension UIView {
     }
     
     func fadeOutWithAlphaComponent(alpha: CGFloat) {
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.25) {
             self.alpha = alpha
         } completion: { boolean in
             if !self.isHidden {
@@ -342,6 +346,12 @@ extension UIView {
             self.layer.transform = CATransform3DIdentity
             self.alpha = 1.0
         }
+    }
+    
+    //MARK: - register touch feedback
+    func registerFeedback() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
     }
 }
 
@@ -412,15 +422,6 @@ extension UIColor {
     }
 }
 
-
-//MARK: - Tabbar
-extension UITabBar {
-    override open func sizeThatFits(_ size: CGSize) -> CGSize {
-        var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = 50
-        return sizeThatFits
-    }
-}
 
 //MARK: - UiFont
 extension UIFont {

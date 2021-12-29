@@ -57,6 +57,12 @@ class SearchEffectVC: UIViewController {
         super.viewDidAppear(animated)
         //: show top bar
         self.setupNavigationView(isHidden: false, isload: false)
+        
+        print("is premium user = ", LocalStorageManager.shared.isPremiumUser)
+        if LocalStorageManager.shared.isPremiumUser
+        {
+            self.tryForFreeButton.fadeOut()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

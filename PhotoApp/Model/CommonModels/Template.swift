@@ -93,17 +93,17 @@ class Template {
         switch id
         {
             case 1:
-                return  Template(isFree: true,
-                                 canBeAssignedFullBackground: true,
-                                 canvasImages: [
-                                    Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "begum42-1"))
-                        ], canvasTexts: [
-                            CanvasText(frame1080x1920: CGRect(x: 334, y: 0, width: 667, height: 117),
-                                       text: "Story 9:16",
-                                       font: UIFont(name: "Georgia", size: 20),
-                                       textColor: UIColor(hexString: "#654A2F"),
-                                       textAlignment: .center)
-                            ])
+                return Template(isFree: true,
+                            canBeAssignedFullBackground: true,
+                            canvasImages: [
+                                Template.CanvasImage(isPicker: true, frame1080x1920: CGRect(x: 0, y: 0, width: 1080, height: 1920), defaultImage: UIImage(named: "begum42-1"))
+                   ], canvasTexts: [
+                       CanvasText(frame1080x1920: CGRect(x: 334, y: 1600, width: 667, height: 117),
+                                  text: "Post 4:5",
+                                  font: UIFont(name: "Georgia", size: 20),
+                                  textColor: UIColor(hexString: "#654A2F"),
+                                  textAlignment: .center)
+                       ])
             case 2:
                 return  Template(isFree: true,
                                  canBeAssignedFullBackground: true,
