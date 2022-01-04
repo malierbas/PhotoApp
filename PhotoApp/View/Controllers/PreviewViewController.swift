@@ -11,7 +11,7 @@ class PreviewViewController: UIViewController {
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.isUserInteractionEnabled = true
         return imageView
     }()

@@ -311,7 +311,6 @@ extension EditorViewController: UIImagePickerControllerDelegate {
 
 extension EditorViewController: BottomControlViewDelegate {
     func didTapShareButton(onView view: BottomControlView) {
-//        AnalyticsManager.shared.log(event: .exportButtonTapped)
         let shareViewController = ShareViewController()
         shareViewController.modalTransitionStyle = .crossDissolve
         shareViewController.modalPresentationStyle = .overFullScreen
