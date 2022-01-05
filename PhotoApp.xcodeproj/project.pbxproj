@@ -26,6 +26,7 @@
 		4130EE51276F823A0021E5F8 /* SearchPostCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130EE50276F823A0021E5F8 /* SearchPostCVC.swift */; };
 		4130EE53276F829C0021E5F8 /* SearchStoryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130EE52276F829C0021E5F8 /* SearchStoryCVC.swift */; };
 		4130EE55276F82B60021E5F8 /* SearchHighlightsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4130EE54276F82B60021E5F8 /* SearchHighlightsCVC.swift */; };
+		4131D3B7278617050077A63E /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4131D3B6278617050077A63E /* SubscriptionModel.swift */; };
 		4142A01C276D145300C94B0C /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4142A01B276D145300C94B0C /* ZoomAndSnapFlowLayout.swift */; };
 		4157E829275CEFC50010FBFB /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E828275CEFC50010FBFB /* InAppPurchaseManager.swift */; };
 		4157E82B275CF0670010FBFB /* BackgroundSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E82A275CF0670010FBFB /* BackgroundSelectionViewController.swift */; };
@@ -266,6 +267,7 @@
 		4130EE50276F823A0021E5F8 /* SearchPostCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostCVC.swift; sourceTree = "<group>"; };
 		4130EE52276F829C0021E5F8 /* SearchStoryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoryCVC.swift; sourceTree = "<group>"; };
 		4130EE54276F82B60021E5F8 /* SearchHighlightsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHighlightsCVC.swift; sourceTree = "<group>"; };
+		4131D3B6278617050077A63E /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
 		4142A01B276D145300C94B0C /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		4157E828275CEFC50010FBFB /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		4157E82A275CF0670010FBFB /* BackgroundSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSelectionViewController.swift; sourceTree = "<group>"; };
@@ -719,6 +721,7 @@
 				41A248152740341C00BC90CC /* TrendingCategoriesModel.swift */,
 				41643C342749517D00FF0EC6 /* SuggestionsModel.swift */,
 				4128B5A32763D24700EB99D3 /* CategoryContentModel.swift */,
+				4131D3B6278617050077A63E /* SubscriptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1302,6 +1305,7 @@
 				41A4982E275CD702008EACDC /* SectionCollectionViewCell.swift in Sources */,
 				41A4975F275B8BD8008EACDC /* CGFloat+ZLPhotoBrowser.swift in Sources */,
 				41643C4D274A765100FF0EC6 /* OnboardingMainVC.swift in Sources */,
+				4131D3B7278617050077A63E /* SubscriptionModel.swift in Sources */,
 				418F1504276523340051882F /* SearchDetailVC.swift in Sources */,
 				41A4983A275CD7BD008EACDC /* InAppPurchaseProductSelectionView.swift in Sources */,
 				41643C352749517D00FF0EC6 /* SuggestionsModel.swift in Sources */,

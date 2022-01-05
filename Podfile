@@ -17,5 +17,6 @@ target 'PhotoApp' do
   pod 'Crashlytics' 
   pod 'DWAnimatedLabel', '~> 1.1'
   pod 'RevealingSplashView'
+  pod 'Purchases'
 
 end

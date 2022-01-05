@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Purchases
 import SVProgressHUD
 import IQKeyboardManagerSwift
 
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         IQKeyboardManager.shared.enable = true
+        
+        Purchases.configure(withAPIKey: "gZttEVWxFIigkrMFnGBIejnDgoFepopZ")
+        Purchases.debugLogsEnabled = true
         
         DispatchQueue.main.async {
             Switcher.updateRootVC()

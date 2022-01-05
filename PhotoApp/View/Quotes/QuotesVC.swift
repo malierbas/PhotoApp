@@ -44,17 +44,23 @@ class QuotesVC: UIViewController {
             //: scrollView
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.showsHorizontalScrollIndicator = false
+            
+            //: - premium notification -
+            NotificationCenter.default.addObserver(forName: .init(rawValue: LocalStorageManager.Keys.isPremiumUser.rawValue), object: nil, queue: .main) { notification in
+                if LocalStorageManager.shared.isOfferViewShown
+                {
+                    //: hide offer view
+                    DispatchQueue.main.async {
+                        self.tryForFreeButtonOutlet.fadeOut()
+                    }
+                }
+            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print("is premium user = ", LocalStorageManager.shared.isPremiumUser)
-        if LocalStorageManager.shared.isPremiumUser
-        {
-            self.tryForFreeButtonOutlet.fadeOut()
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

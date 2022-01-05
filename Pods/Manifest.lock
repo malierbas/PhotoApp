@@ -10,6 +10,9 @@ PODS:
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
+  - Purchases (3.13.1):
+    - PurchasesCoreSwift (= 3.13.1)
+  - PurchasesCoreSwift (3.13.1)
   - RevealingSplashView (0.6.0)
   - SnapKit (5.0.1)
   - SVProgressHUD (2.2.5)
@@ -23,6 +26,7 @@ DEPENDENCIES:
   - Hero
   - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
+  - Purchases
   - RevealingSplashView
   - SnapKit (~> 5.0.0)
   - SVProgressHUD
@@ -37,6 +41,8 @@ SPEC REPOS:
     - Hero
     - IQKeyboardManagerSwift
     - Kingfisher
+    - Purchases
+    - PurchasesCoreSwift
     - RevealingSplashView
     - SnapKit
     - SVProgressHUD
@@ -50,10 +56,12 @@ SPEC CHECKSUMS:
   Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  Purchases: 2693d6444609de044ab25fcda9561bef038f24da
+  PurchasesCoreSwift: ca55f9ef671f89abed133775dd9e53f55007828d
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 38e980426f7b78cb512a27c44b243989fd928499
+PODFILE CHECKSUM: 4df92c3757006cf6412303d5630a3b02617abf09
 
 COCOAPODS: 1.11.2

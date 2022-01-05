@@ -177,12 +177,15 @@ class HomeViewController: UIViewController, BottomPopupDelegate {
         let timerDetailGesture = UITapGestureRecognizer(target: self, action: #selector(self.showTimerDetailVC))
         self.limitedTimerStackView.addGestureRecognizer(timerDetailGesture)
         
-        if LocalStorageManager.shared.isOfferViewShown
-        {
-            //: hide offer view
-            DispatchQueue.main.async {
-                self.mainOfferView.isHidden = true
-                self.limitetOfferStackViewCons.constant = 0
+        //: - premium notification -
+        NotificationCenter.default.addObserver(forName: .init(rawValue: LocalStorageManager.Keys.isPremiumUser.rawValue), object: nil, queue: .main) { notification in
+            if LocalStorageManager.shared.isOfferViewShown
+            {
+                //: hide offer view
+                DispatchQueue.main.async {
+                    self.mainOfferView.isHidden = true
+                    self.limitetOfferStackViewCons.constant = 0
+                }
             }
         }
     }

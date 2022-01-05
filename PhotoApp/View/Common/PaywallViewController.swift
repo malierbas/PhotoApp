@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import StoreKit
+import Purchases
 
 class PaywallViewController: BaseVC {
     //MARK: - Properties
@@ -19,6 +21,9 @@ class PaywallViewController: BaseVC {
     @IBOutlet weak var tableViewHeightConstraints: NSLayoutConstraint!
     
     //: variables
+    var subsModel : [SubscriptionModel] = []
+    public static var selectedIdentifier = 0
+    
     var imageName = "whiteCheckmark"
     var descText = [
         "Lorem ipsum dolor sit amet.",
@@ -54,6 +59,19 @@ class PaywallViewController: BaseVC {
             
             //: constraints
             self.tableViewHeightConstraints.constant = 140
+            
+            //: - subscription -
+            self.getSubscriptionDetails { isEndWithSuccess in
+                print("en with success = ", isEndWithSuccess)
+                if isEndWithSuccess
+                {
+                    //: - do something -
+                }
+                else
+                {
+                    //: - do something -
+                }
+            }
         }
     }
     
@@ -113,6 +131,184 @@ class PaywallViewController: BaseVC {
        mainLabel.textColor = .white
        return mainLabel
    }
+    
+    //: - subscription -
+    func fetchPackage(completion: @escaping (Purchases.Package) -> Void){
+        Purchases.shared.offerings { offerings, error in
+            guard let offerings = offerings, error == nil else {
+                return
+            }
+            
+            guard let package = offerings.all.first?.value.availablePackages.last else {
+                return
+            }
+            completion(package)
+        }
+    }
+    
+    func purchase(package: Purchases.Package) {
+        Purchases.shared.purchasePackage(package) { transaction, info, error, userCancelled in
+            self.view.isUserInteractionEnabled = true
+            if userCancelled {
+                //: - user canceled -
+            }
+            
+            if let error = error {
+                print("purchase error = ", error.localizedDescription)
+                //: - an error occured -
+                self.view.isUserInteractionEnabled = true
+            }
+            
+            if info?.entitlements.all["Subscriptions"]?.isActive == true {
+                DispatchQueue.main.async {
+                    
+                    
+                    
+                    
+//                    WebService.instance.updateUserPremiumStatus(model: self.subsModel[SubscriptionViewController.selectedIdentifier]) { endWithSuccess in
+//                        defaults.setValue(endWithSuccess, forKey: "userIsPremium")
+//                        defaults.setValue(false, forKey: "is_cards_been_seen")
+//                        Definations.isUserPremium = true
+//                        if endWithSuccess {
+//                            DispatchQueue.main.async { [weak self] in
+//                                self?.view.addSubview((UIApplication.shared.delegate as? AppDelegate)!.confettiView)
+//                                (UIApplication.shared.delegate as? AppDelegate)?.confettiView.showConfettis(for: 5)
+//                            }
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                                self.removeSpinner()
+//                                self.backGestureObserver()
+//                            }
+//                        } else {
+//                            self.makeAlertDialog(title: "😔", message: "An error occured. Please try again later".localized(), buttonTitle: "OK".localized())
+//                            self.removeSpinner()
+//                        }
+//                    }
+                }
+            }
+        }
+    }
+    
+    func restorePurchases(){
+        Purchases.shared.restoreTransactions { info, error in
+            guard let info = info, error == nil else { return }
+            
+            if info.entitlements.all["Subscriptions"]?.isActive == true {
+                DispatchQueue.main.async {
+                    // self?.label.isHidden = false
+                    //self?.subscribeButton.isHidden = true
+                    //self?.restoreButton.isHidden = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    // self?.subscribeButton.isHidden = false
+                    //self?.restoreButton.isHidden = false
+                }
+            }
+
+        }
+    }
+    
+    //MARK: GETSubscription
+    func getSubscriptionDetails(completion: @escaping(Bool) -> ()) {
+        DispatchQueue.main.async {
+            Purchases.shared.offerings { (offerings, error) in
+                print("contents = ", offerings)
+                print("error = ", error)
+                if let offerings = offerings {
+                    let offer = offerings.current
+                    let packages = offer?.availablePackages
+                    
+                    guard packages != nil else {
+                        return
+                    }
+                  
+                    // Loop through packages
+                    for i in 0...packages!.count - 1 {
+                        // Get a reference to the package
+                        let package = packages![i]
+                        
+                        // Get a reference to the product
+                        let product = package.product
+                        
+                        // Product title
+                        //let title = product.localizedTitle
+                        
+                        // Product Price
+                        var price = product.priceLocale.identifier
+                        // Product duration
+                        
+                        
+                        func unitName(unitRawValue:UInt) -> String {
+                            switch unitRawValue
+                            {
+                                case 0:
+                                    return "days"
+                                case 1:
+                                    return "week"
+                                case 2:
+                                    return "month"
+                                case 3:
+                                    return "year"
+                                default:
+                                    return ""
+                            }
+                        }
+                        
+                        var units : String! = ""
+                        
+                        if #available(iOS 11.2, *) {//period burada nil geliyor.
+                          if let period = product.introductoryPrice?.subscriptionPeriod {
+                              units = "\(period.numberOfUnits) \(unitName(unitRawValue: period.unit.rawValue)) " + "Free"
+                            if period.numberOfUnits == 0 {
+
+                            } else { }
+                          } else { }
+                        } else { }
+                        
+                        var isDeal = true
+                        
+                        if i == 0 {
+                            isDeal = true
+                        }
+                        
+                        
+                        //: - purchase price cropper -
+//                        if product.localizedTitle.contains("Yearly".localized()) {
+//                             let priceF = price?.replacingOccurrences(of: product.priceLocale.currencySymbol ?? "", with: "").split(separator: ",")[0]
+//                             if let priceMain = Int(priceF ?? "") {
+//                                 let priceY = Int(priceMain) / 52
+//                                 price = product.priceLocale.currencySymbol! + String(priceY) + " / " + "Week".localized()
+//                             }
+//                         }
+//
+//                         if product.localizedTitle.contains("Monthly".localized()) {
+//                             let priceF = price?.replacingOccurrences(of: product.priceLocale.currencySymbol ?? "", with: "").split(separator: ",")[0]
+//                             if let priceMain = Int(priceF ?? "") {
+//                                 let priceM = Int(priceMain) / 4
+//                                 price = product.priceLocale.currencySymbol! + String(priceM) + " / " + "Week".localized()
+//                             }
+//                         }
+                        
+                        let model = SubscriptionModel(
+                            id: i,
+                            mainTitle: product.localizedTitle,
+                            subtitle: product.localizedDescription,
+                            price: price ?? "nil",
+                            isDeal: isDeal,
+                            package: package,
+                            dealTitle: units == nil ? "Save %80" : units
+                        )
+                        
+                        self.subsModel.append(model)
+                        print("subscription model item = ", model)
+                    }
+                }
+            }
+            completion(true)
+        }
+    }
+    
+    
     
     //MARK: - Actions
     @objc func backButtonAction() {

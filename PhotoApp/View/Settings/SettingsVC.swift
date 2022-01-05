@@ -38,6 +38,17 @@ class SettingsVC: BaseVC {
             
             let showFavsGesture = UITapGestureRecognizer(target: self, action: #selector(self.showFavs))
             self.favouritesView.addGestureRecognizer(showFavsGesture)
+            
+            //: - premium notification -
+            NotificationCenter.default.addObserver(forName: .init(rawValue: LocalStorageManager.Keys.isPremiumUser.rawValue), object: nil, queue: .main) { notification in
+                if LocalStorageManager.shared.isOfferViewShown
+                {
+                    //: hide offer view
+                    DispatchQueue.main.async {
+                        //: - do something -
+                    }
+                }
+            }
         }
     }
     

@@ -50,19 +50,24 @@ class SearchEffectVC: UIViewController {
             self.searchBar.searchTextField.textColor = .white
             self.searchBar.searchTextField.leftView?.tintColor = .white
             self.searchBar.delegate = self
+            
+            //: - premium notification -
+            NotificationCenter.default.addObserver(forName: .init(rawValue: LocalStorageManager.Keys.isPremiumUser.rawValue), object: nil, queue: .main) { notification in
+                if LocalStorageManager.shared.isOfferViewShown
+                {
+                    //: hide offer view
+                    DispatchQueue.main.async {
+                        self.tryForFreeButton.fadeOut()
+                    }
+                }
+            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //: show top bar
-        self.setupNavigationView(isHidden: false, isload: false)
-        
-        print("is premium user = ", LocalStorageManager.shared.isPremiumUser)
-        if LocalStorageManager.shared.isPremiumUser
-        {
-            self.tryForFreeButton.fadeOut()
-        }
+        self.setupNavigationView(isHidden: false, isload: false) 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
